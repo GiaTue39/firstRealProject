@@ -28,14 +28,14 @@ a {
 }
 
 .item {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .footer {
   margin-top: 20px;
 }
 
-.example-container .mat-form-field+.mat-form-field {
+.example-container .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
 
@@ -56,4 +56,11 @@ a {
 
 .valuesForm {
   margin: 300px 100px;
+}
+
+.alert-danger {
+  margin: 0px;
+  display: flex;
+  justify-content: flex-start;
+  color: red;
 }
