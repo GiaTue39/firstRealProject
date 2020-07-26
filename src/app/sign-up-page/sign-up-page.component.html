@@ -1,0 +1,52 @@
+<div class="cover">
+  <div class="container">
+    <div class="header">
+      <img />
+      <h2>Accounta</h2>
+    </div>
+    <form class="form-sign-up" (submit)="onSubmit(form.value)" #form="ngForm">
+      <h2>Register</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <!-- <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex.pat@example.com" /> -->
+        <input matInput placeholder="Ex.pat@example.com" ngModel name="contactEmail" />
+        <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" ngModel name="contactName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput placeholder="+084" ngModel name="contactPhone" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="Password" ngModel name="contactPass" />
+      </mat-form-field>
+
+      <p class="notify">
+        By clicking here, you agree to our <a href="#">Customer Agreement</a>
+      </p>
+
+      <button mat-button color="primary">Sign Up</button>
+    </form>
+    <div class="footer">
+      <p>Already have account ? <a href="#">Sign in</a></p>
+    </div>
+  </div>
+
+  <div class="valuesForm">
+    <p>Form Values</p>
+    <pre>{{form.value | json}}</pre>
+  </div>
+</div>

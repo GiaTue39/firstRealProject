@@ -1,0 +1,59 @@
+.container {
+  width: 500px;
+  height: auto;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 400px;
+}
+
+h2 {
+  font-size: 22px;
+  color: slategrey;
+}
+
+a {
+  color: slategrey;
+}
+
+.form-sign-up {
+  display: flex;
+  padding: 30px 80px;
+  flex-direction: column;
+  border: 0.5px solid slategrey;
+  border-radius: 5px;
+}
+
+.items {
+  margin: 30px 0px;
+}
+
+.item {
+  background-color: #FAFAFA;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+.example-container .mat-form-field+.mat-form-field {
+  margin-left: 8px;
+}
+
+.notify {
+  display: flex;
+  flex-direction: inherit;
+}
+
+.mat-button {
+  background-color: grey;
+  color: white;
+  height: 50px;
+}
+
+.cover {
+  display: flex;
+}
+
+.valuesForm {
+  margin: 300px 100px;
+}
