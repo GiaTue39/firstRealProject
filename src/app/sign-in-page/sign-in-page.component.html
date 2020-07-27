@@ -1,31 +1,43 @@
+<pre>
+  {{form.value| json}}
+</pre>
 
 <div class="container-p">
-    <h1>Accounta</h1>
+    <div class="header">
+      <div class="img"> <img src="/assets/img/logo.PNG" ></div>
+      <div class="h1"> <h1> <b>Accounta</b>  </h1></div>
+    </div>
     <div class="container">
-        <h1>Welcome back!</h1>
-        <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="your@.email.com">
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint> -->
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput placeholder="******">
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint> -->
-            </mat-form-field>
-        </p>
+      <form class="login-form"  (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <h1> <b>Welcome back!</b> </h1>
+     
+          <mat-form-field appearance="outline" class="email">
+            <mat-label>Email</mat-label>
+            <input matInput ngModel  placeholder="your@example.com" [formControl]="email" name="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" name="password" required>
+            <!-- <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error> -->
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+            
+        
         <section>
             <div class="example-button-row">
-              <button mat-raised-button color="accent">Sign in</button>
+              <button mat-raised-button color="accent" [disabled]="form.invalid" type="submit">Sign in</button>
             </div>
         </section>
-        <a mat-raised href="https://www.google.com/" target="_blank">Forgot your password?</a>
+        <footer>
+          <a mat-raised href="https://www.google.com/" target="_blank">Forgot your password?</a>
+        </footer>
+      </form>
     </div>
-    <a mat-raised href="https://www.google.com/" target="_blank">Sign up!</a>
+    <a class="signup" mat-raised href="https://www.google.com/" target="_blank">Sign up!</a>
     
 </div>

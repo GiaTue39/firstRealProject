@@ -1,18 +1,55 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: -40px;
+}
 .container-p{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin: 150px 200px;
 }
 h1{
     text-align: center;
+    margin-top: 11px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: slategray;
+
 }
-form{
-    text-align: center;
+
+.email{
+    width: 235px;
+    margin-left: -1px;
 }
 .container{
     text-align: center;
     border: 1px solid black;
-    width: 600px;
-    height: auto;
+    width: 300px;
+    height: 340px;
+}
+
+section{
+    width: 339px;
+    margin-left: -20px;
+}
+
+footer{
+    margin-top: 20px;
+}
+
+a{
+    color: slategray;
+   
+}
+
+button{
+    width: 69%;
+}
+
+.signup{
+    margin-top: 20px;
 }

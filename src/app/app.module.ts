@@ -45,6 +45,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
@@ -58,6 +65,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
  
   ],
   imports: [
+    MatFormFieldModule,
+    NgModule,
     BrowserModule,
     BrowserAnimationsModule,
     A11yModule,
@@ -104,9 +113,18 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+ 
     
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
