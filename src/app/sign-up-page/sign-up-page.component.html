@@ -2,91 +2,74 @@
   <div class="container">
     <div class="header">
       <div class="item-header"><img src="/assets/images/logo.PNG" /></div>
-      <div class="item-header"><h2>Accounta</h2></div>
+      <div class="item-header">
+        <h2>Accounta</h2>
+      </div>
     </div>
-    <form class="form-sign-up" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+    <form class="form-sign-up" (ngSubmit)="onSubmit(form)" #form="ngForm">
       <h2>Register</h2>
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input
-          matInput
-          placeholder="Ex.pat@example.com"
-          ngModel
-          name="contactEmail"
-          required
-        />
+        <input class="form-control" matInput placeholder="Ex.pat@example.com" ngModel name="contactEmail" required />
       </mat-form-field>
-      <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
+      <div class="alert-danger" role="alert" *ngIf="
           form.controls.contactEmail?.errors?.required &&
           form.controls.contactEmail?.touched
-        "
-      >
+        ">
         Email is required!
       </div>
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input
-          matInput
-          placeholder="Name"
-          ngModel
-          name="contactName"
-          required
-        />
+        <input class="form-control" matInput placeholder="Name" ngModel name="contactName" required />
       </mat-form-field>
-      <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
+      <div class="alert-danger" role="alert" *ngIf="
           form.controls.contactName?.errors?.required &&
           form.controls.contactName?.touched
-        "
-      >
+        ">
         Name is required!
       </div>
 
       <mat-form-field appearance="outline">
         <mat-label>Phone</mat-label>
-        <input
-          matInput
-          placeholder="+084"
-          ngModel
-          name="contactPhone"
-          required
-        />
+        <input class="form-control" matInput placeholder="+084" ngModel name="contactPhone" required />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input
-          type="password"
-          matInput
-          placeholder="Password"
-          ngModel
-          name="contactPass"
-          required
-        />
+        <input class="form-control" type="password" matInput placeholder="Password" ngModel name="contactPass"
+          required />
       </mat-form-field>
-      <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
+      <div class="alert-danger" role="alert" *ngIf="
           form.controls.contactPass?.errors?.required &&
           form.controls.contactPass?.touched
-        "
-      >
+        ">
         Password is required!
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Your Password</mat-label>
+        <input class="form-control" type="password" matInput placeholder="Confirm your password" ngModel
+          name="confirmPass" required />
+      </mat-form-field>
+      <div class="alert-danger" role="alert" *ngIf="
+          form.controls.confirmPass?.errors?.required &&
+          form.controls.confirmPass?.touched
+        ">
+        Confirm your password is required!
+      </div>
+      <div class="alert-danger" role="alert" *ngIf="
+          form.controls.confirmPass.value != form.controls.contactPass.value
+        ">
+        Confirm your password is required!
       </div>
 
       <p class="notify">
         By clicking here, you agree to our <a href="#">Customer Agreement</a>
       </p>
 
-      <button mat-button color="primary">Sign Up</button>
+      <button mat-button color="primary" type="submit">Sign Up</button>
     </form>
     <div class="footer">
       <p>Already have account ? <a href="#">Sign in</a></p>
