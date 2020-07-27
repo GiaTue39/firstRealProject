@@ -50,7 +50,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm Your Password</mat-label>
-        <input class="form-control" type="password" matInput placeholder="Confirm your password" ngModel
+        <input class="form-control" type="password" matInput placeholder="Please enter your password again" ngModel
           name="confirmPass" required />
       </mat-form-field>
       <div class="alert-danger" role="alert" *ngIf="
@@ -60,10 +60,15 @@
         Confirm your password is required!
       </div>
       <div class="alert-danger" role="alert" *ngIf="
+          form.controls.confirmPass?.valid && (form.controls.confirmPass.value != form.controls.contactPass.value)
+        ">
+        Confirm your password is incorrect!
+      </div>
+      <!-- <div class="alert-danger" role="alert" *ngIf="
           form.controls.confirmPass.value != form.controls.contactPass.value
         ">
-        Confirm your password is required!
-      </div>
+        Password is incorrect !
+      </div> -->
 
       <p class="notify">
         By clicking here, you agree to our <a href="#">Customer Agreement</a>
