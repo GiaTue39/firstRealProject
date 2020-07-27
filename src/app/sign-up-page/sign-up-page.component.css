@@ -1,13 +1,20 @@
 .container {
-  width: 500px;
+  width: 400px;
   height: auto;
   text-align: center;
   margin-top: 100px;
-  margin-left: 400px;
+  margin-left: 550px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 0px;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 20px;
   color: slategrey;
 }
 
@@ -17,7 +24,7 @@ a {
 
 .form-sign-up {
   display: flex;
-  padding: 30px 80px;
+  padding: 30px 50px;
   flex-direction: column;
   border: 0.5px solid slategrey;
   border-radius: 5px;
@@ -35,7 +42,7 @@ a {
   margin-top: 20px;
 }
 
-.example-container .mat-form-field + .mat-form-field {
+.example-container .mat-form-field+.mat-form-field {
   margin-left: 8px;
 }
 
@@ -63,4 +70,12 @@ a {
   display: flex;
   justify-content: flex-start;
   color: red;
+}
+
+img::before {
+  content: "";
+}
+
+.item-header {
+  margin-left: 10px;
 }
