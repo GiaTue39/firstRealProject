@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
 import { NgForm } from "@angular/forms";
+
 import { Credential } from "../credential";
 
 @Component({
@@ -9,11 +9,12 @@ import { Credential } from "../credential";
   styleUrls: ['./sign-in-page.component.css']
 })
 export class SignInPageComponent implements OnInit {
-  hide:any;
+  hide: boolean;
   credential: Credential = {
-    username: "",
-    password: ""
+    username: '',
+    password: '',
   };
+  message: string = '';
 
   constructor() { }
 
@@ -22,23 +23,18 @@ export class SignInPageComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     if (form.invalid) {
+      console.log('invalid');
       return;
+    }
+
+    console.log(form.controls);
+
+    if(this.credential.username === 'kimtruc' && this.credential.password === '123456') {
+      this.message = 'Login successful!';
     }
   }
 
-  // email = new FormControl('', [Validators.required, Validators.email]);
-
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-
-    
-
-    
-  // }
+  
 
   
 }
