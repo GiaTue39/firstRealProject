@@ -1,0 +1,12 @@
+.menu{
+  display: flex;
+  flex-direction:column;
+}
+table {
+    width: 100%;
+}
+
+img{ 
+  width:5%;
+  padding: 0px;
+}

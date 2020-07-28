@@ -1,0 +1,36 @@
+<div class="listcompany">
+    <div class="menu">
+        <div><img src="/assets/img/r.PNG" ></div>
+        <div>Realtek</div>
+        <div>Max Plank</div>
+        <div><img src="/assets/img/mr.PNG" ></div>
+        <div><img src="/assets/img/img.PNG" ></div>
+    </div>
+    <div class="header">
+        <h1>Companies</h1>
+    </div>
+    <div class="container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> NAME </th>
+              <td mat-cell *matCellDef="let element"> <img src="/assets/img/company2.jpg" > {{element.name}} </td>
+            </ng-container>
+          
+            <!-- employee Column -->
+            <ng-container matColumnDef="employee">
+              <th mat-header-cell *matHeaderCellDef> EMPLOYEE </th>
+              <td mat-cell *matCellDef="let element"> {{element.employee}} </td>
+            </ng-container>
+          
+            <!-- orders/invoices Column -->
+            <ng-container matColumnDef="orders">
+              <th mat-header-cell *matHeaderCellDef> ORDERS/INVOICES </th>
+              <td mat-cell *matCellDef="let element"> {{element.orders}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+</div>

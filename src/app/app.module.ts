@@ -56,15 +56,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import { ListCompanyComponent } from './list-company/list-company.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    ListCompanyComponent
   ],
   imports: [
+    AppRoutingModule,
     MatFormFieldModule,
     BrowserModule,
     BrowserAnimationsModule,
