@@ -13,6 +13,7 @@
     margin: 150px 200px;
 }
 h1{
+    font-family: Lato;
     text-align: center;
     margin-top: 11px;
     margin-left: 10px;
@@ -26,6 +27,7 @@ h1{
     margin-left: -1px;
 }
 .container{
+    font-family: Lato;
     text-align: center;
     border: 1px solid black;
     width: 300px;

@@ -61,12 +61,9 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
   declarations: [
     AppComponent,
     SignInPageComponent,
-   
- 
   ],
   imports: [
     MatFormFieldModule,
-    NgModule,
     BrowserModule,
     BrowserAnimationsModule,
     A11yModule,
@@ -116,7 +113,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 
     FormsModule,
     ReactiveFormsModule,
- 
+    MatButtonModule
     
   ],
   providers: [

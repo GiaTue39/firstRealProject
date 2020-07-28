@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { NgForm } from "@angular/forms";
+import { Credential } from "../credential";
 
 @Component({
   selector: 'app-sign-in-page',
@@ -7,35 +9,37 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./sign-in-page.component.css']
 })
 export class SignInPageComponent implements OnInit {
+  hide:any;
+  credential: Credential = {
+    username: "",
+    password: ""
+  };
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  //password = new FormControl('', [Validators.required, Validators.password]);
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+  onSubmit(form: NgForm): void {
+    if (form.invalid) {
+      return;
     }
+  }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  // email = new FormControl('', [Validators.required, Validators.email]);
 
-    // if (this.password.hasError('required')) {
-    //   return 'You must enter a value';
-    // }
+  // getErrorMessage() {
+  //   if (this.email.hasError('required')) {
+  //     return 'You must enter a value';
+  //   }
 
-    // return this.password.hasError('password') ? 'Not a valid password' : '';
+  //   return this.email.hasError('email') ? 'Not a valid email' : '';
 
     
-  }
 
-  onSubmit(form) {
-    // Do something awesome
-    console.log(form);
-    throw Error('something go wrong');
-  }
-  hide = true;
+    
+  // }
+
+  
 }
 
