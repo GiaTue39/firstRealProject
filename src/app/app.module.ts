@@ -54,6 +54,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 
 
@@ -61,6 +62,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
   declarations: [
     AppComponent,
     SignInPageComponent,
+    SignUpPageComponent
   ],
   imports: [
     MatFormFieldModule,
