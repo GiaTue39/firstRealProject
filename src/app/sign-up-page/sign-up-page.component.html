@@ -11,64 +11,152 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input class="form-control" matInput placeholder="Ex.pat@example.com" ngModel name="contactEmail" required />
+        <input
+          class="form-control"
+          matInput
+          tabindex="1"
+          placeholder="Ex.pat@example.com"
+          #email="ngModel"
+          [(ngModel)]="user.email"
+          name="contactEmail"
+          required
+        />
+        <mat-error *ngIf="email.errors">
+          <span *ngIf="email.errors.required">
+            Email is required !
+          </span>
+        </mat-error>
       </mat-form-field>
-      <div class="alert-danger" role="alert" *ngIf="
+
+      <!-- <div
+        class="alert-danger"
+        role="alert"
+        *ngIf="
           form.controls.contactEmail?.errors?.required &&
           form.controls.contactEmail?.touched
-        ">
+        "
+      >
         Email is required!
-      </div>
+      </div> -->
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input class="form-control" matInput placeholder="Name" ngModel name="contactName" required />
+        <input
+          class="form-control"
+          matInput
+          placeholder="Name"
+          tabindex="2"
+          #name="ngModel"
+          [(ngModel)]="user.name"
+          name="contactName"
+          required
+        />
+        <mat-error *ngIf="name.errors">
+          <span *ngIf="name.errors.required">
+            Name is required !
+          </span>
+        </mat-error>
       </mat-form-field>
-      <div class="alert-danger" role="alert" *ngIf="
+
+      <!-- <div
+        class="alert-danger"
+        role="alert"
+        *ngIf="
           form.controls.contactName?.errors?.required &&
           form.controls.contactName?.touched
-        ">
+        "
+      >
         Name is required!
-      </div>
+      </div> -->
 
       <mat-form-field appearance="outline">
-        <mat-label>Phone</mat-label>
-        <input class="form-control" matInput placeholder="+084" ngModel name="contactPhone" required />
+        <mat-label>Phone number</mat-label>
+        <input
+          class="form-control"
+          matInput
+          tabindex="3"
+          placeholder="+084"
+          #phone="ngModel"
+          [(ngModel)]="user.phone"
+          name="contactPhone"
+          required
+        />
+        <mat-error *ngIf="phone.errors">
+          <span *ngIf="phone.errors.required">
+            Phone is required !
+          </span>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input class="form-control" type="password" matInput placeholder="Password" ngModel name="contactPass"
-          required />
+        <input
+          class="form-control"
+          type="password"
+          matInput
+          tabindex="4"
+          placeholder="Password"
+          #pass="ngModel"
+          [(ngModel)]="user.password"
+          name="contactPass"
+          required
+        />
+        <mat-error *ngIf="pass.errors">
+          <span *ngIf="pass.errors.required">
+            Password is required !
+          </span>
+        </mat-error>
       </mat-form-field>
-      <div class="alert-danger" role="alert" *ngIf="
+      <!-- <div
+        class="alert-danger"
+        role="alert"
+        *ngIf="
           form.controls.contactPass?.errors?.required &&
           form.controls.contactPass?.touched
-        ">
+        "
+      >
         Password is required!
-      </div>
+      </div> -->
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm Your Password</mat-label>
-        <input class="form-control" type="password" matInput placeholder="Please enter your password again" ngModel
-          name="confirmPass" required />
+        <input
+          class="form-control"
+          type="password"
+          matInput
+          tabindex="5"
+          placeholder="Please enter your password again"
+          #confirmPass="ngModel"
+          [(ngModel)]="user.confirmPass"
+          name="confirmPass"
+          required
+        />
+        <mat-error *ngIf="confirmPass.errors">
+          <span *ngIf="confirmPass.errors.required">
+            Confirm password is required !
+          </span>
+        </mat-error>
       </mat-form-field>
-      <div class="alert-danger" role="alert" *ngIf="
+      <!-- <div
+        class="alert-danger"
+        role="alert"
+        *ngIf="
           form.controls.confirmPass?.errors?.required &&
           form.controls.confirmPass?.touched
-        ">
+        "
+      >
         Confirm your password is required!
-      </div>
-      <div class="alert-danger" role="alert" *ngIf="
-          form.controls.confirmPass?.valid && (form.controls.confirmPass.value != form.controls.contactPass.value)
-        ">
+      </div> -->
+      <div
+        class="alert-danger"
+        role="alert"
+        *ngIf="
+          form.controls.confirmPass?.valid &&
+          form.controls.confirmPass.value != form.controls.contactPass.value
+        "
+      >
         Confirm your password is incorrect!
       </div>
-      <!-- <div class="alert-danger" role="alert" *ngIf="
-          form.controls.confirmPass.value != form.controls.contactPass.value
-        ">
-        Password is incorrect !
-      </div> -->
 
       <p class="notify">
         By clicking here, you agree to our <a href="#">Customer Agreement</a>

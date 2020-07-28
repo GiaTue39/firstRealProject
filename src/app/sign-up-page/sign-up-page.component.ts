@@ -9,6 +9,7 @@ export class SignUpPageComponent implements OnInit {
     email: '',
     name: '',
     password: '',
+    phone: '',
     confirmPass: '',
   };
 
@@ -21,8 +22,5 @@ export class SignUpPageComponent implements OnInit {
   onSubmit(form) {
     console.log(form.value);
     console.log(form.controls.confirmPass.value);
-    // if (form.controls.confirmPass.value != form.controls.contactPass.value) {
-    //   return (this.message = 'Password is incorrect');
-    // }
   }
 }
