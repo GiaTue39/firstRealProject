@@ -28,17 +28,6 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
-          form.controls.contactEmail?.errors?.required &&
-          form.controls.contactEmail?.touched
-        "
-      >
-        Email is required!
-      </div> -->
-
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input
@@ -57,17 +46,6 @@
           </span>
         </mat-error>
       </mat-form-field>
-
-      <!-- <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
-          form.controls.contactName?.errors?.required &&
-          form.controls.contactName?.touched
-        "
-      >
-        Name is required!
-      </div> -->
 
       <mat-form-field appearance="outline">
         <mat-label>Phone number</mat-label>
@@ -107,16 +85,6 @@
           </span>
         </mat-error>
       </mat-form-field>
-      <!-- <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
-          form.controls.contactPass?.errors?.required &&
-          form.controls.contactPass?.touched
-        "
-      >
-        Password is required!
-      </div> -->
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm Your Password</mat-label>
@@ -137,23 +105,11 @@
           </span>
         </mat-error>
       </mat-form-field>
-      <!-- <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="
-          form.controls.confirmPass?.errors?.required &&
-          form.controls.confirmPass?.touched
-        "
-      >
-        Confirm your password is required!
-      </div> -->
+
       <div
         class="alert-danger"
         role="alert"
-        *ngIf="
-          form.controls.confirmPass?.valid &&
-          form.controls.confirmPass.value != form.controls.contactPass.value
-        "
+        *ngIf="confirmPass?.valid && confirmPass.value != pass.value"
       >
         Confirm your password is incorrect!
       </div>
@@ -168,9 +124,4 @@
       <p>Already have account ? <a href="#">Sign in</a></p>
     </div>
   </div>
-
-  <!-- <div class="valuesForm">
-    <p>Form Values</p>
-    <pre>{{ form.value | json }}</pre>
-  </div> -->
 </div>
