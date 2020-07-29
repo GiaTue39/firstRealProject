@@ -8,13 +8,34 @@
   width: 700px;
   height: auto;
   margin-left: 200px;
+  margin-bottom: 50px;
 }
 
 table {
   width: 100%;
 }
 
+.example-element-row:hover {
+  background: whitesmoke;
+}
+
+.example-element-row:active {
+  background: #efefef;
+}
+
+th.mat-header-cell{
+  border-bottom-style: none;
+}
+
+td.mat-cell{
+  border-bottom-style: none;
+}
+
 .sort {
   margin-right: 30px;
   width: 80%;
+}
+
+button{
+  width: 50%;
 }

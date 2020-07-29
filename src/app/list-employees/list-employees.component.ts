@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { HttpClient } from '@angular/common/http';
+import { Employees} from '../employee';
+import {MatTableDataSource} from '@angular/material/table';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-list-employees',
@@ -8,12 +11,36 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./list-employees.component.css'],
 })
 export class ListEmployeesComponent implements OnInit {
-  options: string[] = ['Name', 'Phone', 'Email', 'Status'];
-
-  displayedColumns: string[] = ['name', 'phone', 'email', 'status'];
-  //dataSource = this.employeeService.getEmployee();
+  options: string[] = ['ID', 'Name', 'Phone', 'Email', 'Status'];
+ // selection = new SelectionModel<EmployeeService.getUsers()>(true, []);
+  displayedColumns: string[] = ['select','id','name', 'phone', 'email', 'status'];
   dataSource = [];
   isLoading = false;
+
+  dataS = new MatTableDataSource<Employees>(this.dataSource);
+  selection = new SelectionModel<Employees>(true, []);
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: Employees): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'id' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'id'} row ${row.id + 1}`;
+  }
 
   constructor(
     private employeeService: EmployeeService,
@@ -33,9 +60,10 @@ export class ListEmployeesComponent implements OnInit {
       }
     );
   }
-  
+
   createEmployee(){
     const employee = {
+      id: '123',
       name:'Tue',
       phone: '01211212',
       email: 'giatue@gmail.com',
@@ -53,6 +81,7 @@ export class ListEmployeesComponent implements OnInit {
       }
     );
   }
+  
 }
 
 
