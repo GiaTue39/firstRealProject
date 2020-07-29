@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
 import { Employees } from './employee';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
-  // constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  // getEmployee() {
-  //   return this.http.get('https://jsonplaceholder.typicode.com/users');
-  // }
   getEmployee(): Array<Employees> {
     return [
       {
@@ -25,5 +23,9 @@ export class EmployeeService {
         status: 'Enable',
       },
     ];
+  }
+
+  getUsers(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/employees');
   }
 }
