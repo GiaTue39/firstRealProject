@@ -60,6 +60,8 @@ import { ListCompanyComponent } from './list-company/list-company.component';
 import { AppRoutingModule } from './app-routing.module';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

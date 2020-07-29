@@ -1,0 +1,31 @@
+{
+  "companies": [
+    {
+      "id": "31523bf8-a0ca-411e-be3e-4508ab7c70a2",
+      "name": "Eztek Software"
+    }
+  ],
+  "employees": [
+    {
+      "id": "455c00bf-cd2d-4921-8d81-f1fce1465c47",
+      "name": "Bret",
+      "phone": "0772474849",
+      "email": "bret@gmail.biz",
+      "status": "active"
+    },
+    {
+      "id": "fa00533d-c181-49e5-ba6a-05436dc52586",
+      "name": "David",
+      "phone": "0882474849",
+      "email": "david@gmail.biz",
+      "status": "active"
+    }
+  ],
+  "products": [
+    {
+      "id": "9ba55864-d0e5-11ea-87d0-0242ac130003",
+      "companyId": "31523bf8-a0ca-411e-be3e-4508ab7c70a2",
+      "name": "Samsung Galaxy Note 10"
+    }
+  ]
+}
