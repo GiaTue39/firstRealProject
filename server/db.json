@@ -2,7 +2,87 @@
   "companies": [
     {
       "id": "31523bf8-a0ca-411e-be3e-4508ab7c70a2",
-      "name": "Eztek Software"
+      "name": "Eztek Software",
+      "employee": "16",
+      "orders": "15/20"
+    },
+    {
+      "id": "31523bf8-a0ca-411e-be3e-4508ab7c70a5",
+      "name": "Truc Software",
+      "employee": "17",
+      "orders": "355/45"
+    },
+    {
+      "id": "f3ff9e4e-d152-11ea-87d0-0242ac130003",
+      "name": "Pencil Co.",
+      "employee": "5",
+      "orders": "165/163"
+    },
+    {
+      "id": "6aee3dac-d154-11ea-87d0-0242ac130003",
+      "name": "Color Tech",
+      "employee": "2",
+      "orders": "78/47"
+    },
+    {
+      "id": "70ab138c-d154-11ea-87d0-0242ac130003",
+      "name": "Lithium Tech",
+      "employee": "7",
+      "orders": "95/65"
+    },
+    {
+      "id": "776a8fe0-d154-11ea-87d0-0242ac130003",
+      "name": "Beryllium Tech",
+      "employee": "9",
+      "orders": "78/45"
+    },
+    {
+      "id": "7e25e9a6-d154-11ea-87d0-0242ac130003",
+      "name": "Boron Tech",
+      "employee": "10",
+      "orders": "23/20"
+    },
+    {
+      "id": "85944b74-d154-11ea-87d0-0242ac130003",
+      "name": "Carbon Tech",
+      "employee": "12",
+      "orders": "67/45"
+    },
+    {
+      "id": "8e96d21e-d154-11ea-87d0-0242ac130003",
+      "name": "Nitrogen Tech",
+      "employee": "14",
+      "orders": "57/45"
+    },
+    {
+      "id": "94c77d5a-d154-11ea-87d0-0242ac130003",
+      "name": "Oxygen Tech",
+      "employee": "15",
+      "orders": "25/14"
+    },
+    {
+      "id": "9cb380ae-d154-11ea-87d0-0242ac130003",
+      "name": "Fluorine Tech",
+      "employee": "18",
+      "orders": "45/33"
+    },
+    {
+      "id": "a273265c-d154-11ea-87d0-0242ac130003",
+      "name": "Neon Tech",
+      "employee": "20",
+      "orders": "33/11"
+    },
+    {
+      "name": "Be Sight Soft",
+      "employee": "17",
+      "orders": "55/22",
+      "id": "4a0tWcr"
+    },
+    {
+      "id": "7f5cef88-d15c-11ea-87d0-0242ac130003",
+      "name": "Be Sight Soft",
+      "employee": "17",
+      "orders": "55/22"
     }
   ],
   "employees": [

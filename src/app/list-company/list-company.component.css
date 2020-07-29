@@ -2,15 +2,32 @@
   display: flex;
   flex-direction:column;
 } */
-table {
-    width: 100%;
+
+.header {
+  padding: 24px;
 }
 
-img{ 
-  width:5%;
+.container {
+  padding: 0 24px;
+}
+
+table {
+  width: 100%;
+}
+
+img {
+  width: 5%;
   padding: 0px;
 }
 
-.container{
+.container {
   font-family: Lato;
+}
+
+.example-element-row:hover {
+  background: whitesmoke;
+}
+
+.example-element-row:active {
+  background: #efefef;
 }

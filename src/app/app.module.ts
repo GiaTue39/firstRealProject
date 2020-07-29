@@ -46,8 +46,6 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
@@ -58,6 +56,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { ListCompanyComponent } from './list-company/list-company.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -121,7 +120,8 @@ import { AppRoutingModule } from './app-routing.module';
 
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
     
   ],
   providers: [
@@ -130,6 +130,3 @@ import { AppRoutingModule } from './app-routing.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));

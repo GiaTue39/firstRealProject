@@ -1,25 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
 
-
-export interface PeriodicElement {
-  name: string;
-  employee: number;
-  orders: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'Pencil Co.'    , employee: 5,  orders: '165/163'},
-  {name: 'Color Tech'    , employee: 2,  orders: '78/47'},
-  {name: 'Lithium Tech'  , employee: 7,  orders: '95/65'},
-  {name: 'Beryllium Tech', employee: 9,  orders: '78/45'},
-  {name: 'Boron Tech'    , employee: 10, orders: '23/20'},
-  {name: 'Carbon Tech'   , employee: 12, orders: '67/45'},
-  {name: 'Nitrogen Tech' , employee: 14, orders: '57/45'},
-  {name: 'Oxygen Tech'   , employee: 15, orders: '25/14'},
-  {name: 'Fluorine Tech' , employee: 18, orders: '45/33'},
-  {name: 'Neon Tech'     , employee: 20, orders: '33/11'},
-];
-
+import { CompanyService } from '../company.service';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-list-company',
@@ -27,11 +11,64 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./list-company.component.css']
 })
 export class ListCompanyComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'employee', 'orders'];
-  dataSource = ELEMENT_DATA;
-  constructor() { }
+  displayedColumns: string[] = ['select', 'name', 'employee', 'orders'];
+  dataSource = [];
+  dataS = new MatTableDataSource<Company>(this.dataSource);
+  selection = new SelectionModel<Company>(true, []);
+  isLoading = false;
 
-  ngOnInit(): void {
+  constructor(
+    private companyService: CompanyService
+  ) { }
+
+  ngOnInit() {
+    this.isLoading = true;
+
+    this.companyService.getCompanies().subscribe(
+      (data) => {
+        this.dataSource = data;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+
+    );
   }
 
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: Company): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    //return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  createCompany() {
+    const company = {
+      id: '7f5cef88-d15c-11ea-87d0-0242ac130003',
+      name: 'Be Sight Soft',
+      employee: '17',
+      orders: '55/22'
+    };
+    this.companyService.createCompany(company).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => console.log(error)
+    );
+  }
 }
