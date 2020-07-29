@@ -14,6 +14,7 @@
       <mat-label>Search</mat-label>
       <input matInput placeholder="Search something..." />
     </mat-form-field>
+    <button mat-raised-button color="primary" (click)="createEmployee()">Create Employee</button>
   </div>
 
   <!-- <table>
@@ -34,7 +35,11 @@
       </tr>
     </tbody>
   </table> -->
-  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div *ngIf="dataSource.length == 0 && isLoading == false">
+      <h2>Loading interrupted !</h2>
+  </div>
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <mat-table *ngIf="dataSource.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -62,4 +67,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+
 </div>

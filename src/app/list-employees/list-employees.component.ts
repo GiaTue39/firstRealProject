@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./list-employees.component.css'],
 })
 export class ListEmployeesComponent implements OnInit {
-  employee = [];
-  user = [];
   options: string[] = ['Name', 'Phone', 'Email', 'Status'];
 
   displayedColumns: string[] = ['name', 'phone', 'email', 'status'];
-  dataSource = this.employeeService.getEmployee();
+  //dataSource = this.employeeService.getEmployee();
+  dataSource = [];
+  isLoading = false;
 
   constructor(
     private employeeService: EmployeeService,
@@ -21,14 +21,38 @@ export class ListEmployeesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.employeeService.getUsers().subscribe(
-      // this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(
       (data) => {
-        console.log(data);
+        this.dataSource = data;
+        this.isLoading = false;
       },
       (error) => {
         console.log(error);
+        this.isLoading = false;
+      }
+    );
+  }
+  
+  createEmployee(){
+    const employee = {
+      name:'Tue',
+      phone: '01211212',
+      email: 'giatue@gmail.com',
+      status: 'Disable'
+    };
+    this.employeeService.createEmployee(employee).subscribe(
+      (data) => {
+        // this.dataSource = data;
+        console.log(data);
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
       }
     );
   }
 }
+
+
