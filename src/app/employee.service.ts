@@ -7,26 +7,10 @@ import { delay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient) {}
-
-  getEmployee(): Array<Employees> {
-    return [
-      {
-        // id: '111111',
-        name: 'Huynh Gia Tue',
-        phone: '0192121',
-        email: 'giatue39@gmail.com',
-        status: 'Enable',
-      },
-      {
-        // id: '22222',
-        name: 'Le Thi Kim Truc',
-        phone: '012122',
-        email: 'kimtruc38@gmail.com',
-        status: 'Enable',
-      },
-    ];
+  deleteEmployee(id: string) {
+    return this.http.delete('http://localhost:3000/api/employees/' + id);
   }
+  constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any> {
     return this.http

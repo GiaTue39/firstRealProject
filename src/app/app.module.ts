@@ -133,7 +133,3 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));

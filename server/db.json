@@ -7,27 +7,6 @@
   ],
   "employees": [
     {
-      "id": "455c00bf-cd2d-4921-8d81-f1fce1465c47",
-      "name": "Bret",
-      "phone": "0772474849",
-      "email": "bret@gmail.biz",
-      "status": "active"
-    },
-    {
-      "id": "fa00533d-c181-49e5-ba6a-05436dc52586",
-      "name": "David",
-      "phone": "0882474849",
-      "email": "david@gmail.biz",
-      "status": "active"
-    },
-    {
-      "name": "Tue",
-      "phone": "01211212",
-      "email": "giatue@gmail.com",
-      "status": "Disable",
-      "id": "v36Yql5"
-    },
-    {
       "name": "Tue",
       "phone": "01211212",
       "email": "giatue@gmail.com",
@@ -36,27 +15,12 @@
     },
     {
       "name": "Truc Le",
-      "phone": "013113",
-      "email": "trucle98@gmail.com",
-      "birthday": "",
-      "status": "Enable",
-      "id": "FjJkfwS"
-    },
-    {
-      "name": "Tue",
-      "phone": "01211212",
-      "email": "giatue@gmail.com",
-      "status": "Disable",
-      "id": "eL4gDKB"
-    },
-    {
-      "name": "Mina",
-      "phone": "01212121",
-      "email": "gdlinh180898@gmail.com",
+      "phone": "01212",
+      "email": "trucle@gmail.com",
       "birthday": "",
       "status": "Enable",
       "address": "27/27, Khu phố 1, Phường An Phú Đông, quận 12.",
-      "id": "dyteT4a"
+      "id": "A~488Dg"
     }
   ],
   "products": [

@@ -13,7 +13,14 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class ListEmployeesComponent implements OnInit {
   options: string[] = ['Name', 'Phone', 'Email', 'Status'];
   // selection = new SelectionModel<EmployeeService.getUsers()>(true, []);
-  displayedColumns: string[] = ['select', 'name', 'phone', 'email', 'status'];
+  displayedColumns: string[] = [
+    'select',
+    'name',
+    'phone',
+    'email',
+    'status',
+    'action',
+  ];
   dataSource = [];
   isLoading = false;
 
@@ -70,24 +77,22 @@ export class ListEmployeesComponent implements OnInit {
     this.dataSearch.filter = filterValue.trim().toLowerCase();
   }
 
-  // createEmployee() {
-  //   const employee = {
-  //     // id: '123',
-  //     name: 'Tue',
-  //     phone: '01211212',
-  //     email: 'giatue@gmail.com',
-  //     status: 'Disable',
-  //   };
-  //   this.employeeService.createEmployee(employee).subscribe(
-  //     (data) => {
-  //       // this.dataSource = data;
-  //       console.log(data);
-  //       this.isLoading = false;
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //       this.isLoading = false;
-  //     }
-  //   );
-  // }
+  onDelete(employee: Employees) {
+    this.employeeService.deleteEmployee(employee.id).subscribe(() => {
+      const data = [];
+      // for (var i = 0; i < this.dataSource.length; i++) {
+      //   if (this.dataSource[i].id !== employee.id) {
+      //     data.push(this.dataSource[i]);
+      //   }
+      // }
+      // this.dataSource.forEach((e) => {
+      //   if (e.id !== employee.id) {
+      //     data.push(e);
+      //   }
+      // });
+      // this.dataSource = data;
+
+      this.dataSource = this.dataSource.filter((e) => e.id !== employee.id);
+    });
+  }
 }
