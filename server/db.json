@@ -1,12 +1,6 @@
 {
   "companies": [
     {
-      "id": "31523bf8-a0ca-411e-be3e-4508ab7c70a2",
-      "name": "Eztek Software",
-      "employee": "16",
-      "orders": "15/20"
-    },
-    {
       "id": "31523bf8-a0ca-411e-be3e-4508ab7c70a5",
       "name": "Truc Software",
       "employee": "17",
@@ -83,6 +77,27 @@
       "name": "Be Sight Soft",
       "employee": "17",
       "orders": "55/22"
+    },
+    {
+      "id": "uwtND8E",
+      "name": "TTHH Truc",
+      "employee": "1234",
+      "orders": "44/65"
+    },
+    {
+      "name": "Gia Han",
+      "employee": "3456",
+      "orders": "54/65",
+      "id": "wqXaKTS"
+    },
+    {
+      "logoURl": "data:image/png;base64,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",
+      "name": "TNHH Tan Binh",
+      "phone": "033552134",
+      "email": "gdlinh180898@gmail.com",
+      "website": "http://www.tanbinh.com",
+      "address": "27/27, An Phú Đông 2, quận 12",
+      "id": "T9XoYxW"
     }
   ],
   "employees": [
@@ -101,11 +116,5 @@
       "status": "active"
     }
   ],
-  "products": [
-    {
-      "id": "9ba55864-d0e5-11ea-87d0-0242ac130003",
-      "companyId": "31523bf8-a0ca-411e-be3e-4508ab7c70a2",
-      "name": "Samsung Galaxy Note 10"
-    }
-  ]
+  "products": []
 }

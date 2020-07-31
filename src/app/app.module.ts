@@ -57,6 +57,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { ListCompanyComponent } from './list-company/list-company.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormCreateCompanyComponent } from './form-create-company/form-create-company.component';
 
 
 
@@ -66,7 +67,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     SignInPageComponent,
     SignUpPageComponent,
-    ListCompanyComponent
+    ListCompanyComponent,
+    FormCreateCompanyComponent
   ],
   imports: [
     AppRoutingModule,

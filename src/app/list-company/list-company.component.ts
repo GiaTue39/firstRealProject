@@ -11,7 +11,7 @@ import { Company } from '../company';
   styleUrls: ['./list-company.component.css']
 })
 export class ListCompanyComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'name', 'employee', 'orders'];
+  displayedColumns: string[] = ['select', 'name', 'employee', 'orders', 'action'];
   dataSource = [];
   dataS = new MatTableDataSource<Company>(this.dataSource);
   selection = new SelectionModel<Company>(true, []);
@@ -58,17 +58,24 @@ export class ListCompanyComponent implements OnInit {
   }
 
   createCompany() {
-    const company = {
-      id: '7f5cef88-d15c-11ea-87d0-0242ac130003',
-      name: 'Be Sight Soft',
-      employee: '17',
-      orders: '55/22'
-    };
-    this.companyService.createCompany(company).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => console.log(error)
-    );
+    // const company = {
+    //   id: '7f5cef88-d15c-11ea-87d0-0242ac130003',
+    //   name: 'Be Sight Soft',
+    //   employee: '17',
+    //   orders: '55/22'
+    // };
+    // this.companyService.createCompany(company).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //   },
+    //   (error) => console.log(error)
+    // );
+  }
+
+  onDelete(company: Company){
+    this.companyService.deleteCompany(company.id).subscribe(()=>{
+      const data =[];
+      this.dataSource=this.dataSource.filter((e)=>e.id!==company.id);
+    });
   }
 }

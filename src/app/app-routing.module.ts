@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
-import {ListCompanyComponent} from './list-company/list-company.component';
+import { ListCompanyComponent } from './list-company/list-company.component';
+import { FormCreateCompanyComponent } from './form-create-company/form-create-company.component';
 
 const routes: Routes = [
-    { path: 'login', component: SignInPageComponent },
+    { path: 'signin', component: SignInPageComponent },
     { path: 'signup', component: SignUpPageComponent },
-    { path: 'companies', component: ListCompanyComponent},
+    { path: 'companies', component: ListCompanyComponent },
+    { path: 'companies/create', component: FormCreateCompanyComponent },
 ]
  
 @NgModule({

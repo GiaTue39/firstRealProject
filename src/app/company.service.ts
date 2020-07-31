@@ -13,6 +13,10 @@ export class CompanyService {
   constructor(
     private http: HttpClient
   ) { }
+  
+  deleteCompany(id: string){
+    return this.http.delete('http://localhost:3000/api/companies/'+id);
+  }
 
   getCompanies(): Observable<Array<Company>> {
     return this.http.get<Array<Company>>('http://localhost:3000/api/companies').pipe(delay(4000));
