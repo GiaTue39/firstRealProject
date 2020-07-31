@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { HttpClient } from '@angular/common/http';
-import { Employees} from '../employee';
-import {MatTableDataSource} from '@angular/material/table';
-import {SelectionModel} from '@angular/cdk/collections';
+import { Employees } from '../employee';
+import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-list-employees',
@@ -11,13 +11,15 @@ import {SelectionModel} from '@angular/cdk/collections';
   styleUrls: ['./list-employees.component.css'],
 })
 export class ListEmployeesComponent implements OnInit {
-  options: string[] = ['ID', 'Name', 'Phone', 'Email', 'Status'];
- // selection = new SelectionModel<EmployeeService.getUsers()>(true, []);
-  displayedColumns: string[] = ['select','id','name', 'phone', 'email', 'status'];
+  options: string[] = ['Name', 'Phone', 'Email', 'Status'];
+  // selection = new SelectionModel<EmployeeService.getUsers()>(true, []);
+  displayedColumns: string[] = ['select', 'name', 'phone', 'email', 'status'];
   dataSource = [];
   isLoading = false;
 
-  dataS = new MatTableDataSource<Employees>(this.dataSource);
+  dataSearch = new MatTableDataSource(this.dataSource);
+
+  // dataS = new MatTableDataSource<Employees>(this.dataSource);
   selection = new SelectionModel<Employees>(true, []);
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -29,17 +31,19 @@ export class ListEmployeesComponent implements OnInit {
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.forEach(row => this.selection.select(row));
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.forEach((row) => this.selection.select(row));
   }
 
-  /** The label for the checkbox on the passed row */
+  // The label for the checkbox on the passed row
   checkboxLabel(row?: Employees): string {
     if (!row) {
-      return `${this.isAllSelected() ? 'id' : 'deselect'} all`;
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'id'} row ${row.id + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'id'} row ${
+      row.name + 1
+    }`;
   }
 
   constructor(
@@ -61,27 +65,29 @@ export class ListEmployeesComponent implements OnInit {
     );
   }
 
-  createEmployee(){
-    const employee = {
-      id: '123',
-      name:'Tue',
-      phone: '01211212',
-      email: 'giatue@gmail.com',
-      status: 'Disable'
-    };
-    this.employeeService.createEmployee(employee).subscribe(
-      (data) => {
-        // this.dataSource = data;
-        console.log(data);
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
-    );
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSearch.filter = filterValue.trim().toLowerCase();
   }
-  
+
+  // createEmployee() {
+  //   const employee = {
+  //     // id: '123',
+  //     name: 'Tue',
+  //     phone: '01211212',
+  //     email: 'giatue@gmail.com',
+  //     status: 'Disable',
+  //   };
+  //   this.employeeService.createEmployee(employee).subscribe(
+  //     (data) => {
+  //       // this.dataSource = data;
+  //       console.log(data);
+  //       this.isLoading = false;
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
 }
-
-

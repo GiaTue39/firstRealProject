@@ -58,6 +58,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpPageComponent,
     ListEmployeesComponent,
     ListEmployeesComponent,
+    CreateEmployeeComponent,
   ],
   imports: [
     MatFormFieldModule,

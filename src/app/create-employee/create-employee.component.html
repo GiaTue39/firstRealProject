@@ -1,0 +1,75 @@
+<div class="cover">
+  <h1>Create Employee</h1>
+
+  <div class="info">
+    <div class="header">
+      <div class="avatar">
+        <img src="{{createEmployee.avatarURL || 'assets/images/logo.PNG'}}">
+      </div>
+      <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
+        placeholder="Insert URL for Avatar">
+      <div class="status">
+        <mat-slide-toggle (change)="onChange($event)" name="status">Status</mat-slide-toggle>
+      </div>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="info-name-birthday">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput tabindex="1" placeholder="Your name" name="contactName" [(ngModel)]="createEmployee.name"
+            required />
+          <!-- <span *ngIf="name.errors.required">
+              Name is r<mat-error *ngIf="name.errors">
+          equired !
+            </span> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Birthday</mat-label>
+          <input matInput [matDatepicker]="picker" name="dob" ngModel>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="contact-info">
+        <h2>Contact info</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput tabindex="1" placeholder="Your phone number" name="contactPhone"
+            [(ngModel)]="createEmployee.phone" required />
+          <!-- <span *ngIf="name.errors.required">
+              Name is r<mat-error *ngIf="name.errors">
+          equired !
+            </span> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput tabindex="1" placeholder="Your email" name="contactEmail" [(ngModel)]="createEmployee.email"
+            required />
+          <!-- <span *ngIf="name.errors.required">
+              Name is r<mat-error *ngIf="name.errors">
+          equired !
+            </span> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input class="address" matInput tabindex="1" placeholder="Your address" name="contactAddress"
+            [(ngModel)]="createEmployee.address" required />
+          <!-- <span *ngIf="name.errors.required">
+              Name is r<mat-error *ngIf="name.errors">
+          equired !
+            </span> -->
+        </mat-form-field>
+      </div>
+
+      <div class="button">
+        <button mat-raised-button color="primary">Create</button>
+        <button mat-raised-button>Cancel</button>
+      </div>
+    </form>
+
+  </div>
+</div>
