@@ -63,7 +63,8 @@
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element"><button (click)="onDelete(element)">Delete</button></mat-cell>
+      <mat-cell *matCellDef="let element"><button mat-raised-button color="primary"
+          (click)="onDelete(element)">Delete</button></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

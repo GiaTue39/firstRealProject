@@ -18,13 +18,12 @@ export class CreateEmployeeComponent implements OnInit {
     email: '',
     birthday: '',
     avatarURL: '',
-    status: '',
+    status: 'Disable',
     address: '',
   };
 
   constructor(private employeeService: EmployeeService) {}
-  isChecked = false;
-  isCheckedInit = false;
+
   ngOnInit(): void {}
 
   dateClass = (d: Date): MatCalendarCellCssClasses => {
@@ -48,6 +47,8 @@ export class CreateEmployeeComponent implements OnInit {
 
     this.employeeService.createEmployee(employee).subscribe((data) => {
       console.log(data);
+      alert('Created successfully !');
+      window.location.href = './employees';
     });
   }
 
