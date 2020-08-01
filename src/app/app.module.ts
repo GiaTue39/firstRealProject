@@ -45,22 +45,23 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MatFormFieldModule,
+} from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
-
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignInPageComponent,
-    SignUpPageComponent
-  ],
+  declarations: [AppComponent, SignInPageComponent, SignUpPageComponent],
   imports: [
+    AppRoutingModule,
+    RouterModule,
     MatFormFieldModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -111,12 +112,14 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
-
+    MatButtonModule,
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

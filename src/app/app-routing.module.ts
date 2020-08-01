@@ -4,16 +4,13 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 const routes: Routes = [
-    { path: 'login', component: SignInPageComponent },
-    { path: 'signup', component: SignUpPageComponent }
-]
- 
+  { path: 'sign-in', component: SignInPageComponent },
+  { path: 'sign-up', component: SignUpPageComponent },
+  { path: '', component: SignUpPageComponent },
+];
+
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes)  
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
