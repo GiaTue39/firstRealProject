@@ -1,4 +1,4 @@
-.create {
+.detail {
   padding: 20px 50px;
   margin: 20px 50px;
 
@@ -20,7 +20,6 @@ h1 {
 
 .create {
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   justify-content: center;
 
@@ -30,10 +29,6 @@ h1 {
   font-family: Lato;
   text-align: left;
   width: 80%;
-  /* border: 1px solid black; */
-  /* width: 300px;
-    height: 350px; */
-  /* margin-left: 10%; */
   padding: 30px 30px;
 }
 

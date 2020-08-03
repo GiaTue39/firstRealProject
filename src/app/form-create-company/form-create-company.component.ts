@@ -3,6 +3,8 @@ import { NgForm } from "@angular/forms";
 
 import { CreateCompanyModel } from "../createcompany";
 import { CompanyService } from '../company.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-create-company',
@@ -20,7 +22,9 @@ export class FormCreateCompanyComponent implements OnInit {
   };
 
   constructor(
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private snackBar:MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class FormCreateCompanyComponent implements OnInit {
     console.log(this.createCompany);
 
     const company = {
-      logoURl: this.createCompany.logoURL,
+      logoURL: this.createCompany.logoURL,
       name: this.createCompany.name,
       phone:this.createCompany.phone,
       email:this.createCompany.email,
@@ -47,6 +51,10 @@ export class FormCreateCompanyComponent implements OnInit {
     this.companyService.createCompany(company).subscribe(
       (data) => {
         console.log(data);
+        this.snackBar.open('Create successful!','Cancel',{
+          duration: 2000,
+        });
+        this.router.navigate(['/companies']);
       },
       (error) => console.log(error)
     );

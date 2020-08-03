@@ -1,6 +1,6 @@
 <div class="create">
 
-  <div class="header" >
+  <div class="header">
 
     <a mat-icon-button routerLink="../" routerLinkActive="active">
       <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
@@ -16,8 +16,13 @@
           <img src="{{createCompany.logoURL|| 'assets/images/logo.PNG'}}">
           <mat-form-field appearance="outline" class="logoURL">
             <mat-label>Logo URL</mat-label>
-            <input tabindex="1" matInput type="text" name="name" required #username="ngModel"
+            <input class="logo" tabindex="1" matInput type="text" name="url" required #username="ngModel"
               [(ngModel)]="createCompany.logoURL">
+            <mat-error *ngIf="form.controls.url.errors">
+              <span *ngIf="form.controls.url.errors.required">
+                You must enter a url!
+              </span>
+            </mat-error>
 
           </mat-form-field>
           <mat-slide-toggle>Active</mat-slide-toggle>
@@ -27,11 +32,11 @@
           <mat-label>Name</mat-label>
           <input tabindex="2" matInput type="text" name="name" required #username="ngModel"
             [(ngModel)]="createCompany.name">
-          <!-- <mat-error *ngIf="name.errors">
-              <span *ngIf="name.errors.required">
-                  You must enter a name!
-              </span>
-            </mat-error> -->
+          <mat-error *ngIf="form.controls.name.errors">
+            <span *ngIf="form.controls.name.errors.required">
+              You must enter a name!
+            </span>
+          </mat-error>
         </mat-form-field>
 
       </mat-card>
@@ -40,39 +45,62 @@
         <p>Contact Info</p>
         <mat-form-field appearance="outline" class="phone">
           <mat-label>Phone</mat-label>
-          <input tabindex="3" matInput type="phone" name="phone" required #username="ngModel"
-            [(ngModel)]="createCompany.phone" placeholder="+84">
+          <input tabindex="3" matInput type="phone" name="phone" required #phone="ngModel"
+            [(ngModel)]="createCompany.phone" placeholder="(+84)"
+            pattern="^((\\+84-?)|0)?[0-9]{10}$">
+          <mat-error *ngIf="phone.errors">
+            <span *ngIf="phone.errors.required">
+              You must enter a phone!
+            </span>
+            <span *ngIf="phone.errors.pattern">
+              Required: (+84||0)[0-9]!
+            </span>
+          </mat-error>
         </mat-form-field>
 
         <div class="content">
           <mat-form-field appearance="outline" class="email">
             <mat-label>Email</mat-label>
-            <input tabindex="4" matInput type="email" name="email" required #username="ngModel"
-              [(ngModel)]="createCompany.email" placeholder="your@example.com">
+            <input tabindex="4" matInput type="email" name="email" required #name="ngModel"
+              [(ngModel)]="createCompany.email" placeholder="your@example.com"
+               pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <mat-error *ngIf="name.errors">
+              <span *ngIf="name.errors.required">
+                You must enter a email!
+              </span>
+              <span *ngIf="name.errors?.pattern">
+                Required: a@gmail.com!
+              </span>
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="website">
             <mat-label>Website</mat-label>
             <input tabindex="5" matInput type="text" name="website" required #username="ngModel"
               [(ngModel)]="createCompany.website" placeholder="http://">
+            <mat-error *ngIf="form.controls.website.errors">
+              <span *ngIf="form.controls.website.errors.required">
+                You must enter a website!
+              </span>
+            </mat-error>
           </mat-form-field>
         </div>
 
         <p>Adrress</p>
         <mat-form-field appearance="outline" class="address">
           <mat-label>Address</mat-label>
-          <input tabindex="6" matInput type="text" name="orders" required #username="ngModel"
+          <input tabindex="6" matInput type="text" name="address" required #username="ngModel"
             [(ngModel)]="createCompany.address">
-          <!-- <mat-error *ngIf="orders.errors">
-              <span *ngIf="orders.errors.required">
-                  You must enter orders/invoices!
-              </span>
-            </mat-error> -->
+          <mat-error *ngIf="form.controls.address.errors">
+            <span *ngIf="form.controls.address.errors.required">
+              You must enter a Address!
+            </span>
+          </mat-error>
         </mat-form-field>
       </mat-card>
 
       <div class="example-button-row">
-        <button mat-raised-button color="accent" type="submit">Save</button>
+        <button mat-raised-button color="accent" type="submit">Create</button>
       </div>
 
     </form>

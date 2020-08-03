@@ -58,6 +58,8 @@ import { ListCompanyComponent } from './list-company/list-company.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormCreateCompanyComponent } from './form-create-company/form-create-company.component';
+import { DetailCompanyComponent } from './detail-company/detail-company.component';
+import { DialogDeleteComponent } from './list-company/dialog-delete/dialog-delete.component';
 
 
 
@@ -68,7 +70,9 @@ import { FormCreateCompanyComponent } from './form-create-company/form-create-co
     SignInPageComponent,
     SignUpPageComponent,
     ListCompanyComponent,
-    FormCreateCompanyComponent
+    FormCreateCompanyComponent,
+    DetailCompanyComponent,
+    DialogDeleteComponent
   ],
   imports: [
     AppRoutingModule,

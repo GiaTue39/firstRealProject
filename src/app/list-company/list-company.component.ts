@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+
 
 import { CompanyService } from '../company.service';
 import { Company } from '../company';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-list-company',
@@ -18,8 +21,11 @@ export class ListCompanyComponent implements OnInit {
   isLoading = false;
 
   constructor(
+    public dialog: MatDialog,
     private companyService: CompanyService
   ) { }
+
+ 
 
   ngOnInit() {
     this.isLoading = true;
@@ -72,10 +78,31 @@ export class ListCompanyComponent implements OnInit {
     // );
   }
 
-  onDelete(company: Company){
-    this.companyService.deleteCompany(company.id).subscribe(()=>{
-      const data =[];
-      this.dataSource=this.dataSource.filter((e)=>e.id!==company.id);
+
+  openDialog(company: Company): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      width: '250px',
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result){
+        this.onDelete(company);
+      }
+
+    });
+
+  }
+
+  onDelete(company: Company) {
+    this.companyService.deleteCompany(company.id).subscribe(() => {
+      const data = [];
+      this.dataSource = this.dataSource.filter((e) => e.id !== company.id);
     });
   }
+
+
 }
+
+
