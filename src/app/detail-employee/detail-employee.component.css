@@ -12,6 +12,10 @@
   background-color: aliceblue;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 .info {
   display: flex;
   flex-direction: column;
