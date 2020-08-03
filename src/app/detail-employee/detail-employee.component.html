@@ -1,0 +1,60 @@
+<div class="cover">
+  <h1>Detail Employee</h1>
+  <div class="info">
+    <div class="header">
+      <div class="avatar">
+        <img class="fix-img" src="{{detailEmployee.avatarURL}}">
+      </div>
+      <div class="url">
+        <input class="insert-url" name="url" type="text" placeholder="Insert URL for Avatar"
+          [(ngModel)]="detailEmployee.avatarURL">
+      </div>
+      <!-- <button mat-raised-button color="accent" [routerLink]="['/edit']"
+        routerLinkActive="router-link-active">Edit</button> -->
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <mat-card>
+        <div class="info-name-birthday">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput tabindex="1" placeholder="Your name" name="contactName" [(ngModel)]="detailEmployee.name" />
+          </mat-form-field>
+
+          <mat-form-field class=" example-full-width" appearance="outline">
+            <mat-label>Birthday</mat-label>
+            <input matInput name="dob" [value]="detailEmployee.birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="contact-info">
+          <h2>Contact info</h2>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput tabindex="1" placeholder="Your phone number" name="contactPhone"
+              [(ngModel)]="detailEmployee.phone" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput tabindex="1" placeholder="Your email" name="contactEmail"
+              [(ngModel)]="detailEmployee.email" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input class="status" matInput tabindex="1" name="address" [(ngModel)]="detailEmployee.address" />
+          </mat-form-field>
+
+        </div>
+
+      </mat-card>
+      <div class="button">
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </div>
+    </form>
+
+  </div>
+</div>

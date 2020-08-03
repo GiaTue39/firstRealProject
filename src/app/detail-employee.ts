@@ -1,9 +1,10 @@
-export interface CreateEmployeeModel {
+export interface DetailEmployeeModel {
+  id: string;
   name: string;
-  phone: string;
-  email: string;
-  birthday: string;
   avatarURL: string;
+  phone: string;
+  birthday: string;
+  email: string;
   status: string;
   address: string;
 }

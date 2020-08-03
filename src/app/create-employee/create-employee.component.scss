@@ -1,5 +1,13 @@
+// * {
+//   background-color: aliceblue;
+// }
+
 .cover {
-  margin: 100px 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
 }
 
 .info {
@@ -38,7 +46,6 @@ button {
 input {
   margin-left: 30px;
   width: 200px;
-
 }
 
 .header {
@@ -51,7 +58,13 @@ input {
   width: 150px;
   height: 150px;
   border: 1px solid black;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .insert-url {

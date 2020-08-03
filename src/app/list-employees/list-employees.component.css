@@ -1,5 +1,7 @@
 .container {
   margin: 0;
+  background-color: aliceblue;
+  height: 700px;
 }
 
 h1 {
@@ -17,11 +19,12 @@ table {
   width: 100%;
 }
 
-.example-element-row:hover {
+.element-row:hover {
   background: whitesmoke;
+  cursor: pointer;
 }
 
-.example-element-row:active {
+.element-row:active {
   background: #efefef;
 }
 
@@ -43,4 +46,12 @@ td.mat-cell {
   text-align: center;
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.mat-paginator {
+  background-color: aliceblue;
+}
+
+.mat-header-row {
+  background-color: antiquewhite;
 }

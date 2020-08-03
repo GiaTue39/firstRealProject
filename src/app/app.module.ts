@@ -59,7 +59,8 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-
+import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+import { DialogDeleteComponent } from './list-employees/dialog-delete/dialog-delete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,8 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
     ListEmployeesComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
+    DetailEmployeeComponent,
+    DialogDeleteComponent,
   ],
   imports: [
     MatFormFieldModule,
@@ -118,6 +121,7 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    MatDatepickerModule,
 
     FormsModule,
     ReactiveFormsModule,

@@ -21,6 +21,7 @@
   </div>
 
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
   <mat-table *ngIf="dataSource.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="select">
@@ -36,11 +37,6 @@
       </td>
     </ng-container>
 
-    <!-- <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-    </ng-container> -->
-
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
@@ -48,12 +44,13 @@
 
     <ng-container matColumnDef="phone">
       <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.phone }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.phone }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <a href="#">{{ element.email }}</a> </mat-cell>
+      <mat-cell *matCellDef="let element"> <a href="#">{{ element.email }}</a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="status">
@@ -63,15 +60,16 @@
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element"><button mat-raised-button color="primary"
-          (click)="onDelete(element)">Delete</button></mat-cell>
+      <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
+          (click)="openDialog(element); $event.stopPropagation()">Delete</button></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns" class="example-element-row"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['/employees', row.id]" class="element-row">
+    </mat-row>
 
   </mat-table>
-  <!-- Paginator -->
+
   <mat-paginator [length]="26" [pageSize]="10" [pageSizeOptions]="[5, 10, 26]">
   </mat-paginator>
 </div>

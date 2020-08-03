@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
 import { HttpClient } from '@angular/common/http';
-import { Employees } from '../employee';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+
+import { Employees } from '../employee';
+import { EmployeeService } from '../employee.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-list-employees',
@@ -30,6 +33,27 @@ export class ListEmployeesComponent implements OnInit {
   selection = new SelectionModel<Employees>(true, []);
 
   /** Whether the number of selected elements matches the total number of rows. */
+
+  constructor(
+    private employeeService: EmployeeService,
+    private http: HttpClient,
+    public dialog: MatDialog
+  ) {}
+
+  ngOnInit() {
+    this.isLoading = true;
+    this.employeeService.getUsers().subscribe(
+      (data) => {
+        this.dataSource = data;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    );
+  }
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.length;
@@ -53,28 +77,22 @@ export class ListEmployeesComponent implements OnInit {
     }`;
   }
 
-  constructor(
-    private employeeService: EmployeeService,
-    private http: HttpClient
-  ) {}
-
-  ngOnInit() {
-    this.isLoading = true;
-    this.employeeService.getUsers().subscribe(
-      (data) => {
-        this.dataSource = data;
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
-    );
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSearch.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog(employee: Employees): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed', result);
+      if (result) {
+        this.onDelete(employee);
+      }
+    });
   }
 
   onDelete(employee: Employees) {
@@ -91,7 +109,6 @@ export class ListEmployeesComponent implements OnInit {
       //   }
       // });
       // this.dataSource = data;
-
       this.dataSource = this.dataSource.filter((e) => e.id !== employee.id);
     });
   }
