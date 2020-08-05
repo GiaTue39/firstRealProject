@@ -33,7 +33,7 @@ export class DetailCompanyComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params.id;
+    const id = this.route.snapshot.params.id;//snapshot?
     //this.router.navigate(['/companies']);
 
     this.companyService.getCompany(id).subscribe((company) => {
@@ -50,7 +50,7 @@ export class DetailCompanyComponent implements OnInit {
     this.companyService.update(this.detailCompany.id, this.detailCompany).subscribe((company) => {
       // this.detailCompany = company;
       this.snackBar.open('Update successful!','Cancel',{
-        duration: 2000,
+        duration: 2000, //duration?
       });
       this.router.navigate(['/companies']);
     })

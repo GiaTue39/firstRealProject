@@ -1,8 +1,9 @@
 <div class="list-company">
   <div class="header">
     <h1>Companies</h1>
-    <button mat-raised-button color="accent" type="submit" routerLink="/companies/create"
-      routerLinkActive="active">Create Companies</button>
+    <button mat-raised-button color="accent" type="submit" routerLink="/companies/create" routerLinkActive="active"
+      class="create">Create Companies
+    </button>
   </div>
 
   <div class="container">
@@ -36,8 +37,12 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> NAME  </th>
-        <td mat-cell *matCellDef="let element" [routerLink]="['/companies', element.id]"> <img src="/assets/img/company2.jpg"> {{element.name}} 
+        <th mat-header-cell *matHeaderCellDef> NAME </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/companies', element.id]">
+          <div class="name">
+            <div> <img src="/assets/img/company2.jpg"> </div>
+            <div>{{element.name}}</div>
+          </div>
         </td>
       </ng-container>
 
@@ -54,14 +59,15 @@
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>  </th>
-        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="accent" type="submit" (click)="openDialog(element)" >Delete</button>  </td>
-                                                                                       <!-- (click)="onDelete(element)" -->
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="accent" type="submit"
+            (click)="openDialog(element)">Delete</button>
+        </td>
+        <!-- (click)="onDelete(element)" -->
       </ng-container>
-
-      <!-- <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>  </th>
-        <td mat-cell *matCellDef="let element"> 
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
@@ -80,7 +86,8 @@
             </button>
           </mat-menu>
         </td>
-      </ng-container> -->
+
+      </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"
@@ -89,5 +96,3 @@
   </div>
 
 </div>
-
-

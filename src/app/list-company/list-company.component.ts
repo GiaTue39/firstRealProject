@@ -43,13 +43,13 @@ export class ListCompanyComponent implements OnInit {
     );
   }
 
-  isAllSelected(): boolean {
+  isAllSelected(): boolean {//?
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.length;
     return numSelected === numRows;
   }
 
-  masterToggle() {
+  masterToggle() {//?
     this.isAllSelected() ?
       this.selection.clear() :
       this.dataSource.forEach(row => this.selection.select(row));
@@ -85,7 +85,7 @@ export class ListCompanyComponent implements OnInit {
 
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => {//dialogref?
       console.log('The dialog was closed', result);
       if(result){
         this.onDelete(company);
@@ -98,7 +98,7 @@ export class ListCompanyComponent implements OnInit {
   onDelete(company: Company) {
     this.companyService.deleteCompany(company.id).subscribe(() => {
       const data = [];
-      this.dataSource = this.dataSource.filter((e) => e.id !== company.id);
+      this.dataSource = this.dataSource.filter((e) => e.id !== company.id);//?
     });
   }
 

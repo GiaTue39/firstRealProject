@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-create-company.component.css']
 })
 export class FormCreateCompanyComponent implements OnInit {
-  createCompany: CreateCompanyModel = {
+  createCompany: CreateCompanyModel = { 
     logoURL: '',
     name: '',
     phone: '',
