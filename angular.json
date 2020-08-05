@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "firstRealPro"
+  "defaultProject": "firstRealPro",
+  "cli": {
+    "analytics": "72e59034-eb0e-4c5d-bc57-0bf20e789e96"
+  }
 }

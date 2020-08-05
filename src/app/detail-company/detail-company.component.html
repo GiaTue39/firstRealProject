@@ -1,83 +1,154 @@
+<app-page>
+  <app-page-header>
+    <a mat-icon-button routerLink="../" routerLinkActive="active">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <span page-title>Detail Company</span>
+  </app-page-header>
+
+  <app-page-content>
+    <form name="detailCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
+      <mat-card class="card1">
+        <div class="URL">
+          <img src="{{detailCompany.logoURL|| 'assets/images/logo.PNG'}}">
+          <mat-form-field appearance="outline" class="logoURL">
+            <mat-label>Logo URL</mat-label>
+            <input class="logo" tabindex="1" matInput type="text" name="name" required
+              [(ngModel)]="detailCompany.logoURL">
+
+          </mat-form-field>
+          <mat-slide-toggle>Active</mat-slide-toggle>
+        </div>
+
+        <mat-form-field appearance="outline" class="name">
+          <mat-label>Name</mat-label>
+          <input tabindex="2" matInput type="text" name="name" required #username="ngModel"
+            [(ngModel)]="detailCompany.name">
+        </mat-form-field>
+
+      </mat-card>
+
+      <mat-card class="card2">
+        <p>Contact Info</p>
+        <mat-form-field appearance="outline" class="phone">
+          <mat-label>Phone</mat-label>
+          <input tabindex="3" matInput type="phone" name="phone" required #username="ngModel"
+            [(ngModel)]="detailCompany.phone" placeholder="+84">
+        </mat-form-field>
+
+        <div class="content">
+          <mat-form-field appearance="outline" class="email">
+            <mat-label>Email</mat-label>
+            <input tabindex="4" matInput type="email" name="email" required #username="ngModel"
+              [(ngModel)]="detailCompany.email" placeholder="your@example.com">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="website">
+            <mat-label>Website</mat-label>
+            <input tabindex="5" matInput type="text" name="website" required #username="ngModel"
+              [(ngModel)]="detailCompany.website" placeholder="http://">
+          </mat-form-field>
+        </div>
+
+        <p>Adrress</p>
+        <mat-form-field appearance="outline" class="address">
+          <mat-label>Address</mat-label>
+          <input tabindex="6" matInput type="text" name="orders" required #username="ngModel"
+            [(ngModel)]="detailCompany.address">
+        </mat-form-field>
+      </mat-card>
+
+      <div class="example-button-row">
+        <button mat-raised-button color="accent" type="submit">Save</button>
+      </div>
+
+    </form>
+  </app-page-content>
+</app-page>
+
+<!-- 
 <div class="detail">
 
-    <div class="header">
-  
-      <a mat-icon-button routerLink="../" routerLinkActive="active">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
-      </a>
-  
-      <h1 class="mat-headline">Detail Company</h1>
-    </div>
-  
-    <div class="container">
-      <form name="detailCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
-        <mat-card class="card1">
-          <div class="URL">
-            <img src="{{detailCompany.logoURL|| 'assets/images/logo.PNG'}}">
-            <mat-form-field appearance="outline" class="logoURL">
-              <mat-label>Logo URL</mat-label>
-              <input class="logo" tabindex="1" matInput type="text" name="name" required 
-                [(ngModel)]="detailCompany.logoURL">
-  
-            </mat-form-field>
-            <mat-slide-toggle >Active</mat-slide-toggle>
-          </div>
-  
-          <mat-form-field appearance="outline" class="name">
-            <mat-label>Name</mat-label>
-            <input tabindex="2" matInput type="text" name="name" required #username="ngModel"
-              [(ngModel)]="detailCompany.name">
-            <!-- <mat-error *ngIf="name.errors">
-                <span *ngIf="name.errors.required">
-                    You must enter a name!
-                </span>
-              </mat-error> -->
-          </mat-form-field>
-  
-        </mat-card>
-  
-        <mat-card class="card2">
-          <p>Contact Info</p>
-          <mat-form-field appearance="outline" class="phone">
-            <mat-label>Phone</mat-label>
-            <input tabindex="3" matInput type="phone" name="phone" required #username="ngModel"
-              [(ngModel)]="detailCompany.phone" placeholder="+84">
-          </mat-form-field>
-  
-          <div class="content">
-            <mat-form-field appearance="outline" class="email">
-              <mat-label>Email</mat-label>
-              <input tabindex="4" matInput type="email" name="email" required #username="ngModel"
-                [(ngModel)]="detailCompany.email" placeholder="your@example.com">
-            </mat-form-field>
-  
-            <mat-form-field appearance="outline" class="website">
-              <mat-label>Website</mat-label>
-              <input tabindex="5" matInput type="text" name="website" required #username="ngModel"
-                [(ngModel)]="detailCompany.website" placeholder="http://">
-            </mat-form-field>
-          </div>
-  
-          <p>Adrress</p>
-          <mat-form-field appearance="outline" class="address">
-            <mat-label>Address</mat-label>
-            <input tabindex="6" matInput type="text" name="orders" required #username="ngModel"
-              [(ngModel)]="detailCompany.address">
-            <!-- <mat-error *ngIf="orders.errors">
-                <span *ngIf="orders.errors.required">
-                    You must enter orders/invoices!
-                </span>
-              </mat-error> -->
-          </mat-form-field>
-        </mat-card>
-  
-        <div class="example-button-row">
-          <button mat-raised-button color="accent" type="submit">Save</button>
-        </div>
-  
-      </form>
-    </div>
-  
-  
-  
+<div class="header">
+
+<a mat-icon-button routerLink="../" routerLinkActive="active">
+<mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+</a>
+
+<h1 class="mat-headline">Detail Company</h1>
+</div>
+
+<div class="container">
+<form name="detailCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
+<mat-card class="card1">
+  <div class="URL">
+    <img src="{{detailCompany.logoURL|| 'assets/images/logo.PNG'}}">
+    <mat-form-field appearance="outline" class="logoURL">
+      <mat-label>Logo URL</mat-label>
+      <input class="logo" tabindex="1" matInput type="text" name="name" required
+        [(ngModel)]="detailCompany.logoURL">
+
+    </mat-form-field>
+    <mat-slide-toggle>Active</mat-slide-toggle>
   </div>
+
+  <mat-form-field appearance="outline" class="name">
+    <mat-label>Name</mat-label>
+    <input tabindex="2" matInput type="text" name="name" required #username="ngModel"
+      [(ngModel)]="detailCompany.name">
+
+
+    <mat-error *ngIf="name.errors">
+          <span *ngIf="name.errors.required">
+              You must enter a name!
+          </span>
+        </mat-error> 
+  </mat-form-field>
+
+</mat-card>
+
+<mat-card class="card2">
+  <p>Contact Info</p>
+  <mat-form-field appearance="outline" class="phone">
+    <mat-label>Phone</mat-label>
+    <input tabindex="3" matInput type="phone" name="phone" required #username="ngModel"
+      [(ngModel)]="detailCompany.phone" placeholder="+84">
+  </mat-form-field>
+
+  <div class="content">
+    <mat-form-field appearance="outline" class="email">
+      <mat-label>Email</mat-label>
+      <input tabindex="4" matInput type="email" name="email" required #username="ngModel"
+        [(ngModel)]="detailCompany.email" placeholder="your@example.com">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="website">
+      <mat-label>Website</mat-label>
+      <input tabindex="5" matInput type="text" name="website" required #username="ngModel"
+        [(ngModel)]="detailCompany.website" placeholder="http://">
+    </mat-form-field>
+  </div>
+
+  <p>Adrress</p>
+  <mat-form-field appearance="outline" class="address">
+    <mat-label>Address</mat-label>
+    <input tabindex="6" matInput type="text" name="orders" required #username="ngModel"
+      [(ngModel)]="detailCompany.address">
+    <mat-error *ngIf="orders.errors">
+          <span *ngIf="orders.errors.required">
+              You must enter orders/invoices!
+          </span>
+        </mat-error>
+  </mat-form-field>
+</mat-card>
+
+<div class="example-button-row">
+  <button mat-raised-button color="accent" type="submit">Save</button>
+</div>
+
+</form>
+</div>
+
+
+
+</div> -->
