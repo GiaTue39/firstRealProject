@@ -60,6 +60,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormCreateCompanyComponent } from './form-create-company/form-create-company.component';
 import { DetailCompanyComponent } from './detail-company/detail-company.component';
 import { DialogDeleteComponent } from './list-company/dialog-delete/dialog-delete.component';
+import { PageComponent } from './page/page.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { PageContentComponent } from './page-content/page-content.component';
 
 
 
@@ -72,7 +75,10 @@ import { DialogDeleteComponent } from './list-company/dialog-delete/dialog-delet
     ListCompanyComponent,
     FormCreateCompanyComponent,
     DetailCompanyComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    PageComponent,
+    PageHeaderComponent,
+    PageContentComponent
   ],
   imports: [
     AppRoutingModule,
