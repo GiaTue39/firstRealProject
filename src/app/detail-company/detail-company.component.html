@@ -7,7 +7,7 @@
   </app-page-header>
 
   <app-page-content>
-    <form name="detailCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
+    <form container name="detailCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
       <mat-card class="card1">
         <div class="URL">
           <img src="{{detailCompany.logoURL|| 'assets/images/logo.PNG'}}">

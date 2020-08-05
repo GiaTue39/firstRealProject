@@ -22,7 +22,7 @@ export class CompanyService {
 
 
   getCompanies(): Observable<Array<Company>> {
-    return this.http.get<Array<Company>>('http://localhost:3000/api/companies').pipe(delay(4000));
+    return this.http.get<Array<Company>>('http://localhost:3000/api/companies').pipe(delay(0));
   }
 
   createCompany(company): Observable<any> {

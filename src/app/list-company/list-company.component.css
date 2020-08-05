@@ -11,9 +11,9 @@ h1{
 .create{
   float: right;
 }
-.container {
+/* .container {
   padding: 0 24px;
-}
+} */
 
 table {
   width: 100%;

@@ -14,7 +14,7 @@ import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
   styleUrls: ['./list-company.component.css']
 })
 export class ListCompanyComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'name', 'employee', 'orders', 'action'];
+  displayedColumns: string[] = ['select', 'name', 'employee', 'orders', 'menu'];
   dataSource = [];
   dataS = new MatTableDataSource<Company>(this.dataSource);
   selection = new SelectionModel<Company>(true, []);
@@ -82,7 +82,7 @@ export class ListCompanyComponent implements OnInit {
   openDialog(company: Company): void {
     const dialogRef = this.dialog.open(DialogDeleteComponent, {
       width: '250px',
-
+      panelClass: 'delete-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {//dialogref?

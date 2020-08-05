@@ -1,17 +1,9 @@
-.create {
-  padding: 20px 50px;
-  margin: 20px 50px;
-
-}
 
 mat-icon {
   margin-left: 0;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-}
+
 
 h1 {
   margin: 0;

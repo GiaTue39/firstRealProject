@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    justify-self: start;
+    align-items: center;
+
+}
+    .page-title{
+margin:0;
+    }
