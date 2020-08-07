@@ -1,19 +1,42 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
-import { ListCompanyComponent } from './list-company/list-company.component';
-import { FormCreateCompanyComponent } from './form-create-company/form-create-company.component';
-import { DetailCompanyComponent } from './detail-company/detail-company.component';
+import * as trucComponent from './components';
+
+import { AuthGuard } from './auth/auth.guard';
+import { SigninGuard } from './auth/signin.guard';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'companies', pathMatch: 'full' },
-    { path: 'signin', component: SignInPageComponent },
-    { path: 'signup', component: SignUpPageComponent },
-    { path: 'companies', component: ListCompanyComponent },
-    { path: 'companies/create', component: FormCreateCompanyComponent },
-    { path: 'companies/:id', component: DetailCompanyComponent },
+    {
+        path: 'signin',
+        component: trucComponent.SignInPageComponent,
+        canActivate: [SigninGuard]
+    },
+    {
+        path: 'signup',
+        component: trucComponent.SignUpPageComponent
+    },
+    {
+        path: '',
+        component: trucComponent.LayoutComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: '', redirectTo: 'companies', pathMatch: 'full' },
+            {
+                path: 'companies',
+                component: trucComponent.ListCompanyComponent,
+            },
+            {
+                path: 'companies/create',
+                component: trucComponent.FormCreateCompanyComponent
+            },
+            {
+                path: 'companies/:id',
+                component: trucComponent.DetailCompanyComponent
+            }
+        ]
+    },
+
     // { path: '**', component: 404PageComponent }
 ]
 

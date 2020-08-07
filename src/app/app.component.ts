@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +6,5 @@ import { AppRoutingModule } from './app-routing.module';
 })
 export class AppComponent {
   title = 'firstRealPro';
+
 }

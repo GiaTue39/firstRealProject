@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Company } from './components/company';
+import { DetailCompanyModel } from './components/detailcompany';
 
-import { Company } from './company';
-import { DetailCompanyModel } from './detailcompany';
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CompanyService {
 
   constructor(
@@ -22,7 +18,14 @@ export class CompanyService {
 
 
   getCompanies(): Observable<Array<Company>> {
-    return this.http.get<Array<Company>>('http://localhost:3000/api/companies').pipe(delay(0));
+    const token = localStorage.getItem("token");
+    let headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${token}`,
+    );
+    return this.http.get<Array<Company>>('http://localhost:3000/api/companies', {
+      headers
+    });
   }
 
   createCompany(company): Observable<any> {

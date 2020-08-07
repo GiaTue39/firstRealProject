@@ -3,7 +3,7 @@ import { NgForm } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { DetailCompanyModel } from "../detailcompany";
-import { CompanyService } from '../company.service';
+import { CompanyService } from '../../company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 

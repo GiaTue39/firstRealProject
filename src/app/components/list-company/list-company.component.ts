@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
 
-import { CompanyService } from '../company.service';
+import { CompanyService } from '../../company.service';
 import { Company } from '../company';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 

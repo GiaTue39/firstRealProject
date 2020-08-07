@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 
 import { CreateCompanyModel } from "../createcompany";
-import { CompanyService } from '../company.service';
+import { CompanyService } from '../../company.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
