@@ -1,0 +1,42 @@
+.list-company {
+  margin-left: 60px;
+}
+
+.header {
+  padding: 24px;
+}
+h1{
+  float: left;
+}
+.create{
+  float: right;
+}
+/* .container {
+  padding: 0 24px;
+} */
+
+table {
+  width: 100%;
+}
+
+img {
+  width: 20%;
+}
+
+.container {
+  font-family: Lato;
+}
+
+.example-element-row:hover {
+  background: whitesmoke;
+}
+
+.example-element-row:active {
+  background: #efefef;
+}
+
+.name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -1,0 +1,61 @@
+
+<div class="login">
+    <div class="header">
+      <div class="img"> <img src="/assets/img/logo.PNG" ></div>
+      <div class="h1"> <h1> <b>Accounta</b>  </h1></div>
+    </div>
+    <div class="container">
+      <form name="loginForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">  
+        <h1> <b>Welcome back!</b> </h1>
+     
+          <mat-form-field appearance="outline" class="email">
+            <mat-label>Username</mat-label>
+            <input tabindex="1" matInput 
+               type="text"  
+               name="username" required 
+               #username="ngModel"
+               [(ngModel)]="credential.username" 
+               placeholder="your@example.com">
+            <mat-error *ngIf="username.errors">
+              <span *ngIf="username.errors.required">
+                  You must enter a email!
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input tabindex="2" matInput [type]="hide ? 'password' : 'text'" name="password" required
+                      #password="ngModel"
+                      [(ngModel)]="credential.password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" >
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.errors">
+              <span *ngIf="password.errors.required">
+                You must enter a password!
+              </span>
+            </mat-error>
+          </mat-form-field>
+            
+          <div class="example-button-row">
+            <button mat-raised-button color="accent"  type="submit">Sign in</button>
+          </div>
+      
+        <footer>
+          <a mat-raised href="https://www.google.com/" target="_blank">Forgot your password?</a>
+        </footer>
+      </form>
+    </div>
+    <a class="signup" mat-raised href="https://www.google.com/" target="_blank"  routerLink="/signup">Sign up!</a>
+
+    
+    
+</div>
+
+<h3>Check Variable Data</h3>
+  <hr>
+  <p>Name is : {{credential.username }} </p>
+  <p>Password is : {{ credential.password }}</p>
+  <p>Message is : {{ message }}</p>

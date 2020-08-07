@@ -36,22 +36,22 @@ server.post('/auth/login', (req, res) => {
 });
 
 // authorization middleware
-// server.use((req, res, next) => {
-//   if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
-//     const status = 401;
-//     const message = 'Error in authorization format';
-//     res.status(status).json({ status, message });
-//     return;
-//   }
-//   try {
-//     verifyToken(req.headers.authorization.split(' ')[1]);
-//     next();
-//   } catch (err) {
-//     const status = 401;
-//     const message = 'Error accessToken is revoked';
-//     res.status(status).json({ status, message });
-//   }
-// });
+server.use((req, res, next) => {
+  if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
+    const status = 401;
+    const message = 'Error in authorization format';
+    res.status(status).json({ status, message });
+    return;
+  }
+  try {
+    verifyToken(req.headers.authorization.split(' ')[1]);
+    next();
+  } catch (err) {
+    const status = 401;
+    const message = 'Error accessToken is revoked';
+    res.status(status).json({ status, message });
+  }
+});
 
 server.use('/api', router);
 

@@ -1,0 +1,92 @@
+
+mat-icon {
+  margin-left: 0;
+}
+
+
+
+h1 {
+  margin: 0;
+
+}
+
+.create {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.container {
+  font-family: Lato;
+  text-align: left;
+  width: 80%;
+  /* border: 1px solid black; */
+  /* width: 300px;
+    height: 350px; */
+  /* margin-left: 10%; */
+  padding: 30px 30px;
+}
+
+.card1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+mat-slide-toggle {
+  margin-left: 50%;
+}
+
+.URL {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  border: 1px solid black;
+  padding: 30px 50px;
+  margin: 30px 50px;
+}
+
+mat-slide-toggle {
+  margin-left: 40%;
+}
+
+.logoURL {
+  padding: 30px;
+  margin: 20px;
+
+}
+
+
+.name {
+  margin-top: 40px;
+}
+
+.card2 {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.email {
+  margin-right: 20px;
+  width: 50%;
+}
+
+.website {
+  margin-left: 20px;
+  width: 50%;
+}
+
+button {
+  margin-top: 10px;
+}
