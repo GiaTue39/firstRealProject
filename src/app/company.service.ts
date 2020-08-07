@@ -11,20 +11,23 @@ export class CompanyService {
     private http: HttpClient
   ) { }
 
-  deleteCompany(id: string) {
-    return this.http.delete('http://localhost:3000/api/companies/' + id);
-  }
-
-
-
-  getCompanies(): Observable<Array<Company>> {
+  createHeader() {
     const token = localStorage.getItem("token");
     let headers = new HttpHeaders().set(
       "Authorization",
       `Bearer ${token}`,
     );
+
+    return headers;
+  }
+
+  deleteCompany(id: string) {
+    return this.http.delete('http://localhost:3000/api/companies/' + id, { headers: this.createHeader() });
+  }
+
+  getCompanies(): Observable<Array<Company>> {
     return this.http.get<Array<Company>>('http://localhost:3000/api/companies', {
-      headers
+      headers: this.createHeader()
     });
   }
 

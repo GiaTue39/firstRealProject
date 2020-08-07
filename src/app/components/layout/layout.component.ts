@@ -23,7 +23,7 @@ export class LayoutComponent implements OnInit {
     },
     {
       name: 'Employees',
-      url: '/companies/create',
+      url: '/employees',
       icon: 'img/1.png'
     }
   ]

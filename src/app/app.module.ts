@@ -5,6 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
+import { ListEmployeesComponent } from './list-employees/list-employees.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+import { DialogDeleteComponent } from './list-employees/dialog-delete/dialog-delete.component';
 import { AppComponent } from './app.component';
 import { components } from './components';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +20,13 @@ import { AppMaterialModule } from './material.module';
   declarations: [
     AppComponent,
     components,
+    ListEmployeesComponent,
+    CreateEmployeeComponent,
+    DetailEmployeeComponent,
+    DialogDeleteComponent,
+  ],
+  entryComponents: [
+    DialogDeleteComponent
   ],
   imports: [
     BrowserModule,

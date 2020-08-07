@@ -1,0 +1,74 @@
+<div class="container">
+  <h1>Employees</h1>
+  <div class="filter">
+    <mat-form-field appearance="outline" class="sort">
+      <mat-label>Filter</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option">{{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="sort">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder=" Search something..." />
+    </mat-form-field>
+    <a class="create-btn" mat-raised-button color="primary" routerLink="./create">Create Employee</a>
+  </div>
+
+  <div *ngIf="dataSource.length == 0 && isLoading == false">
+    <h2>Loading failed !</h2>
+  </div>
+
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+  <mat-table *ngIf="dataSource.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.phone }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <a href="#">{{ element.email }}</a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.status }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
+          (click)="openDialog(element); $event.stopPropagation()">Delete</button></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['/employees', row.id]" class="element-row">
+    </mat-row>
+
+  </mat-table>
+
+  <mat-paginator [length]="26" [pageSize]="10" [pageSizeOptions]="[5, 10, 26]">
+  </mat-paginator>
+</div>

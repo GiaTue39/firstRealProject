@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListEmployeesComponent } from './list-employees/list-employees.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
 
 import * as trucComponent from './components';
 
@@ -33,7 +36,11 @@ const routes: Routes = [
             {
                 path: 'companies/:id',
                 component: trucComponent.DetailCompanyComponent
-            }
+            },
+
+            { path: 'employees', component: ListEmployeesComponent },
+            { path: 'employees/create', component: CreateEmployeeComponent },
+            { path: 'employees/:id', component: DetailEmployeeComponent },
         ]
     },
 
@@ -41,11 +48,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes)
-    ],
-    exports: [
-        RouterModule
-    ]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
 export class AppRoutingModule { }
