@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 
-import { EmployeeService } from '../employee.service';
-import { FormGroup, Validators, NgForm } from '@angular/forms';
-import { DetailEmployeeModel } from '../detail-employee';
+import { EmployeeService } from '../../services';
+
+import {NgForm} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { DetailEmployeeModel } from '../../models/detail-employee';
 @Component({
   selector: 'app-detail-employee',
   templateUrl: './detail-employee.component.html',

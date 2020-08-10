@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Company } from './components/company';
-import { DetailCompanyModel } from './components/detailcompany';
+import { Company } from '../../company/models/company';
+import { DetailCompanyModel } from '../../company/models/detailcompany';
 
 @Injectable()
 export class CompanyService {

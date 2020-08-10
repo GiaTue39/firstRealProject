@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { DetailCompanyModel } from "../detailcompany";
-import { CompanyService } from '../../company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { DetailCompanyModel } from '../../models/detailcompany';
+import { CompanyService } from '../../services/company.service';
 
 
 @Component({
@@ -27,10 +26,10 @@ export class DetailCompanyComponent implements OnInit {
   constructor(
     private companyService: CompanyService,
     private route: ActivatedRoute,
-    private router: Router, 
-    private snackBar:MatSnackBar
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
-   }
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;//snapshot?
@@ -49,7 +48,7 @@ export class DetailCompanyComponent implements OnInit {
 
     this.companyService.update(this.detailCompany.id, this.detailCompany).subscribe((company) => {
       // this.detailCompany = company;
-      this.snackBar.open('Update successful!','Cancel',{
+      this.snackBar.open('Update successful!', 'Cancel', {
         duration: 2000, //duration?
       });
       this.router.navigate(['/companies']);

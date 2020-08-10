@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListEmployeesComponent } from './list-employees/list-employees.component';
-import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+
+
 
 import * as trucComponent from './components';
 
 import { AuthGuard } from './auth/auth.guard';
 import { SigninGuard } from './auth/signin.guard';
+import { DetailCompanyComponent } from './company/components/detail-company/detail-company.component';
 
 const routes: Routes = [
     {
@@ -25,22 +25,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: '', redirectTo: 'companies', pathMatch: 'full' },
-            {
-                path: 'companies',
-                component: trucComponent.ListCompanyComponent,
-            },
-            {
-                path: 'companies/create',
-                component: trucComponent.FormCreateCompanyComponent
-            },
-            {
-                path: 'companies/:id',
-                component: trucComponent.DetailCompanyComponent
-            },
-
-            { path: 'employees', component: ListEmployeesComponent },
-            { path: 'employees/create', component: CreateEmployeeComponent },
-            { path: 'employees/:id', component: DetailEmployeeComponent },
+            
         ]
     },
 

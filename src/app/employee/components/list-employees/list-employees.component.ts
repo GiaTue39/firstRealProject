@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { Employees } from '../employee';
-import { EmployeeService } from '../employee.service';
+import { Employees } from '../../models';
+import { EmployeeService } from '../../services/employee.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 

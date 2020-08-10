@@ -24,7 +24,7 @@ export class LayoutComponent implements OnInit {
     {
       name: 'Employees',
       url: '/employees',
-      icon: 'img/1.png'
+      icon: 'img/7.png'
     }
   ]
   images = [

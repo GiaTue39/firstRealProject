@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 
-import { CreateCompanyModel } from "../createcompany";
-import { CompanyService } from '../../company.service';
+import { CreateCompanyModel } from "../../models/createcompany";
+import { CompanyService } from '../../services/company.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 

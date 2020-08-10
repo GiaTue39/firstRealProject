@@ -1,8 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
-import { Employees } from '../employee';
-import { CreateEmployeeModel } from '../createEmployee';
-import { EmployeeService } from '../employee.service';
+import { CreateEmployeeModel } from '../../models/createEmployee';
+import { EmployeeService } from '../../services/employee.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';

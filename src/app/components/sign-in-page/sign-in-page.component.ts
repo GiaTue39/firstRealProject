@@ -15,7 +15,7 @@ export class SignInPageComponent implements OnInit {
   hide: boolean;
   credential: Credential = {
     username: 'admin@demo.com',
-    password: 'demo!23',
+    password: 'demo!123',
   };
   message: string = '';
 

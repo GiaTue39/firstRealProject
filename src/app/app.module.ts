@@ -5,39 +5,34 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
-import { ListEmployeesComponent } from './list-employees/list-employees.component';
-import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
-import { DialogDeleteComponent } from './list-employees/dialog-delete/dialog-delete.component';
 import { AppComponent } from './app.component';
 import { components } from './components';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
-import { CompanyService } from './company.service';
+import { CompanyService } from './company/services/company.service';
 import { AppMaterialModule } from './material.module';
+import { CompanyModule } from './company/company.module';
+import { EmployeeModule } from './employee/employee.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    components,
-    ListEmployeesComponent,
-    CreateEmployeeComponent,
-    DetailEmployeeComponent,
-    DialogDeleteComponent,
-  ],
-  entryComponents: [
-    DialogDeleteComponent
+    components
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-
+    FormsModule,
+    CommonModule,
     AppMaterialModule,
-    AuthModule,
+    
     AppRoutingModule,
+
+    AuthModule,
+    EmployeeModule,
+    CompanyModule
 
   ],
   providers: [

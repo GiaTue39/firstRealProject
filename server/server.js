@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
-const user = { username: 'admin@demo.com', password: 'demo!23' };
-const SECRET_KEY = '123456789';
+const user = { username: 'admin@demo.com', password: 'demo!123' };
+const SECRET_KEY = '0123456789';
 const expiresIn = '3600';
 const tokenType = 'Bearer';
 
