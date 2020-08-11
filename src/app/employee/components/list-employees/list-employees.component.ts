@@ -11,7 +11,7 @@ import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
-  styleUrls: ['./list-employees.component.css'],
+  styleUrls: ['./list-employees.component.scss'],
 })
 export class ListEmployeesComponent implements OnInit {
   options: string[] = ['Name', 'Phone', 'Email', 'Status'];

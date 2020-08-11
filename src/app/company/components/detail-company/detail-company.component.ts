@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { DetailCompanyModel } from '../../models/detailcompany';
 import { CompanyService } from '../../services/company.service';
-
+import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 
 @Component({
   selector: 'app-detail-company',
   templateUrl: './detail-company.component.html',
   styleUrls: ['./detail-company.component.css']
 })
-export class DetailCompanyComponent implements OnInit {
+export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
+  @ViewChild('form') form: NgForm;
   detailCompany: DetailCompanyModel = {
     id: '',
     logoURL: '',
@@ -38,6 +39,15 @@ export class DetailCompanyComponent implements OnInit {
     this.companyService.getCompany(id).subscribe((company) => {
       this.detailCompany = company;
     })
+  }
+
+  componentCanDeactivate(): boolean {
+    // console.log(this.form);
+    let notify: boolean;
+    if(this.form.dirty){
+      notify = confirm("Do u want to leave DETAIL COMPANY page ?");
+    }
+    return notify;
   }
 
   onSubmit(form: NgForm): void {

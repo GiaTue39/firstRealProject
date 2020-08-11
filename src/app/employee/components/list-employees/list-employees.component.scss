@@ -4,7 +4,7 @@
 }
 
 h1 {
-  margin: 50px 50px;
+  margin: 50px 0;
   font-weight: bold;
 }
 
@@ -42,10 +42,10 @@ td.mat-cell {
 }
 
 .create-btn {
-  height: 50px;
-  text-align: center;
   margin-right: 20px;
   margin-bottom: 20px;
+  width: 180px;
+  height: 50px;
 }
 
 .mat-paginator {
@@ -54,4 +54,9 @@ td.mat-cell {
 
 .mat-header-row {
   background-color: antiquewhite;
+}
+
+::ng-deep .content-right{
+  background-color:aliceblue;
+  padding: 0 50px;
 }

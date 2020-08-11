@@ -55,7 +55,6 @@ export class UserRoleGuard implements CanActivate {
                 const role = localStorage.getItem('role');
                 resolve(role);
             }, 1000);
-
         });
     }
 

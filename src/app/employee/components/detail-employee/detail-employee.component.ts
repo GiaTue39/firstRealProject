@@ -12,7 +12,7 @@ import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 @Component({
   selector: 'app-detail-employee',
   templateUrl: './detail-employee.component.html',
-  styleUrls: ['./detail-employee.component.css'],
+  styleUrls: ['./detail-employee.component.scss'],
 })
 export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent{
   @ViewChild('form') form: NgForm;
