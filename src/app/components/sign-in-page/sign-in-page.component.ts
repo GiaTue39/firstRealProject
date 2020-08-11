@@ -41,6 +41,7 @@ export class SignInPageComponent implements OnInit {
         // console.log(data.accessToken);
         const getToken = data.accessToken;
         localStorage.setItem("token", getToken);
+        localStorage.setItem('role', data.role);
         this.router.navigate(['companies']);
       },
       (error) => {

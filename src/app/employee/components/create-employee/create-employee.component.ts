@@ -1,18 +1,21 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { CreateEmployeeModel } from '../../models/createEmployee';
 import { EmployeeService } from '../../services/employee.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgForm } from '@angular/forms';
+import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
   styleUrls: ['./create-employee.component.scss'],
 })
-export class CreateEmployeeComponent implements OnInit {
+export class CreateEmployeeComponent implements OnInit, CanDeactivateComponent {
   @Output() change: EventEmitter<MatSlideToggleChange>;
+  @ViewChild('form') form: NgForm;
 
   message: string;
 
@@ -30,9 +33,9 @@ export class CreateEmployeeComponent implements OnInit {
     private employeeService: EmployeeService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   dateClass = (d: Date): MatCalendarCellCssClasses => {
     const date = d.getDate();
@@ -87,6 +90,15 @@ export class CreateEmployeeComponent implements OnInit {
         // window.location.href = './employees';
         this.router.navigate(['/employees']);
       });
+  }
+
+  componentCanDeactivate(): boolean {
+    // console.log(this.form);
+    let notify: boolean;
+    if(this.form.dirty){
+      notify = confirm("Do u want to leave CREATE EMPLOYEE page ?");
+    }
+    return notify;
   }
 
   onChange(ob: MatSlideToggleChange) {

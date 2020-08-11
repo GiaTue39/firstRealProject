@@ -8,6 +8,7 @@ import { ListCompanyComponent} from './components/list-company/list-company.comp
 import { FormCreateCompanyComponent } from './components/form-create-company/form-create-company.component';
 import { DetailCompanyComponent } from './components/detail-company/detail-company.component';
 import { SharedModule } from '../shared/shared.module';
+import { CompanyService } from './services/company.service';
 
 @NgModule({
     imports: [
@@ -17,15 +18,15 @@ import { SharedModule } from '../shared/shared.module';
         AppMaterialModule,
         RouterModule.forChild([
             {
-                path: 'companies',
+                path: '',
                 component: ListCompanyComponent,
             },
             {
-                path: 'companies/create',
+                path: 'create',
                 component: FormCreateCompanyComponent
             },
             {
-                path: 'companies/:id',
+                path: ':id',
                 component: DetailCompanyComponent
             },
         ])
@@ -34,6 +35,9 @@ import { SharedModule } from '../shared/shared.module';
         ListCompanyComponent,
         FormCreateCompanyComponent,
         DetailCompanyComponent
+    ],
+    providers: [
+        CompanyService
     ]
 })
 export class CompanyModule { }

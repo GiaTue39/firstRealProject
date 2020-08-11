@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 
 import { EmployeeService } from '../../services';
@@ -8,12 +8,14 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DetailEmployeeModel } from '../../models/detail-employee';
+import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 @Component({
   selector: 'app-detail-employee',
   templateUrl: './detail-employee.component.html',
   styleUrls: ['./detail-employee.component.css'],
 })
-export class DetailEmployeeComponent implements OnInit {
+export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent{
+  @ViewChild('form') form: NgForm;
   formBuilder: any;
   constructor(
     private employeeService: EmployeeService,
@@ -21,6 +23,15 @@ export class DetailEmployeeComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router
   ) { }
+
+  componentCanDeactivate(): boolean {
+    // console.log(this.form);
+    let notify: boolean;
+    if(this.form.dirty){
+      notify = confirm("Do u want to leave DETAIL EMPLOYEE page ?");
+    }
+    return notify;
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;

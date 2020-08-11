@@ -7,7 +7,7 @@ import * as trucComponent from './components';
 
 import { AuthGuard } from './auth/auth.guard';
 import { SigninGuard } from './auth/signin.guard';
-import { DetailCompanyComponent } from './company/components/detail-company/detail-company.component';
+import { UserRoleGuard } from './auth/user.guard';
 
 const routes: Routes = [
     {
@@ -25,7 +25,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: '', redirectTo: 'companies', pathMatch: 'full' },
-            
+            { path: 'employees', loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) },
+            {
+                path: 'companies',
+                canActivate: [UserRoleGuard],
+                loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
+            },
         ]
     },
 

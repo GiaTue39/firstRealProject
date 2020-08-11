@@ -6,6 +6,7 @@ import { AuthInterceptor } from './auth-interceptor';
 import { BaseUrlInterceptor } from './base-url-interceptor';
 import { AuthGuard } from './auth.guard';
 import { SigninGuard } from './signin.guard';
+import { UserRoleGuard } from './user.guard';
 
 @NgModule({
   declarations: [],
@@ -15,6 +16,7 @@ import { SigninGuard } from './signin.guard';
   providers: [
     AuthGuard, 
     SigninGuard,
+    UserRoleGuard,
     {
       provide : HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
