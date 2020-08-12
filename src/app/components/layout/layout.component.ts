@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
-
+  hihi : boolean = false;
   constructor(
     private router: Router
   ) { }
@@ -23,8 +23,8 @@ export class LayoutComponent implements OnInit {
     },
     {
       name: 'Employees',
-      url: '/companies/create',
-      icon: 'img/1.png'
+      url: '/employees',
+      icon: 'img/7.png'
     }
   ]
   images = [
@@ -42,5 +42,17 @@ export class LayoutComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);
   }
+
+  openNav() {
+    this.hihi=true;
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("hide").style.display = "block";
+  }
+
+  closeNav() {
+    this.hihi=false;
+    document.getElementById("mySidenav").style.width = "100px";
+    document.getElementById("hide").style.display = "none";
+  } 
 
 }

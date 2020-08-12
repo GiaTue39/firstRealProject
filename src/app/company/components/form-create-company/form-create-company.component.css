@@ -27,6 +27,7 @@ h1 {
     height: 350px; */
   /* margin-left: 10%; */
   padding: 30px 30px;
+  overflow-y: scroll;
 }
 
 .card1 {
@@ -46,7 +47,7 @@ mat-slide-toggle {
 
 img {
   border: 1px solid black;
-  padding: 30px 50px;
+  /* padding: 30px 50px; */
   margin: 30px 50px;
 }
 

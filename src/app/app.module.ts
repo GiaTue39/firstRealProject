@@ -4,33 +4,36 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { components } from './components';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
-import { CompanyService } from './company.service';
 import { AppMaterialModule } from './material.module';
+import { LeavePageGuard } from './leave-page.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    components,
+    components
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-
+    FormsModule,
+    CommonModule,
     AppMaterialModule,
-    AuthModule,
+    
     AppRoutingModule,
+
+    AuthModule,
+
 
   ],
   providers: [
-    CompanyService,
+    LeavePageGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
   ],
   bootstrap: [AppComponent]

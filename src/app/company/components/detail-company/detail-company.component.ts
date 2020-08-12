@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { DetailCompanyModel } from "../detailcompany";
-import { CompanyService } from '../../company.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
+import { DetailCompanyModel } from '../../models/detailcompany';
+import { CompanyService } from '../../services/company.service';
+import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 
 @Component({
   selector: 'app-detail-company',
   templateUrl: './detail-company.component.html',
   styleUrls: ['./detail-company.component.css']
 })
-export class DetailCompanyComponent implements OnInit {
+export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
+  @ViewChild('form') form: NgForm;
   detailCompany: DetailCompanyModel = {
     id: '',
     logoURL: '',
@@ -27,10 +27,10 @@ export class DetailCompanyComponent implements OnInit {
   constructor(
     private companyService: CompanyService,
     private route: ActivatedRoute,
-    private router: Router, 
-    private snackBar:MatSnackBar
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
-   }
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;//snapshot?
@@ -41,6 +41,15 @@ export class DetailCompanyComponent implements OnInit {
     })
   }
 
+  componentCanDeactivate(): boolean {
+    // console.log(this.form);
+    let notify: boolean;
+    if(this.form.dirty){
+      notify = confirm("Do u want to leave DETAIL COMPANY page ?");
+    }
+    return notify;
+  }
+
   onSubmit(form: NgForm): void {
     if (form.invalid) {
       console.log('invalid');
@@ -49,7 +58,7 @@ export class DetailCompanyComponent implements OnInit {
 
     this.companyService.update(this.detailCompany.id, this.detailCompany).subscribe((company) => {
       // this.detailCompany = company;
-      this.snackBar.open('Update successful!','Cancel',{
+      this.snackBar.open('Update successful!', 'Cancel', {
         duration: 2000, //duration?
       });
       this.router.navigate(['/companies']);

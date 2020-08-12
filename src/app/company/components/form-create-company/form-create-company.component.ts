@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 
-import { CreateCompanyModel } from "../createcompany";
-import { CompanyService } from '../../company.service';
+import { CreateCompanyModel } from "../../models/createcompany";
+import { CompanyService } from '../../services/company.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 @Component({
   selector: 'app-form-create-company',
   templateUrl: './form-create-company.component.html',
   styleUrls: ['./form-create-company.component.css']
 })
-export class FormCreateCompanyComponent implements OnInit {
+export class FormCreateCompanyComponent implements OnInit, CanDeactivateComponent {
+  @ViewChild('form') form: NgForm;
   createCompany: CreateCompanyModel = { 
     logoURL: '',
     name: '',
@@ -28,6 +29,15 @@ export class FormCreateCompanyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  componentCanDeactivate(): boolean {
+    // console.log(this.form);
+    let notify: boolean;
+    if(this.form.dirty){
+      notify = confirm("Do u want to leave CREATE COMPANY page ?");
+    }
+    return notify;
   }
 
   onSubmit(form: NgForm): void {

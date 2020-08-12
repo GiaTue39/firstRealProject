@@ -5,8 +5,9 @@
         <span class="title2">Realtek</span>
         <span class="example-spacer"></span>
         <div class="img">
-            <div class="mr">Max Plank</div>
-            <div class="mr"><img src="/assets/img/mr.PNG"></div>
+            <div class="mr"></div>
+                <span>Max Plank</span>
+                <img src="/assets/img/maxyoung.jpg" class="max">
             <div class="icon">
                 <button mat-icon-button (click)="onLogoutBtnClicked()">
                     <mat-icon>exit_to_app</mat-icon>
@@ -19,15 +20,19 @@
 </div>
 
 <div class="content">
-    <div class="menu-left">
+    <div class="menu-left" id="mySidenav">
 
         <div class="icon" *ngFor="let item of menu">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
             <a [routerLink]="[item.url]">
                 <img style="width: 40px;" src="/assets/{{item.icon}}">
+              <!-- <div id="hide">{{item.name}}</div>  -->
+              <div *ngIf="hihi">{{item.name}}</div> 
             </a>
         </div>
 
     </div>
+    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
     <div class="content-right">
         <router-outlet></router-outlet>
     </div>

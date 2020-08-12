@@ -1,0 +1,87 @@
+// * {
+//   background-color: aliceblue;
+// }
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  padding-left: 50px;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+}
+
+.info-name-birthday {
+  display: flex;
+}
+
+.example-custom-date-class {
+  background: orange;
+  border-radius: 100%;
+}
+
+.mat-form-field {
+  margin-right: 10px;
+  width: 400px;
+}
+
+.button {
+  display: flex;
+}
+
+button {
+  margin-right: 20px;
+  width: 100px;
+  height: 50px;
+}
+
+input {
+  margin-left: 30px;
+  width: 200px;
+}
+
+.header {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.insert-url {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.status {
+  margin-left: 50px;
+}
+
+.address {
+  width: 100%;
+}

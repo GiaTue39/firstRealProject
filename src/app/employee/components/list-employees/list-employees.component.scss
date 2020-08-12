@@ -1,0 +1,62 @@
+.container {
+  background-color: aliceblue;
+  height: 700px;
+}
+
+h1 {
+  margin: 50px 0;
+  font-weight: bold;
+}
+
+.filter {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+table {
+  width: 100%;
+}
+
+.element-row:hover {
+  background: whitesmoke;
+  cursor: pointer;
+}
+
+.element-row:active {
+  background: #efefef;
+}
+
+th.mat-header-cell {
+  border-bottom-style: none;
+}
+
+td.mat-cell {
+  border-bottom-style: none;
+}
+
+.sort {
+  margin-right: 30px;
+  width: 400px;
+}
+
+.create-btn {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 180px;
+  height: 50px;
+}
+
+.mat-paginator {
+  background-color: aliceblue;
+}
+
+.mat-header-row {
+  background-color: antiquewhite;
+}
+
+::ng-deep .content-right{
+  background-color:aliceblue;
+  padding: 0 50px;
+}

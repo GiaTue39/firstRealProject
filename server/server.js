@@ -3,8 +3,11 @@ const jwt = require('jsonwebtoken');
 
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
-const user = { username: 'admin@demo.com', password: 'demo!23' };
-const SECRET_KEY = '123456789';
+const users = [
+  { username: 'admin@demo.com', password: 'demo!123' },
+  { username: 'user@demo.com', password: 'user!123' }
+];
+const SECRET_KEY = '0123456789';
 const expiresIn = '3600';
 const tokenType = 'Bearer';
 
@@ -17,7 +20,11 @@ function verifyToken(token) {
 }
 
 function isAuthenticated({ username, password }) {
-  return user.username === username && user.password === password;
+  const user = users.find((item) => {
+    return item.username === username && item.password === password;
+  })
+  
+  return !!user;
 }
 
 server.use(jsonServer.defaults());
@@ -32,7 +39,13 @@ server.post('/auth/login', (req, res) => {
     return;
   }
   const accessToken = createToken({ username, password });
-  res.status(200).json({ accessToken, expiresIn, tokenType });
+  const role = username.indexOf('admin') >= 0 ? 'admin' : 'user';
+  res.status(200).json({
+    role,
+    accessToken, 
+    expiresIn, 
+    tokenType
+   });
 });
 
 // authorization middleware

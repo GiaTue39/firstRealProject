@@ -1,0 +1,98 @@
+<div class="cover">
+  <h1>Create Employee</h1>
+  <div class="info">
+    <div class="header">
+      <div class="avatar">
+        <img src="{{createEmployee.avatarURL || 'assets/images/logo.PNG'}}">
+      </div>
+
+      <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
+        placeholder="Insert URL for Avatar">
+
+      <div class="status">
+        <mat-slide-toggle (change)="onChange($event)" name="status">Status</mat-slide-toggle>
+      </div>
+
+    </div>
+
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="info-name-birthday">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput tabindex="1" placeholder="Your name" name="contactName" [(ngModel)]="createEmployee.name"
+            required />
+          <!-- 
+          <mat-error *ngIf="name.errors">
+
+            <span *ngIf="name.errors.required">
+              Name is required !
+            </span>
+
+          </mat-error> -->
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Birthday</mat-label>
+          <input matInput [matDatepicker]="picker" name="dob" [(ngModel)]="createEmployee.birthday">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+      <div class="contact-info">
+        <h2>Contact info</h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput tabindex="1" placeholder="Your phone number" name="contactPhone"
+            [(ngModel)]="createEmployee.phone" required pattern="^((\\+84-?)|0)?[0-9]{10}$" #phone="ngModel" />
+
+          <mat-error *ngIf="phone.errors">
+            <span *ngIf="phone.errors.required">
+              Phone is required !
+            </span>
+
+            <span *ngIf="phone.errors?.pattern">
+              Phone is not match with Phone pattern
+            </span>
+
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput tabindex="1" placeholder="Your email" name="contactEmail" [(ngModel)]="createEmployee.email"
+            required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #mail="ngModel" />
+          <mat-error *ngIf="mail.errors ">
+            <span *ngIf="mail.errors.required">
+              Email is required !
+            </span>
+            <span *ngIf="mail.errors?.pattern">
+              Email is not match
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input class="address" matInput tabindex="1" placeholder="Your address" name="contactAddress"
+            [(ngModel)]="createEmployee.address" required />
+          <!-- <mat-error *ngIf="f.controls.contactAddress.errors">
+            <span *ngIf="f.controls.contactAddress.errors.required">
+              Address is required !
+            </span>
+          </mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="button">
+        <button mat-raised-button color="warn">Create</button>
+        <button mat-raised-button color="accent">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

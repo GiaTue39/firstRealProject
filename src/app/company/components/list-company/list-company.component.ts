@@ -4,9 +4,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
 
-import { CompanyService } from '../../company.service';
-import { Company } from '../company';
+
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
+import {  Company } from '../../models/company';
+import { CompanyService } from '../../services/company.service';
+import { CreateCompanyModel } from '../../models/createcompany';
 
 @Component({
   selector: 'app-list-company',
@@ -19,6 +21,8 @@ export class ListCompanyComponent implements OnInit {
   dataS = new MatTableDataSource<Company>(this.dataSource);
   selection = new SelectionModel<Company>(true, []);
   isLoading = false;
+
+  
 
   constructor(
     public dialog: MatDialog,
