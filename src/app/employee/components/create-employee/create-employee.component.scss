@@ -9,7 +9,10 @@
   justify-content: center;
   height: 700px;
   padding-left: 50px;
+
 }
+
+::ng-deep .content {  background-color: aliceblue;}
 
 h1 {
   font-weight: bold;

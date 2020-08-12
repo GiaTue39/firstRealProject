@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
-  hihi : boolean = false;
+  hide : boolean = false;
   constructor(
     private router: Router
   ) { }
@@ -19,12 +19,12 @@ export class LayoutComponent implements OnInit {
     {
       name: 'Companies',
       url: '/companies',
-      icon: 'img/3.png',
+      icon: 'business',
     },
     {
       name: 'Employees',
       url: '/employees',
-      icon: 'img/7.png'
+      icon: 'person'
     }
   ]
   images = [
@@ -44,15 +44,26 @@ export class LayoutComponent implements OnInit {
   }
 
   openNav() {
-    this.hihi=true;
+    this.hide=true;
+    
+    document.querySelector("mySidenav").classList.add('');
+    
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("hide").style.display = "block";
   }
 
   closeNav() {
-    this.hihi=false;
+    this.hide=false;
     document.getElementById("mySidenav").style.width = "100px";
     document.getElementById("hide").style.display = "none";
+    document.getElementById("btnclose").style.display = "none";
+  } 
+
+  closeNav2() {
+    this.hide=false;
+    document.getElementById("mySidenav").style.width = "0px";
+    document.getElementById("hide").style.display = "none";
+    document.getElementById("btnclose").style.display = "none";
   } 
 
 }

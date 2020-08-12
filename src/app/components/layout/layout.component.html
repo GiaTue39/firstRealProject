@@ -1,13 +1,58 @@
-<div class="header">
-    <mat-toolbar color="primary">
+<div class="page-layout">
 
+    <div class="menu-left">
+        <a *ngIf="!hide" class="closebtn" (click)="closeNav2()"> &times; </a>
+        <a *ngIf="hide" class="closebtn" íd="btnclose" (click)="closeNav()">&times;</a>
+
+        <div class="icon" *ngFor="let item of menu">
+            <a [routerLink]="[item.url]">
+                <div class="menu">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.icon}}</mat-icon>
+                    <div *ngIf="hide" class="name">{{item.name}}</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-right">
+        <div class="top-nav">
+            <mat-toolbar color="primary">
+                <span class="open-menu" (click)="openNav()">&#9776;</span>
+                <span class="title"><img style="width: 40px;" src="/assets/img/r2.png"></span>
+                <span class="title2">Realtek</span>
+                <span class="example-spacer"></span>
+                <div class="img">
+                    <div class="mr"></div>
+                    <span>Max Plank</span>
+                    <img src="/assets/img/maxyoung.jpg" class="max">
+                    <div class="icon">
+                        <button mat-icon-button (click)="onLogoutBtnClicked()">
+                            <mat-icon>exit_to_app</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+
+            </mat-toolbar>
+        </div>
+        <div class="content-right">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="header">
+    <mat-toolbar color="primary">
+        <span class="open-menu" (click)="openNav()">&#9776;</span>
         <span class="title"><img style="width: 40px;" src="/assets/img/r2.png"></span>
         <span class="title2">Realtek</span>
         <span class="example-spacer"></span>
         <div class="img">
             <div class="mr"></div>
-                <span>Max Plank</span>
-                <img src="/assets/img/maxyoung.jpg" class="max">
+            <span>Max Plank</span>
+            <img src="/assets/img/maxyoung.jpg" class="max">
             <div class="icon">
                 <button mat-icon-button (click)="onLogoutBtnClicked()">
                     <mat-icon>exit_to_app</mat-icon>
@@ -22,19 +67,24 @@
 <div class="content">
     <div class="menu-left" id="mySidenav">
 
+        <a *ngIf="!hide" class="closebtn" (click)="closeNav2()"> &times; </a>
+        <a *ngIf="hide" class="closebtn" íd="btnclose" (click)="closeNav()">&times;</a>
+
         <div class="icon" *ngFor="let item of menu">
-            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
             <a [routerLink]="[item.url]">
-                <img style="width: 40px;" src="/assets/{{item.icon}}">
-              <!-- <div id="hide">{{item.name}}</div>  -->
-              <div *ngIf="hihi">{{item.name}}</div> 
+                <div class="menu">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.icon}}</mat-icon>
+                    <div *ngIf="hide" class="name">{{item.name}}</div>
+                </div>
+                
+
             </a>
         </div>
 
     </div>
-    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
     <div class="content-right">
-        <router-outlet></router-outlet>
+
+        <router-outlet> </router-outlet>
     </div>
 
-</div>
+</div> -->
