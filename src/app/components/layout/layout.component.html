@@ -1,6 +1,12 @@
 <div class="page-layout">
 
-    <div class="menu-left">
+    <div class="menu-left" [ngClass]="{
+        'is-hidden': !isMenuOpen,  
+        'is-open': isMenuOpen,  
+        'menu-sm': menuSize === 'sm',
+        'menu-lg': menuSize === 'lg' 
+        }" id="close-menu-left">
+
         <a *ngIf="!hide" class="closebtn" (click)="closeNav2()"> &times; </a>
         <a *ngIf="hide" class="closebtn" íd="btnclose" (click)="closeNav()">&times;</a>
 
@@ -14,12 +20,14 @@
         </div>
     </div>
 
-    <div class="menu-right">
+    <div class="right" id="fit-menu">
         <div class="top-nav">
             <mat-toolbar color="primary">
-                <span class="open-menu" (click)="openNav()">&#9776;</span>
-                <span class="title"><img style="width: 40px;" src="/assets/img/r2.png"></span>
-                <span class="title2">Realtek</span>
+                <button mat-icon-button *ngIf="!isMenuOpen" class="open-menu" (click)="openNav()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span><img src="/assets/img/r2.png"></span>
+                <span class="title">Realtek</span>
                 <span class="example-spacer"></span>
                 <div class="img">
                     <div class="mr"></div>
