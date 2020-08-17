@@ -15,13 +15,13 @@
     <a class="create-btn" mat-raised-button color="primary" routerLink="./create">Create Employee</a>
   </div>
 
-  <div *ngIf="dataSource.length == 0 && isLoading == false">
+  <!-- <div *ngIf="dataSource.length == 0 && isLoading == false">
     <h2>Loading failed !</h2>
-  </div>
+  </div> -->
 
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
 
-  <mat-table *ngIf="dataSource.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
+  <mat-table [dataSource]="employees$ | async" class="mat-elevation-z8">
 
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
