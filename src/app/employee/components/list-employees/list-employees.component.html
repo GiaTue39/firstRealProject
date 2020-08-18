@@ -60,7 +60,8 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
-          (click)="openDialog(element); $event.stopPropagation()">Delete</button></mat-cell>
+          (click)="openDialog(element); $event.stopPropagation()" [disabled]="(isDeleted$ | async)">Delete</button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

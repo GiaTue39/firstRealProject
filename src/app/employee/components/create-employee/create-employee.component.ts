@@ -21,7 +21,6 @@ import {
   selectIsCreatedEmployees,
   selectEmployees,
 } from "../../selectors/create-employee.selector";
-import { Employees } from "../../models";
 
 @Component({
   selector: "app-create-employee",
@@ -66,7 +65,7 @@ export class CreateEmployeeComponent implements OnInit, CanDeactivateComponent {
   };
 
   onSubmit(employee: NgForm) {
-    console.log(employee.value);
+    // console.log(employee.value);
     // debugger;
     // console.log(form);
     // this.message = "";

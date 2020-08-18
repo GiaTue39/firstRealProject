@@ -21,6 +21,9 @@ import { ROOT_REDUCERS } from "./employee/reducers";
 import { environment } from "src/environments/environment";
 import { EmployeeEffect } from "./employee/effects/employee.effect";
 import { CreateEmployeeEffect } from "./employee/effects/create-employee.effect";
+import { DeleteEmployeeEffect } from "./employee/effects/delete-employee.effect";
+import { UpdateEmployeeEffect } from "./employee/effects/update-employee.effect";
+
 // console.log all actions
 export function logger(reducer) {
   return (state, action) => {
@@ -94,7 +97,12 @@ const metaReducers = !environment.production ? [logger] : [];
      *
      * See: https://ngrx.io/guide/effects#registering-root-effects
      */
-    EffectsModule.forRoot([EmployeeEffect, CreateEmployeeEffect]),
+    EffectsModule.forRoot([
+      EmployeeEffect,
+      CreateEmployeeEffect,
+      DeleteEmployeeEffect,
+      UpdateEmployeeEffect,
+    ]),
 
     AppRoutingModule,
 

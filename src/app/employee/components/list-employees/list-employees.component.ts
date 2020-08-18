@@ -7,12 +7,14 @@ import { EmployeeService } from "../../services/employee.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogDeleteComponent } from "./dialog-delete/dialog-delete.component";
 import { Store, select } from "@ngrx/store";
-import { EmployeeActions } from "../../actions";
+import { EmployeeActions, DeleteEmployeeActions } from "../../actions";
 
 import {
   selectIsLoadingEmployees,
   selectAllEmployees,
 } from "../../selectors/employee.selector";
+
+import { selectIsDeletedEmployees } from "../../selectors/delete-employee.selector";
 
 import { Observable } from "rxjs";
 
@@ -42,6 +44,7 @@ export class ListEmployeesComponent implements OnInit {
 
   employees$: Observable<Array<Employees>>;
   isLoading$: Observable<boolean>;
+  isDeleted$: Observable<boolean>;
 
   constructor(
     private employeeService: EmployeeService,
@@ -52,7 +55,7 @@ export class ListEmployeesComponent implements OnInit {
   ngOnInit() {
     this.employees$ = this.store.pipe(select(selectAllEmployees));
     this.isLoading$ = this.store.pipe(select(selectIsLoadingEmployees));
-
+    this.isDeleted$ = this.store.pipe(select(selectIsDeletedEmployees));
     this.store.dispatch(EmployeeActions.loadEmployees());
 
     // this.store.pipe(select(selectAllEmployees)).subscribe((data) => {
@@ -118,20 +121,23 @@ export class ListEmployeesComponent implements OnInit {
   }
 
   onDelete(employee: Employees) {
-    this.employeeService.deleteEmployee(employee.id).subscribe(() => {
-      const data = [];
-      // for (var i = 0; i < this.dataSource.length; i++) {
-      //   if (this.dataSource[i].id !== employee.id) {
-      //     data.push(this.dataSource[i]);
-      //   }
-      // }
-      // this.dataSource.forEach((e) => {
-      //   if (e.id !== employee.id) {
-      //     data.push(e);
-      //   }
-      // });
-      // this.dataSource = data;
-      this.dataSource = this.dataSource.filter((e) => e.id !== employee.id);
-    });
+    // this.employeeService.deleteEmployee(employee.id).subscribe(() => {
+    //   const data = [];
+    // for (var i = 0; i < this.dataSource.length; i++) {
+    //   if (this.dataSource[i].id !== employee.id) {
+    //     data.push(this.dataSource[i]);
+    //   }
+    // }
+    // this.dataSource.forEach((e) => {
+    //   if (e.id !== employee.id) {
+    //     data.push(e);
+    //   }
+    // });
+    // this.dataSource = data;
+    // this.dataSource = this.dataSource.filter((e) => e.id !== employee.id);
+
+    this.store.dispatch(
+      DeleteEmployeeActions.deleteEmployee({ id: employee.id })
+    );
   }
 }

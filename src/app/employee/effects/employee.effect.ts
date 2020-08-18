@@ -31,4 +31,22 @@ export class EmployeeEffect {
       )
     );
   });
+
+  getEmployeesByID$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(EmployeeActions.getEmployeesById),
+      switchMap((action) =>
+        this.employeeService.getEmployee(action.id).pipe(
+          map((data) =>
+            EmployeeActions.loadEmployeesSuccess({ employees: data })
+          ),
+          catchError((error) => {
+            return of(
+              EmployeeActions.loadEmployeesFailure({ error: error.statusText })
+            );
+          })
+        )
+      )
+    );
+  });
 }

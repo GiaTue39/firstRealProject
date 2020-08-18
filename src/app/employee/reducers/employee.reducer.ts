@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 
 import { EmployeeActions } from "../actions";
-import { Employees } from "../models";
+import { Employees, DetailEmployeeModel } from "../models";
 
 export const collectionFeatureKey = "collection";
 
@@ -10,6 +10,7 @@ export interface State {
   loading: boolean;
   employees: Array<Employees>;
   error: string;
+  employeeID: DetailEmployeeModel;
 }
 
 const initialState: State = {
@@ -17,6 +18,7 @@ const initialState: State = {
   loading: false,
   employees: [],
   error: "",
+  employeeID: undefined,
 };
 
 export const reducer = createReducer(
@@ -38,9 +40,29 @@ export const reducer = createReducer(
     loaded: false,
     loading: false,
     error,
+  })),
+
+  on(EmployeeActions.getEmployeesById, (state) => {
+    return { ...state, loading: true };
+  }),
+
+  on(EmployeeActions.getEmployeesByIdSuccess, (state, { employees }) => ({
+    ...state,
+    loaded: true,
+    loading: false,
+    employeeID: employees,
+  })),
+
+  on(EmployeeActions.loadEmployeesFailure, (state, { error }) => ({
+    ...state,
+    loaded: false,
+    loading: false,
+    error,
   }))
 );
 
 export const getLoaded = (state: State) => state.loaded;
 
 export const getLoading = (state: State) => state.loading;
+
+export const getEmployeeByID = (state: State) => state.employeeID;
