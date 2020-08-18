@@ -18,7 +18,7 @@ export class EmployeeService {
     return this.http.get("employees" + id);
   }
 
-  createEmployee(employee): Observable<any> {
+  createEmployee(employee: Employees): Observable<any> {
     return this.http.post("employees", employee);
   }
 

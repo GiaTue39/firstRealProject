@@ -4,8 +4,8 @@ import { Actions, ofType, createEffect } from "@ngrx/effects";
 import { of } from "rxjs";
 import { switchMap, map, catchError, tap } from "rxjs/operators";
 
-import { EmployeeActions } from "./actions";
-import { EmployeeService } from "./services";
+import { EmployeeActions } from "../actions";
+import { EmployeeService } from "../services";
 
 @Injectable()
 export class EmployeeEffect {

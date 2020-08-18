@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { MatTableDataSource } from "@angular/material/table";
 import { SelectionModel } from "@angular/cdk/collections";
 
@@ -9,10 +8,12 @@ import { MatDialog } from "@angular/material/dialog";
 import { DialogDeleteComponent } from "./dialog-delete/dialog-delete.component";
 import { Store, select } from "@ngrx/store";
 import { EmployeeActions } from "../../actions";
+
 import {
   selectIsLoadingEmployees,
   selectAllEmployees,
 } from "../../selectors/employee.selector";
+
 import { Observable } from "rxjs";
 
 @Component({

@@ -90,7 +90,7 @@
       </div>
 
       <div class="button">
-        <button mat-raised-button color="warn">Create</button>
+        <button mat-raised-button color="warn" [disabled]="(employees$ | async)">Create</button>
         <button mat-raised-button color="accent">Cancel</button>
       </div>
     </form>
