@@ -59,8 +59,18 @@
       </mat-card>
 
       <div class="example-button-row">
-        <button mat-raised-button color="accent" type="submit">Save</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="( isUpdated$ | async)">Save</button>
       </div>
+
+      <!-- <p>
+        chu Truc o day: {{ trucDay }}
+      </p>
+
+      <div class="example-button-row">
+        <button mat-raised-button color="accent" type="button" 
+        (click)="doiten()"
+        >Doi ten thanh Truc</button>
+      </div> -->
 
     </form>
   </app-page-content>

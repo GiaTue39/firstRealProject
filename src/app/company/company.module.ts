@@ -8,14 +8,15 @@ import { ListCompanyComponent} from './components/list-company/list-company.comp
 import { FormCreateCompanyComponent } from './components/form-create-company/form-create-company.component';
 import { DetailCompanyComponent } from './components/detail-company/detail-company.component';
 import { SharedModule } from '../shared/shared.module';
-import { CompanyService } from './services/company.service';
 import { LeavePageGuard } from '../leave-page.guard';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         SharedModule, 
         AppMaterialModule,
+        MatSnackBarModule,
         
         RouterModule.forChild([
             {
@@ -40,7 +41,7 @@ import { LeavePageGuard } from '../leave-page.guard';
         DetailCompanyComponent
     ],
     providers: [
-        CompanyService,
+        // CompanyService,
         LeavePageGuard,
     ]
 })

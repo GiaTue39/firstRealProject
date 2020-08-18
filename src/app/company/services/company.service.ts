@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Company } from '../../company/models/company';
 import { DetailCompanyModel } from '../../company/models/detailcompany';
 
-@Injectable()
+@Injectable(
+  { providedIn: 'root' }
+)
 export class CompanyService {
+  updateCompany(company: any) {
+    throw new Error("Method not implemented.");
+  }
 
   constructor(
     private http: HttpClient
@@ -42,5 +47,9 @@ export class CompanyService {
   update(id: string, model): Observable<any> {
     return this.http.put<DetailCompanyModel>('http://localhost:3000/api/companies/' + id, model);
   }
+
+  // layTruc(): Observable<string> {
+  //   return of('Truccccccccccc');
+  // }
 
 }

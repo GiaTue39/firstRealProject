@@ -1,10 +1,12 @@
 {
   "companies": [
     {
-      "id": "776a8fe0-d154-11ea-87d0-0242ac130003",
-      "name": "Beryllium Tech",
-      "employee": "9",
-      "orders": "78/45"
+      "name": "Linh Nguyen Thi Hongsssss",
+      "phone": "chgcgsd",
+      "email": "gdlinh180898@gmail.com",
+      "website": "gdser",
+      "orders": "asaDS",
+      "id": "776a8fe0-d154-11ea-87d0-0242ac130003"
     },
     {
       "id": "7e25e9a6-d154-11ea-87d0-0242ac130003",
@@ -79,6 +81,15 @@
       "website": "ftydyt",
       "address": "27/27, An Phú Đông 2, quận 12",
       "id": "EetGI8~"
+    },
+    {
+      "url": "sssss",
+      "name": "Linh Nguyen Thi Hong",
+      "phone": "0335389801",
+      "email": "gdlinh180898@gmail.com",
+      "website": "aaa.com",
+      "address": "27/27, An Phú Đông 2, quận 12",
+      "id": "90cY~gE"
     }
   ],
   "employees": [

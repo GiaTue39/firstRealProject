@@ -6,9 +6,22 @@ import { MatDialog } from '@angular/material/dialog';
 
 
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
+import { Store, select } from "@ngrx/store";
+import { CompanyActions, DeleteCompanyActions } from "../../actions";
 import {  Company } from '../../models/company';
 import { CompanyService } from '../../services/company.service';
 import { CreateCompanyModel } from '../../models/createcompany';
+
+import {
+  selectIsLoadingCompanies,
+  selectAllCompanies,
+} from "../../selectors/company.selector";
+
+import {
+  selectIsDeleteCompany
+} from "../../selectors/delete-company.selector";
+
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-list-company',
@@ -19,32 +32,46 @@ export class ListCompanyComponent implements OnInit {
   displayedColumns: string[] = ['select', 'name', 'employee', 'orders', 'menu'];
   dataSource = [];
   dataS = new MatTableDataSource<Company>(this.dataSource);
-  selection = new SelectionModel<Company>(true, []);
+  // selection = new SelectionModel<Company>(true, []);
   isLoading = false;
 
+  selection = new SelectionModel<Company>(true, []);
+
+  companies$: Observable<Array<Company>>;
+  isLoading$: Observable<boolean>;
+  isDeleted$: Observable<boolean>;
+  
   
 
   constructor(
     public dialog: MatDialog,
-    private companyService: CompanyService
-  ) { }
+    private companyService: CompanyService,
+    private store: Store
+  ) { 
+    this.store.dispatch(CompanyActions.loadCompanies({}));
+  
+    this.companies$ = this.store.pipe(select(selectAllCompanies));
+    this.isLoading$ = this.store.pipe(select(selectIsLoadingCompanies));
+
+  }  
 
  
 
   ngOnInit() {
-    this.isLoading = true;
 
-    this.companyService.getCompanies().subscribe(
-      (data) => {
-        this.dataSource = data;
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
+    // this.isLoading = true;
 
-    );
+    // this.companyService.getCompanies().subscribe(
+    //   (data) => {
+    //     this.dataSource = data;
+    //     this.isLoading = false;
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.isLoading = false;
+    //   }
+
+    // );
   }
 
   isAllSelected(): boolean {//?
@@ -100,10 +127,12 @@ export class ListCompanyComponent implements OnInit {
   }
 
   onDelete(company: Company) {
-    this.companyService.deleteCompany(company.id).subscribe(() => {
-      const data = [];
-      this.dataSource = this.dataSource.filter((e) => e.id !== company.id);//?
-    });
+    // this.companyService.deleteCompany(company.id).subscribe(() => {
+    //   const data = [];
+    //   this.dataSource = this.dataSource.filter((e) => e.id !== company.id);//?
+    // });
+    this.isDeleted$ = this.store.pipe(select(selectIsDeleteCompany));
+    this.store.dispatch(DeleteCompanyActions.deleteCompany({id: company.id}));
   }
 
 

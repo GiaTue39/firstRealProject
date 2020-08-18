@@ -14,7 +14,7 @@
   
       <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
   
-      <table mat-table *ngIf="dataSource.length > 0" [dataSource]="dataSource">
+      <table mat-table  [dataSource]="companies$ | async" class="mat-elevation-z8">
         <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef>
@@ -72,7 +72,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item type="submit" (click)="openDialog(element)">
+              <button mat-menu-item type="submit" (click)="openDialog(element)" [disabled]="( isDeleted$ | async)">
                 <mat-icon>delete</mat-icon>
                 <span >Delete</span>
               </button>
