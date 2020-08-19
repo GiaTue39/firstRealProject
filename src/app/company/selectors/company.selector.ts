@@ -10,7 +10,7 @@ export const selectIsLoadingCompanies = createSelector(
 export const selectAllCompanies = createSelector(
   selectCompanyState,
   (state) : Company[] => {
-    console.log(state.companies);
+    console.log(state);
     return state.companies;
   }
 );

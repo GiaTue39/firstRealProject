@@ -1,17 +1,13 @@
-import { InjectionToken } from "@angular/core";
+import { InjectionToken } from '@angular/core';
 
-import {
-  createFeatureSelector,
-  Action,
-  ActionReducerMap,
-  createSelector,
-} from "@ngrx/store";
-import * as fromRouter from "@ngrx/router-store";
+import { Action, ActionReducerMap, createFeatureSelector, createSelector, } from '@ngrx/store';
+import * as fromRouter from '@ngrx/router-store';
 
-import * as fromCompany from "./company.reducer";
-import * as fromCreateCompany from "./createcompany.reducer";
-import * as fromDeleteCompany from "./delete-company.reducer";
-import * as fromUpdateCompany from "./update-company.reducer";
+import * as fromCompany from './company.reducer';
+import * as fromCreateCompany from './createcompany.reducer';
+import * as fromDeleteCompany from './delete-company.reducer';
+import * as fromUpdateCompany from './update-company.reducer';
+
 export interface AppState {
   company: fromCompany.State;
   createCompany: fromCreateCompany.State;
@@ -19,9 +15,7 @@ export interface AppState {
   router: fromRouter.RouterReducerState<any>;
 }
 
-export const ROOT_REDUCERS = new InjectionToken<
-  ActionReducerMap<AppState, Action>
->("Root reducers token", {
+export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState, Action>>('Company reducers token', {
   factory: () => ({
     company: fromCompany.reducer,
     rename: fromCompany.reducer,
@@ -32,22 +26,31 @@ export const ROOT_REDUCERS = new InjectionToken<
   }),
 });
 
-export const selectRenameState = createFeatureSelector<fromCompany.State>(
-  "rename"
+export const selectCompanyFeatureState = createFeatureSelector<any>(
+  'company'
 );
 
-export const selectCompanyState = createFeatureSelector<fromCompany.State>(
-  "company"
+export const selectCompanyState = createSelector(
+  selectCompanyFeatureState,
+  (state) => state.company
 );
 
-export const selectCreateCompanyState = createFeatureSelector<fromCreateCompany.State>(
-  "createCompany"
+export const selectRenameState = createSelector(
+  selectCompanyFeatureState,
+  (state) => state.rename
 );
 
-export const selectDeletedCompanyState = createFeatureSelector<fromDeleteCompany.State>(
-  "deleteCompany"
+export const selectCreateCompanyState = createSelector(
+  selectCompanyFeatureState,
+  (state) => state.createCompany
 );
 
-export const selectUpdatedCompanyState = createFeatureSelector<fromUpdateCompany.State>(
-  "updateCompany"
+export const selectDeletedCompanyState = createSelector(
+  selectCompanyFeatureState,
+  (state) => state.deleteCompany
+);
+
+export const selectUpdatedCompanyState = createSelector(
+  selectCompanyFeatureState,
+  (state) => state.updateCompany
 );

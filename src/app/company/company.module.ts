@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppMaterialModule } from '../material.module';
 import { ListCompanyComponent } from './components/list-company/list-company.component';
@@ -13,37 +14,41 @@ import { DetailCompanyComponent } from './components/detail-company/detail-compa
 import { SharedModule } from '../shared/shared.module';
 import { LeavePageGuard } from '../leave-page.guard';
 import { ROOT_REDUCERS } from './reducers';
+import { CompanyEffect } from './effects';
+
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        SharedModule,
-        AppMaterialModule,
-        MatSnackBarModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: ListCompanyComponent,
-            },
-            {
-                path: 'create',
-                component: FormCreateCompanyComponent,
-                canDeactivate: [LeavePageGuard]
-            },
-            {
-                path: ':id',
-                component: DetailCompanyComponent,
-                canDeactivate: [LeavePageGuard]
-            },
-        ])
-    ],
-    declarations: [
-        ListCompanyComponent,
-        FormCreateCompanyComponent,
-        DetailCompanyComponent
-    ],
-    providers: [
-        LeavePageGuard,
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    AppMaterialModule,
+    MatSnackBarModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ListCompanyComponent,
+      },
+      {
+        path: 'create',
+        component: FormCreateCompanyComponent,
+        canDeactivate: [LeavePageGuard]
+      },
+      {
+        path: ':id',
+        component: DetailCompanyComponent,
+        canDeactivate: [LeavePageGuard]
+      },
+    ]),
+    StoreModule.forFeature('company', ROOT_REDUCERS),
+    EffectsModule.forRoot([CompanyEffect]),
+  ],
+  declarations: [
+    ListCompanyComponent,
+    FormCreateCompanyComponent,
+    DetailCompanyComponent
+  ],
+  providers: [
+    LeavePageGuard,
+  ]
 })
 export class CompanyModule { }

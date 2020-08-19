@@ -1,11 +1,12 @@
-import { createFeatureSelector, Action, ActionReducerMap } from "@ngrx/store";
-import { InjectionToken } from "@angular/core";
-import * as fromRouter from "@ngrx/router-store";
+import { Action, ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
+import { InjectionToken } from '@angular/core';
 
-import * as fromEmployee from "./employee.reducer";
-import * as fromCreateEmployee from "./create-employee.reducer";
-import * as fromDeleteEmployee from "./delete-employee.reducer";
-import * as fromUpdateEmployee from "./update-employee.reducer";
+import * as fromRouter from '@ngrx/router-store';
+
+import * as fromEmployee from './employee.reducer';
+import * as fromCreateEmployee from './create-employee.reducer';
+import * as fromDeleteEmployee from './delete-employee.reducer';
+import * as fromUpdateEmployee from './update-employee.reducer';
 
 export interface AppState {
   employee: fromEmployee.State;
@@ -15,9 +16,7 @@ export interface AppState {
   router: fromRouter.RouterReducerState<any>;
 }
 
-export const ROOT_REDUCERS = new InjectionToken<
-  ActionReducerMap<AppState, Action>
->("Root reducers token", {
+export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState, Action>>('Employee reducers token', {
   factory: () => ({
     employee: fromEmployee.reducer,
     createEmployee: fromCreateEmployee.reducer,
@@ -27,18 +26,26 @@ export const ROOT_REDUCERS = new InjectionToken<
   }),
 });
 
-export const selectEmployeeState = createFeatureSelector<fromEmployee.State>(
-  "employee"
+export const selectEmployeeFeatureState = createFeatureSelector<any>(
+  'employee'
 );
 
-export const selectCreateEmployeeState = createFeatureSelector<
-  fromCreateEmployee.State
->("createEmployee");
+export const selectEmployeeState = createSelector(
+  selectEmployeeFeatureState,
+  (state) => state.employee
+);
 
-export const selectDeleteEmployeeState = createFeatureSelector<
-  fromDeleteEmployee.State
->("deleteEmployee");
+export const selectCreateEmployeeState = createSelector(
+  selectEmployeeFeatureState,
+  (state) => state.createEmployee
+);
 
-export const selectUpdateEmployeeState = createFeatureSelector<
-  fromUpdateEmployee.State
->("updateEmployee");
+export const selectDeleteEmployeeState = createSelector(
+  selectEmployeeFeatureState,
+  (state) => state.deleteEmployee
+);
+
+export const selectUpdateEmployeeState = createSelector(
+  selectEmployeeFeatureState,
+  (state) => state.updateEmployee
+);
