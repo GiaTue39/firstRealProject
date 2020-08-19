@@ -11,7 +11,11 @@ export const selectAllEmployees = createSelector(
   (state) => state.employees
 );
 
-export const selectEmployeesByID = createSelector(
-  selectEmployeeState,
-  (state) => state.employeeID
-);
+export const selectEmployeesByID = (id: string) =>
+  createSelector(selectEmployeeState, (state) => {
+    if (!state.employees || state.employees.length <= 0) {
+      return null;
+    }
+
+    return state.employees.find((x) => x.id === id);
+  });

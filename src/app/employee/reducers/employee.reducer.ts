@@ -2,6 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 
 import { EmployeeActions } from "../actions";
 import { Employees, DetailEmployeeModel } from "../models";
+import { state } from "@angular/animations";
 
 export const collectionFeatureKey = "collection";
 
@@ -46,12 +47,24 @@ export const reducer = createReducer(
     return { ...state, loading: true };
   }),
 
-  on(EmployeeActions.getEmployeesByIdSuccess, (state, { employees }) => ({
-    ...state,
-    loaded: true,
-    loading: false,
-    employeeID: employees,
-  })),
+  on(EmployeeActions.getEmployeesByIdSuccess, (state, { employee }) => {
+    const employees = [...state.employees];
+    if (
+      employees.length === 0 ||
+      employees.findIndex((e) => e.id === employee.id) < 0
+    ) {
+      employees.push(employee);
+    } else {
+      const index = employees.findIndex((e) => e.id !== employee.id);
+      employees[index] = employee;
+    }
+
+    return {
+      ...state,
+      loading: false,
+      employees,
+    };
+  }),
 
   on(EmployeeActions.loadEmployeesFailure, (state, { error }) => ({
     ...state,

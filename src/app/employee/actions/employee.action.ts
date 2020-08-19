@@ -14,13 +14,13 @@ export const loadEmployeesFailure = createAction(
 );
 
 export const getEmployeesById = createAction(
-  "[Employee Page] Get Employees By ID",
+  "[Employee Page] Get Employee By ID",
   props<{ id: string }>()
 );
 
 export const getEmployeesByIdSuccess = createAction(
   "[Employee Page] Get Employees By ID Success",
-  props<{ employees: DetailEmployeeModel }>()
+  props<{ employee: DetailEmployeeModel }>()
 );
 
 export const getEmployeesByIDFailure = createAction(

@@ -35,48 +35,23 @@ export class ListEmployeesComponent implements OnInit {
     "action",
   ];
   dataSource = [];
-  isLoading = false;
 
   dataSearch = new MatTableDataSource(this.dataSource);
 
-  // dataS = new MatTableDataSource<Employees>(this.dataSource);
   selection = new SelectionModel<Employees>(true, []);
 
   employees$: Observable<Array<Employees>>;
   isLoading$: Observable<boolean>;
   isDeleted$: Observable<boolean>;
 
-  constructor(
-    private employeeService: EmployeeService,
-    public dialog: MatDialog,
-    private store: Store
-  ) {}
+  constructor(public dialog: MatDialog, private store: Store) {}
 
   ngOnInit() {
     this.employees$ = this.store.pipe(select(selectAllEmployees));
     this.isLoading$ = this.store.pipe(select(selectIsLoadingEmployees));
     this.isDeleted$ = this.store.pipe(select(selectIsDeletedEmployees));
+
     this.store.dispatch(EmployeeActions.loadEmployees());
-
-    // this.store.pipe(select(selectAllEmployees)).subscribe((data) => {
-    //   console.log("data ", data);
-    //   this.dataSource = data;
-    // });
-
-    // this.isLoading = true;
-
-    // this.employeeService.getUsers().subscribe(
-    //   (data) => {
-    //     this.dataSource = data;
-    //     this.isLoading = false;
-
-    //     this.store.dispatch(loadEmployeesSuccess({ employees: data }));
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.isLoading = false;
-    //   }
-    // );
   }
 
   isAllSelected() {
@@ -111,7 +86,6 @@ export class ListEmployeesComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogDeleteComponent, {
       width: "250px",
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed", result);
       if (result) {
@@ -121,21 +95,6 @@ export class ListEmployeesComponent implements OnInit {
   }
 
   onDelete(employee: Employees) {
-    // this.employeeService.deleteEmployee(employee.id).subscribe(() => {
-    //   const data = [];
-    // for (var i = 0; i < this.dataSource.length; i++) {
-    //   if (this.dataSource[i].id !== employee.id) {
-    //     data.push(this.dataSource[i]);
-    //   }
-    // }
-    // this.dataSource.forEach((e) => {
-    //   if (e.id !== employee.id) {
-    //     data.push(e);
-    //   }
-    // });
-    // this.dataSource = data;
-    // this.dataSource = this.dataSource.filter((e) => e.id !== employee.id);
-
     this.store.dispatch(
       DeleteEmployeeActions.deleteEmployee({ id: employee.id })
     );

@@ -23,14 +23,6 @@
           <mat-label>Name</mat-label>
           <input matInput tabindex="1" placeholder="Your name" name="contactName" [(ngModel)]="createEmployee.name"
             required />
-          <!-- 
-          <mat-error *ngIf="name.errors">
-
-            <span *ngIf="name.errors.required">
-              Name is required !
-            </span>
-
-          </mat-error> -->
         </mat-form-field>
 
 
@@ -81,11 +73,6 @@
           <mat-label>Address</mat-label>
           <input class="address" matInput tabindex="1" placeholder="Your address" name="contactAddress"
             [(ngModel)]="createEmployee.address" required />
-          <!-- <mat-error *ngIf="f.controls.contactAddress.errors">
-            <span *ngIf="f.controls.contactAddress.errors.required">
-              Address is required !
-            </span>
-          </mat-error> -->
         </mat-form-field>
       </div>
 
