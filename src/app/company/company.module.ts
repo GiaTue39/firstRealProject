@@ -4,12 +4,15 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { StoreModule } from '@ngrx/store';
+
 import { AppMaterialModule } from '../material.module';
 import { ListCompanyComponent } from './components/list-company/list-company.component';
 import { FormCreateCompanyComponent } from './components/form-create-company/form-create-company.component';
 import { DetailCompanyComponent } from './components/detail-company/detail-company.component';
 import { SharedModule } from '../shared/shared.module';
 import { LeavePageGuard } from '../leave-page.guard';
+import { ROOT_REDUCERS } from './reducers';
 @NgModule({
     imports: [
         CommonModule,
@@ -17,7 +20,6 @@ import { LeavePageGuard } from '../leave-page.guard';
         SharedModule,
         AppMaterialModule,
         MatSnackBarModule,
-
         RouterModule.forChild([
             {
                 path: '',

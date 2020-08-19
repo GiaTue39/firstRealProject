@@ -65,8 +65,8 @@ export class CompanyEffect {
     );
   });
 
-  changedName$ = createEffect(() =>
-    this.actions$.pipe(
+  changedName$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(CompanyActions.DoiTen),
       exhaustMap((action) => {
         return this.companyService.layTruc().pipe(
@@ -76,7 +76,8 @@ export class CompanyEffect {
           catchError((error) => of(CompanyActions.DoiTenFailure({ error })))
         );
       })
-    ));
+    );
+  });
 
   createCompany$ = createEffect(() => {
     return this.actions$.pipe(

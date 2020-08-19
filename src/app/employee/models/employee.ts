@@ -4,4 +4,7 @@ export interface Employees {
   phone: string;
   email: string;
   status: string;
+  birthday?: string;
+  avatarURL?: string;
+  address?: string;
 }
