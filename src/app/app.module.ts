@@ -19,10 +19,8 @@ import { AppMaterialModule } from './material.module';
 import { LeavePageGuard } from './leave-page.guard';
 import { ROOT_REDUCERS } from "./company/reducers";
 import { environment } from 'src/environments/environment';
-import { CompanyEffect } from "./company/company.effect";
-import { CreateCompanyEffect } from "./company/create-company.effect";
-import { DeleteCompanyEffect } from "./company/delete-company.effect";
-import { UpdateCompanyEffect } from "./company/update-company.effect";
+import { CompanyEffect } from "./company/effects/company.effect";
+
 
 export function logger(reducer) {
   return (state, action) => {
@@ -51,7 +49,6 @@ const metaReducers = !environment.production ? [logger] : [];
     StoreModule.forRoot(ROOT_REDUCERS, {
       metaReducers,
       runtimeChecks: {
-        // strictStateImmutability and strictActionImmutability are enabled by default
         strictStateSerializability: true,
         strictActionSerializability: true,
         strictActionWithinNgZone: true,
@@ -85,19 +82,19 @@ const metaReducers = !environment.production ? [logger] : [];
      *
      * See: https://ngrx.io/guide/effects#registering-root-effects
      */
- 
-    EffectsModule.forRoot([CompanyEffect,CreateCompanyEffect,DeleteCompanyEffect, UpdateCompanyEffect]),
-    
-    AppRoutingModule,
 
+    EffectsModule.forRoot([CompanyEffect]),
+    AppRoutingModule,
     AuthModule,
 
-
   ],
+
   providers: [
     LeavePageGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
   ],
+
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

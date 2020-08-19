@@ -1,27 +1,27 @@
 import { createReducer, on } from "@ngrx/store";
-import { UpdateCompanyActions} from "../actions";
+import { UpdateCompanyActions } from "../actions";
 import { Company } from '../models/company';
 export const collectionFeatureKey = "collection";
 export interface State {
   updated: boolean;
-  error:string;
-  company:Company;
+  error: string;
+  company: Company;
 }
 const initialState: State = {
-    updated: false,
+  updated: false,
   error: "",
-  company:null
+  company: null
 };
 export const reducer = createReducer(
   initialState,
-  
+
   on(UpdateCompanyActions.updateCompany, (state) => ({
     ...state
   })),
 
-  on(UpdateCompanyActions.updateCompanySuccess, (state, {company}) => ({
+  on(UpdateCompanyActions.updateCompanySuccess, (state, { company }) => ({
     ...state,
-    updated:true,
+    updated: true,
     company
   })),
 

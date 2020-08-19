@@ -1,8 +1,8 @@
 import { createAction, props } from "@ngrx/store";
-import {Company} from "../models/company";
+import { Company } from "../models/company";
 
 export const createCompany = createAction("[Create Company Page] Create Company",
-props<{ company: Company }>()
+  props<{ company: Company }>()
 );
 
 export const createCompanySuccess = createAction(

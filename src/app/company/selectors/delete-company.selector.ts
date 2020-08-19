@@ -2,7 +2,7 @@ import { createSelector } from "@ngrx/store";
 import { selectDeletedCompanyState } from "../reducers";
 
 export const selectIsDeleteCompany = createSelector(
-    selectDeletedCompanyState,
+  selectDeletedCompanyState,
   (state) => state.deleted
 );
 

@@ -8,8 +8,6 @@
 
 .menu-left {
   background-color: rgb(30, 33, 41);
-  /* display: none; */
-  /* width: 0; */
   z-index: 2;
   overflow: hidden;
   transition: width 300ms ease;
@@ -94,8 +92,6 @@
   cursor: pointer;
 }
 
-
-
 /* ---------------- */
 .open-menu {
   margin-bottom: 10px;
@@ -133,147 +129,6 @@ img {
   z-index: 99;
 }
 
-/* .header {
-  border-bottom: 1px solid gray;
-}
-
-span {
-  color: gray;
-}
-
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-.title {
-  border: 1px solid rgb(240, 232, 232);
-  padding: 3px;
-  margin: 10px 2px;
-}
-
-.title2 {
-  padding: 50px;
-}
-
-.img {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.mr {
-  font-size: 15px;
-  padding: 20px;
-  color: gray;
-}
-
-/* .max {
-  width: 40px;
-
-  height: 40px;
-  line-height: 40px;
-  margin: 0 0 0 10px;
-  border-radius: 50%;
-  font-size: 17px;
-  font-weight: 600;
-  text-align: center;
-} */
-
-/* .content {
-  display: flex;
-}
-
-.menu-left {
-
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-} */
-
-/* .menu-left a {
-  padding: 10px 10px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
-  transition: 0.5s;
-}
-
-
-
-.menu-left .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.menu{
-  display: flex;
-  align-items: center;
-}
-
-@media screen and (max-height: 300px) {
-  .menu-left {padding-top: 20px;}
-  .menu-left a {font-size: 10px;}
-}
-
-.menu-left a:hover{
-  cursor: pointer;
-}
-
-Thumbnail 
-.menu-left mat-icon {
-  width: 20%;
-  height: 20%;
-  transition-duration: 0.5s;
-    Safari & Google Chrome  
-  -webkit-transition-duration: 0.5s;
-   Mozilla Firefox  
-  -moz-transition-duration: 0.5s;
-  Opera  
-  -o-transition-duration: 0.5s;
-   IE 9  
-  -ms-transition-duration: 0.5s;
-}
-
-Hover chuột vào thumbnail 
-.menu-left mat-icon:hover {
-  transform: scale(1.2);
-  Safari & Google Chrome  
-  -webkit-transform: scale(1.2);
-  Mozilla Firefox 
-  -moz-transform: scale(1.2);
-  Opera  
-  -o-transform: scale(1.2);
-   IE 9  
-  -ms-transform: scale(1.2);
-  cursor: pointer;
-}
-
-
-
-
-
-.icon {
-  margin: 20px 20px;
-}
-
-.open-menu{
-  margin-bottom: 10px;
-  margin-right: 10px;
-  font-size:30px;
-  cursor:pointer;
-
-} */
 .content-right {
   height: calc(100% - 64px);
   overflow-y: auto;

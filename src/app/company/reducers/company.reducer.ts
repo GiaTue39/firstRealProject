@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 
-import { CompanyActions} from "../actions";
+import { CompanyActions } from "../actions";
 import { Company } from "../models/company";
 import { DetailCompanyModel } from '../models/detailcompany';
 
@@ -11,7 +11,7 @@ export interface State {
   loading: boolean;
   companies: Array<Company>;
   companyById: DetailCompanyModel;
-  error:string;
+  error: string;
   nameChanged: string;
 }
 
@@ -21,7 +21,7 @@ const initialState: State = {
   companies: undefined,
   companyById: undefined,
   error: undefined,
-  nameChanged: null
+  nameChanged: undefined,
 };
 
 export const reducer = createReducer(
@@ -30,14 +30,14 @@ export const reducer = createReducer(
   on(CompanyActions.loadCompanies, (state) => {
     return { ...state, loading: true };
   }),
-  
-  on(CompanyActions.loadCompaniesSuccess, (state, {companies }) => ({
+
+  on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => ({
     ...state,
     loaded: true,
     loading: false,
     companies,
   })),
-  
+
   on(CompanyActions.loadCompaniesFailure, (state, { error }) => ({
     ...state,
     loaded: false,
@@ -48,14 +48,14 @@ export const reducer = createReducer(
   on(CompanyActions.loadCompanyById, (state) => {
     return { ...state, loading: true };
   }),
-  
+
   on(CompanyActions.loadCompanyByIdSuccess, (state, { company }) => ({
     ...state,
     loaded: true,
     loading: false,
     companyById: company
   })),
-  
+
   on(CompanyActions.loadCompaniesFailure, (state, { error }) => ({
     ...state,
     loaded: false,
@@ -64,26 +64,27 @@ export const reducer = createReducer(
   })),
 
   /////
-  
-  // on(CompanyActions.DoiTen, (state) => {
-  //   return { ...state, loading: true};
-  // }),
-  
-  // on(CompanyActions.DoiTenSuccess, (state, { name }) => ({
-  //   ...state,
-  //   loaded: true,
-  //   loading: false,
-  //   nameChanged : name
-  // })),
-  
-  // on(CompanyActions.DoiTenFailure, (state, { error }) => ({
-  //   ...state,
-  //   loaded: false,
-  //   loading: false,
-  //   error,
-  // }))
+
+  on(CompanyActions.DoiTen, (state) => {
+    return { ...state, loading: true };
+  }),
+
+  on(CompanyActions.DoiTenSuccess, (state, { name }) => ({
+    ...state,
+    loaded: true,
+    loading: false,
+    nameChanged: name
+  })),
+
+  on(CompanyActions.DoiTenFailure, (state, { error }) => ({
+    ...state,
+    loaded: false,
+    loading: false,
+    error,
+  }))
 );
 
 export const getLoaded = (state: State) => state.loaded;
 export const getLoading = (state: State) => state.loading;
 export const getCompanyById = (state: State) => state.companyById;
+export const getDoiTen = (state: State) => state.nameChanged;

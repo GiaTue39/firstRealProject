@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 import { Credential } from "../credential";
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -28,17 +28,9 @@ export class SignInPageComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    // if (form.invalid) {
-    //   console.log('invalid');
-    //   return;
-    // }
-
-    // console.log(form.controls);
-
     this.http.post('http://localhost:3000/auth/login', this.credential).subscribe(
       (data:any) => {
         console.log(data);
-        // console.log(data.accessToken);
         const getToken = data.accessToken;
         localStorage.setItem("token", getToken);
         localStorage.setItem('role', data.role);
@@ -48,11 +40,6 @@ export class SignInPageComponent implements OnInit {
         console.log(error);
       }
     )
-
-    // if(this.credential.username === 'kimtruc' && this.credential.password === '123456') {
-    //   localStorage.setItem("user",this.credential.username);
-    //   this.message = 'Login successful!';
-    // }
   }
   
 }

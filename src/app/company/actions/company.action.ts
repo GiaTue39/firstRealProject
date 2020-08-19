@@ -3,7 +3,7 @@ import { DetailCompanyModel } from '../models/detailcompany';
 
 export const loadCompanies = createAction(
   "[Company Page] Load Companies",
-  props<{ }>()
+  props<{}>()
 );
 
 export const loadCompaniesSuccess = createAction(
@@ -31,16 +31,16 @@ export const loadCompanyByIdFailure = createAction(
   props<{ error: any }>()
 );
 /////////////
-// export const DoiTen = createAction(
-//   "[Company Page] Doi Ten",
-// );
+export const DoiTen = createAction(
+  "[Company Page] Doi Ten",
+);
 
-// export const DoiTenSuccess = createAction(
-//   "[Company Page] Doi Ten Success",
-//   props<{ name: string }>()
-// );
+export const DoiTenSuccess = createAction(
+  "[Company Page] Doi Ten Success",
+  props<{ name: string }>()
+);
 
-// export const DoiTenFailure = createAction(
-//   "[Company Page] Doi Ten Failure",
-//   props<{ error: any }>()
-// );
+export const DoiTenFailure = createAction(
+  "[Company Page] Doi Ten Failure",
+  props<{ error: any }>()
+);

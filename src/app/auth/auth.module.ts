@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthGuard } from './auth.guard';
 import { AuthInterceptor } from './auth-interceptor';
 import { BaseUrlInterceptor } from './base-url-interceptor';
-import { AuthGuard } from './auth.guard';
 import { SigninGuard } from './signin.guard';
 import { UserRoleGuard } from './user.guard';
 
@@ -14,11 +14,11 @@ import { UserRoleGuard } from './user.guard';
     CommonModule
   ],
   providers: [
-    AuthGuard, 
+    AuthGuard,
     SigninGuard,
     UserRoleGuard,
     {
-      provide : HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
     },

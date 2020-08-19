@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { selectCompanyState } from "../reducers";
+import { selectCompanyState, selectRenameState } from "../reducers";
 
 export const selectIsLoadingCompanies = createSelector(
   selectCompanyState,
@@ -15,3 +15,11 @@ export const selectCompanyById = createSelector(
   selectCompanyState,
   (state) => state.companyById
 );
+
+///////
+
+export const selectAllRename = createSelector(
+  selectRenameState,
+  (state) => state.nameChanged
+);
+

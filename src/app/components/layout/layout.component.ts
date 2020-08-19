@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit {
       icon: 'person'
     }
   ]
+
   images = [
 
     'img/2.png',
@@ -38,7 +39,7 @@ export class LayoutComponent implements OnInit {
     'img/8.png',
   ];
 
-  isMenuOpen = true;
+  isMenuOpen = false;
   menuSize = 'lg';
 
   onLogoutBtnClicked(): void {
@@ -49,33 +50,18 @@ export class LayoutComponent implements OnInit {
   openNav() {
     this.isMenuOpen = true;
     this.menuSize = 'lg';
-
-
     this.hide = true;
-    // document.getElementById("close-menu-left").style.width = "250px";
-    // document.getElementById("fit-menu").style.display = "block";
-    // document.getElementById("close-menu-left").style.display = "block";
   }
 
   closeNav() {
     this.hide = false;
-    // document.getElementById("close-menu-left").style.width = "100px";
-
     this.isMenuOpen = true;
     this.menuSize = 'sm';
-    // document.getElementById("fit-menu").style.width="100%";
-    // document.getElementById("fit-menu").style.display = "none";
-    // document.getElementById("btnclose").style.display = "none";
   }
 
   closeNav2() {
     this.hide = false;
     this.isMenuOpen = false;
-    // document.getElementById("close-menu-left").style.width = "0px"; còn xuất hiện icon
-    // document.getElementById("close-menu-left").style.backgroundColor="red";
-    // document.getElementById("fit-menu").style.width="100%";
-    // document.getElementById("close-menu-left").style.display = "none";
-    // document.getElementById("btnclose").style.display = "none";
   }
 
 }

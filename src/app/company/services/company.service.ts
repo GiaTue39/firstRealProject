@@ -48,8 +48,8 @@ export class CompanyService {
     return this.http.put<DetailCompanyModel>('http://localhost:3000/api/companies/' + id, model);
   }
 
-  // layTruc(): Observable<string> {
-  //   return of('Truccccccccccc');
-  // }
+  layTruc(): Observable<any> {
+    return of('Truccccccccccc');
+  }
 
 }

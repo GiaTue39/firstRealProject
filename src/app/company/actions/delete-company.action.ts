@@ -1,13 +1,12 @@
 import { createAction, props } from "@ngrx/store";
-import {Company} from "../models/company";
 
 export const deleteCompany = createAction("[Delete Company Page] Delete Company",
-props<{ id:string }>()
+  props<{ id: string }>()
 );
 
 export const deleteCompanySuccess = createAction(
   "[Delete Company Page] Delete Company Success",
-  props<{ id: string}>()
+  props<{ id: string }>()
 );
 
 export const deleteCompanyFailure = createAction(
