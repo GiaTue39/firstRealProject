@@ -6,14 +6,14 @@
     <h1>DETAIL EMPLOYEE</h1>
   </div>
 
-  <div class="info">
+  <div class="info" *ngIf="detailEmployee">
     <div class="header">
       <div class="avatar">
-        <img class="fix-img" src="{{detailEmployee.avatarURL}}">
+        <img class="fix-img" src="{{detailEmployee.url || detailEmployee.avatarURL}}">
       </div>
       <div class="url">
         <input class="insert-url" name="url" type="text" placeholder="Insert URL for Avatar"
-          [(ngModel)]="detailEmployee.avatarURL">
+          [(ngModel)]="detailEmployee.url || detailEmployee.avatarURL">
       </div>
     </div>
 
@@ -22,12 +22,12 @@
         <div class="info-name-birthday">
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput tabindex="1" placeholder="Your name" name="contactName" [(ngModel)]="detailEmployee.name" />
+            <input matInput tabindex="1" placeholder="Your name" name="name" [(ngModel)]="detailEmployee.name" />
           </mat-form-field>
 
           <mat-form-field class=" example-full-width" appearance="outline">
             <mat-label>Birthday</mat-label>
-            <input matInput name="dob" [value]="detailEmployee.birthday">
+            <input matInput name="birthday" value="{{detailEmployee.birthday| date:'medium'}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
           </mat-form-field>
@@ -37,13 +37,13 @@
           <h2>Contact info</h2>
           <mat-form-field appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput tabindex="1" placeholder="Your phone number" name="contactPhone"
+            <input matInput tabindex="1" placeholder="Your phone number" name="phone"
               [(ngModel)]="detailEmployee.phone" />
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput tabindex="1" placeholder="Your email" name="contactEmail"
+            <input matInput tabindex="1" placeholder="Your email" name="email"
               [(ngModel)]="detailEmployee.email" />
           </mat-form-field>
 
@@ -56,7 +56,7 @@
 
       </mat-card>
       <div class="button">
-        <button mat-raised-button color="primary" type="submit" [disabled]="(isSaved$ | async)">Save</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="(isUpdating$ | async)">Save</button>
       </div>
     </form>
 

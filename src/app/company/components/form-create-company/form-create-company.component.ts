@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 import { CreateCompanyModel } from "../../models/createcompany";
-import { CompanyService } from '../../services/company.service';
 import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 import { CreateCompanyActions } from '../../actions';
 import { Store, select } from '@ngrx/store';
@@ -13,6 +10,7 @@ import { Observable } from 'rxjs';
 import {
   selectIsCreateCompany,
   selectAllCompanies,
+  selectDangGuiYeuCauLenServerDeTaoCongTy
 } from "../../selectors/create-company.selector";
 @Component({
   selector: 'app-form-create-company',
@@ -31,29 +29,31 @@ export class FormCreateCompanyComponent implements OnInit, CanDeactivateComponen
   };
 
   companies$: Observable<any>;
-  isCreated$: Observable<boolean>;
+  isCreated$: Observable<boolean>;             
+  selectDangGuiYeuCauLenServerDeTaoCongTy$: Observable<boolean>;
+  isSubmitted  = false;     
 
   constructor(
-    private companyService: CompanyService,
-    private snackBar: MatSnackBar,
-    private router: Router,
     private store: Store<any>
   ) { }
 
   ngOnInit(): void {
     this.companies$ = this.store.pipe(select(selectAllCompanies));
     this.isCreated$ = this.store.pipe(select(selectIsCreateCompany));
+    this.selectDangGuiYeuCauLenServerDeTaoCongTy$ = this.store.pipe(select(selectDangGuiYeuCauLenServerDeTaoCongTy));
   }
 
   componentCanDeactivate(): boolean {
-    let notify: boolean;
-    if (this.form.dirty) {
+    let notify = true;
+    if (this.form.dirty && !this.isSubmitted) {
       notify = confirm("Do u want to leave CREATE COMPANY page ?");
     }
     return notify;
   }
 
   onSubmit(company: NgForm) {
+    console.log(company.value);
+    this.isSubmitted = true;
 
     this.store.dispatch(
       CreateCompanyActions.createCompany({ company: company.value })

@@ -9,9 +9,10 @@ import { UpdateCompanyActions, CompanyActions } from '../../actions';
 import { loadCompanyById } from '../../actions/company.action';
 import { DetailCompanyModel } from '../../models/detailcompany';
 import { selectCompanyById, selectAllRename } from '../../selectors/company.selector';
-import { selectIsUpdateCompany } from "../../selectors/update-company.selector";
+import { selectIsUpdateCompany, selectUpdating } from "../../selectors/update-company.selector";
 
 import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-detail-company',
@@ -25,6 +26,7 @@ export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
 
   isUpdated$: Observable<boolean>;
   detailCompany$: Observable<DetailCompanyModel>;
+  isUpdating$: Observable<boolean>;
 
   trucDay$: Observable<string>;
 
@@ -38,14 +40,16 @@ export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
 
     this.detailCompany$ = this.store.pipe(select(selectCompanyById));
     this.isUpdated$ = this.store.pipe(select(selectIsUpdateCompany));
+    this.isUpdating$ = this.store.pipe(select(selectUpdating));
 
     this.trucDay$ = this.store.pipe(select(selectAllRename));
     this.trucDay$.subscribe(x => console.log(x));
 
 
     this.detailCompany$.subscribe(detailCompany => {
+      console.log(detailCompany);
       if (detailCompany) {
-        this.detailCompany = detailCompany
+        this.detailCompany = _.cloneDeep(detailCompany)
       }
     });
   }
@@ -53,7 +57,7 @@ export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
   ngOnInit(): void { }
 
   componentCanDeactivate(): boolean {
-    let notify: boolean;
+    let notify = true;
 
     if (this.form.dirty) {
       notify = confirm("Do u want to leave DETAIL COMPANY page ?");

@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LeavePageGuard } from '../leave-page.guard';
 import { ROOT_REDUCERS } from './reducers';
 import { CompanyEffect } from './effects';
+import { TranslocoRootModule } from '../transloco/transloco-root.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { CompanyEffect } from './effects';
     FormsModule,
     SharedModule,
     AppMaterialModule,
+    TranslocoRootModule,
     MatSnackBarModule,
     RouterModule.forChild([
       {

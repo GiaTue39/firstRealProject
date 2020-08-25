@@ -10,7 +10,8 @@
 .back {
   display: flex;
   align-items: center;
-  margin-bottom: 35px;
+  margin-left: 15rem;
+  margin-top: 5rem;
   a {
     margin-bottom: 17px;
   }
@@ -23,6 +24,7 @@ h1 {
 .info {
   display: flex;
   flex-direction: column;
+  margin: 30px 280px;
 }
 
 .header {
@@ -66,17 +68,17 @@ input {
 }
 
 .avatar {
-  width: 150px;
-  height: 150px;
   border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 30px;
+  border-radius: 10%;
 }
 
 .url {
   margin-right: 30px;
+
 }
 
 .insert-url {
@@ -94,9 +96,17 @@ input {
 }
 
 .fix-img {
-  max-width: 100%;
+  width: 100px;
+    min-height: 100px;
+    border-radius: 10%;
 }
 
 ::ng-deep .content-right {
   background-color: aliceblue;
+}
+
+input {
+  caret-color: auto;
+  display: block;
+  margin-bottom: .5em;
 }

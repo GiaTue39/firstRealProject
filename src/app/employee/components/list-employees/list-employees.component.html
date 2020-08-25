@@ -1,7 +1,6 @@
 <div class="container">
-  <h1>Employees</h1>
-
   <div class="filter">
+    <h1>{{ 'employee' | transloco }}</h1>
     <mat-form-field appearance="outline" class="sort">
       <mat-label>Filter</mat-label>
       <mat-select>
@@ -18,13 +17,16 @@
         placeholder=" Search something..."
       />
     </mat-form-field>
-    <a
+    <!-- <a
       class="create-btn"
       mat-raised-button
       color="primary"
       routerLink="./create"
       >Create Employee</a
-    >
+    > -->
+    <span class="material-icons add-employee"  routerLink="./create">
+      person_add
+      </span>
   </div>
 
   <div class="progress-bar">
@@ -58,24 +60,24 @@
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name || element.contactName }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="phone">
       <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.phone }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.phone || element.contactPhone}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <a href="#">{{ element.email }}</a>
+        <a href="#">{{ element.email || element.contactEmail}}</a>
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.status }} </mat-cell>
+    <ng-container matColumnDef="birthday">
+      <mat-header-cell *matHeaderCellDef> Birthday </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.birthday || element.dob }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
@@ -85,7 +87,7 @@
           aria-hidden="false"
           aria-label="Example home icon"
           (click)="openDialog(element); $event.stopPropagation()"
-          [disabled]="isDeleted$ | async"
+          [dataSource]="isDeleted$ | async"
           >delete</mat-icon
         >
       </mat-cell>
@@ -103,6 +105,3 @@
   <mat-paginator [length]="26" [pageSize]="10" [pageSizeOptions]="[5, 10, 26]">
   </mat-paginator>
 </div>
-
-<!-- <button mat-raised-button color="accent"
-          (click)="openDialog(element); $event.stopPropagation()" [disabled]="(isDeleted$ | async)">Delete</button> -->

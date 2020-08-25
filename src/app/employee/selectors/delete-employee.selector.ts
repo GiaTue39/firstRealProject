@@ -3,5 +3,9 @@ import { selectDeleteEmployeeState } from "../reducers";
 
 export const selectIsDeletedEmployees = createSelector(
   selectDeleteEmployeeState,
-  (state) => state.deleted
+  (state) => {
+    console.log(state);
+
+    return !!state.deleted;
+  }
 );

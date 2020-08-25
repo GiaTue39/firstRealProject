@@ -12,7 +12,6 @@ import { MatSlideToggleChange } from "@angular/material/slide-toggle";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { NgForm } from "@angular/forms";
-import { CanDeactivateComponent } from "src/app/can-deactivate.component";
 
 import { Store, select } from "@ngrx/store";
 import { CreateEmployeeActions } from "../../actions";
@@ -21,13 +20,15 @@ import {
   selectIsCreatedEmployees,
   selectEmployees,
 } from "../../selectors/create-employee.selector";
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: "app-create-employee",
   templateUrl: "./create-employee.component.html",
   styleUrls: ["./create-employee.component.scss"],
 })
-export class CreateEmployeeComponent implements OnInit, CanDeactivateComponent {
+export class CreateEmployeeComponent implements OnInit {
   @Output() change: EventEmitter<MatSlideToggleChange>;
   @ViewChild("form") form: NgForm;
 
@@ -50,8 +51,12 @@ export class CreateEmployeeComponent implements OnInit, CanDeactivateComponent {
     private employeeService: EmployeeService,
     private router: Router,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     private store: Store
   ) {}
+  // componentCanDeactivate(): boolean | Observable<boolean> {
+  //   throw new Error("Method not implemented.");
+  // }
 
   ngOnInit(): void {
     this.employees$ = this.store.pipe(select(selectEmployees));
@@ -64,19 +69,26 @@ export class CreateEmployeeComponent implements OnInit, CanDeactivateComponent {
   };
 
   onSubmit(employee: NgForm) {
+    const employeeModel = {
+      ...employee.value,
+      birthday: employee.value.birthday.toISOString(),
+    }
     this.store.dispatch(
-      CreateEmployeeActions.createEmployee({ employee: employee.value })
+      CreateEmployeeActions.createEmployee({ employee: employeeModel })
     );
   }
 
-  componentCanDeactivate(): boolean {
-    // console.log(this.form);
-    let notify: boolean;
-    if (this.form.dirty) {
-      notify = confirm("Do u want to leave CREATE EMPLOYEE page ?");
-    }
-    return notify;
-  }
+  // componentCanDeactivate(): Observable<boolean> | boolean {
+  //   //console.log(this.form);
+  //   let notify = true;
+  //   if (this.form.dirty) {
+  //     notify = confirm("Do u want to leave CREATE EMPLOYEE page ?");
+  //     return this.dialog.open(DialogDeleteComponent, {
+  //       width: '400px'
+  //     }).afterClosed().pipe(map(result => result === false));
+  //   }
+  //   return true;
+  // }
 
   onChange(ob: MatSlideToggleChange) {
     this.createEmployee.status = ob.checked ? "Enable" : "Disable";

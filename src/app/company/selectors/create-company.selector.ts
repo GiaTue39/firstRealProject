@@ -10,3 +10,8 @@ export const selectAllCompanies = createSelector(
   selectCreateCompanyState,
   (state) => state.company
 );
+
+export const selectDangGuiYeuCauLenServerDeTaoCongTy = createSelector(
+  selectCreateCompanyState,
+  (state) => state.dangGuiYeuCauLenServerDeTaoCongTy
+);

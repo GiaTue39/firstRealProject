@@ -15,6 +15,7 @@ import { Store, select } from "@ngrx/store";
 import {
   selectIsLoadingCompanies,
   selectAllCompanies,
+  selectAllCompany,
 } from "../../selectors/company.selector";
 
 import {
@@ -22,6 +23,7 @@ import {
 } from "../../selectors/delete-company.selector";
 
 import { Observable } from "rxjs";
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-list-company',
@@ -40,16 +42,19 @@ export class ListCompanyComponent implements OnInit {
   isLoading$: Observable<boolean>;
   isDeleted$: Observable<boolean>;
 
-
-
   constructor(
     public dialog: MatDialog,
     private companyService: CompanyService,
-    private store: Store
+    private store: Store,
+    private translocoService: TranslocoService
   ) {
     this.store.dispatch(CompanyActions.loadCompanies({}));
 
-    this.companies$ = this.store.pipe(select(selectAllCompanies));
+    this.companies$ = this.store.pipe(select(selectAllCompany));
+     this.companies$.subscribe((data) => {
+      console.log(data)
+      this.dataSource = data;
+    })
     this.isLoading$ = this.store.pipe(select(selectIsLoadingCompanies));
 
   }

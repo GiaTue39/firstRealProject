@@ -6,5 +6,9 @@ export const selectIsUpdateCompany = createSelector(
   (state) => state.updated
 );
 
+export const selectUpdating = createSelector(
+  selectUpdatedCompanyState,
+  (state) => state.updating
+);
 
 

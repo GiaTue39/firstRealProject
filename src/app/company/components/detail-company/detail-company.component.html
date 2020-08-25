@@ -4,22 +4,22 @@
       <mat-icon>arrow_back</mat-icon>
     </a>
     <span page-title>Detail Company</span>
+    
   </app-page-header>
 
-  <app-page-content>
+  <app-page-content *ngIf="detailCompany">
     <form container name="detailCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
       <mat-card class="card1">
         <div class="URL">
-          <img src="{{detailCompany.logoURL|| 'assets/images/logo.PNG'}}">
+          <img class="logo-img" src="{{detailCompany.logoURL || detailCompany.url}}">
           <mat-form-field appearance="outline" class="logoURL">
             <mat-label>Logo URL</mat-label>
-            <input class="logo" tabindex="1" matInput type="text" name="name" required
-              [(ngModel)]="detailCompany.logoURL">
-
+            <input class="logo" tabindex="1" matInput type="text" name="logoURL" required
+              [(ngModel)]="detailCompany.logoURL || detailCompany.url">
+            
           </mat-form-field>
-          <mat-slide-toggle>Active</mat-slide-toggle>
         </div>
-
+        
         <mat-form-field appearance="outline" class="name">
           <mat-label>Name</mat-label>
           <input tabindex="2" matInput type="text" name="name" required #username="ngModel"
@@ -59,7 +59,7 @@
       </mat-card>
 
       <div class="example-button-row">
-        <button mat-raised-button color="accent" type="submit" [disabled]="( isUpdated$ | async)">Save</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="( isUpdating$ | async)">Save</button>
       </div>
 
       <p>

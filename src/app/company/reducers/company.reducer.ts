@@ -1,12 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
 
-import { CompanyActions } from "../actions";
+import { CompanyActions, DeleteCompanyActions } from "../actions";
 import { Company } from "../models/company";
 import { DetailCompanyModel } from '../models/detailcompany';
 
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
+import * as _ from 'lodash';
+import { from } from 'rxjs';
+
 export const collectionFeatureKey = "collection";
 
-export interface State {
+export interface State extends EntityState<Company> {
   loaded: boolean;
   loading: boolean;
   companies: Array<Company>;
@@ -15,14 +20,23 @@ export interface State {
   nameChanged: string;
 }
 
-const initialState: State = {
+export function selectCompanyId(a: Company): string {
+  return a.id;
+}
+
+export const companyAdapter: EntityAdapter<Company> = createEntityAdapter<Company>({
+  selectId: selectCompanyId,
+});
+
+
+const initialState: State = companyAdapter.getInitialState({
   loaded: false,
   loading: false,
   companies: undefined,
   companyById: undefined,
   error: undefined,
   nameChanged: undefined,
-};
+});
 
 export const reducer = createReducer(
   initialState,
@@ -31,12 +45,15 @@ export const reducer = createReducer(
     return { ...state, loading: true };
   }),
 
-  on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => ({
-    ...state,
-    loaded: true,
-    loading: false,
-    companies,
-  })),
+  on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => {
+    return companyAdapter.addAll(companies, {...state, loading:false, loaded:true })
+  }),
+
+  // on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => adapter.addAll({},{
+  //   ...state,
+  //   loaded: true,
+  //   loading: false,
+  // })),
 
   on(CompanyActions.loadCompaniesFailure, (state, { error }) => ({
     ...state,
@@ -80,6 +97,27 @@ export const reducer = createReducer(
     ...state,
     loaded: false,
     loading: false,
+    error,
+  })),
+  
+  on(DeleteCompanyActions.deleteCompany, (state) => ({
+    ...state
+  })),
+
+  on(DeleteCompanyActions.deleteCompanySuccess, (state,  id ) => {
+    let newCompanies = _.cloneDeep(state.companies);
+    newCompanies = newCompanies.filter((company) => company.id !== id.id);
+    return ({
+      ...state,
+      loading: false,
+      loaded: true,
+      companies: newCompanies
+    })
+  }),
+
+  on(DeleteCompanyActions.deleteCompanyFailure, (state, { error }) => ({
+    ...state,
+    deleted: false,
     error,
   }))
 );

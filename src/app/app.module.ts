@@ -17,6 +17,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppMaterialModule } from './material.module';
 import { LeavePageGuard } from './leave-page.guard';
 import { environment } from 'src/environments/environment';
+import { TranslocoRootModule } from './transloco/transloco-root.module';
 
 // console.log all actions
 export function logger(reducer) {
@@ -56,7 +57,8 @@ const metaReducers = !environment.production ? [logger] : [];
       name: "NgRx Book Store App",
     }),
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    TranslocoRootModule
   ],
   providers: [
     LeavePageGuard,

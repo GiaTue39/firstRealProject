@@ -8,6 +8,7 @@ import {
   tap,
   delay,
   exhaustMap,
+  filter,
 } from "rxjs/operators";
 
 import {
@@ -19,6 +20,7 @@ import {
 import { EmployeeService } from "../services";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Employees } from '../models';
 
 @Injectable()
 export class EmployeeEffect {
@@ -34,7 +36,7 @@ export class EmployeeEffect {
       ofType(EmployeeActions.loadEmployees),
       switchMap(() =>
         this.employeeService.getEmployees().pipe(
-          delay(3000),
+          // delay(3000),
           map((data) =>
             EmployeeActions.loadEmployeesSuccess({ employees: data })
           ),
@@ -77,7 +79,7 @@ export class EmployeeEffect {
         this.employeeService.createEmployee(employee).pipe(
           map((res) => {
             return CreateEmployeeActions.createEmployeesSuccess({
-              employee: res,
+              employee: res
             });
           }),
           catchError((error) =>
@@ -96,13 +98,13 @@ export class EmployeeEffect {
     return this.actions$.pipe(
       ofType(CreateEmployeeActions.createEmployeesSuccess),
       tap(() => {
-        this.router.navigate(["/employees"]);
         this.snackBar.open("Created successfully ! :D", "Cancel", {
           duration: 2000,
         });
+        this.router.navigate(["/employees"]);
       })
     );
-  });
+  }, {dispatch: false});
 
   deleteEmployee$ = createEffect(() =>
     this.actions$.pipe(
@@ -110,7 +112,8 @@ export class EmployeeEffect {
       map((action) => action.id),
       exhaustMap((id: string) =>
         this.employeeService.deleteEmployee(id).pipe(
-          map(() => DeleteEmployeeActions.deleteEmployeeSuccess({ id })),
+          map(() => DeleteEmployeeActions.deleteEmployeeSuccess({ id })
+          ),
           catchError((error) =>
             of(DeleteEmployeeActions.deleteEmployeeFailure({ error }))
           )

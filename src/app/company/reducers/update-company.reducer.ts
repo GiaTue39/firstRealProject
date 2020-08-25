@@ -6,28 +6,33 @@ export interface State {
   updated: boolean;
   error: string;
   company: Company;
+  updating: boolean;
 }
 const initialState: State = {
   updated: false,
   error: "",
-  company: null
+  company: null,
+  updating: false,
 };
 export const reducer = createReducer(
   initialState,
 
   on(UpdateCompanyActions.updateCompany, (state) => ({
-    ...state
+    ...state,
+    updating: true,
   })),
 
   on(UpdateCompanyActions.updateCompanySuccess, (state, { company }) => ({
     ...state,
     updated: true,
+    updating: false,
     company
   })),
 
   on(UpdateCompanyActions.updateCompanyFailure, (state, { error }) => ({
     ...state,
     updated: false,
+    updating: false,
     error,
   }))
 );

@@ -1,15 +1,23 @@
 // * {
 //   background-color: aliceblue;
 // }
+.head-back{
+  display: flex;
+
+}
+
+.mat-card{
+  margin: 0 50px;
+}
 
 .cover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 700px;
   padding-left: 50px;
-
+  width: 500px;
+  margin: auto;
 }
 
 ::ng-deep .content {  background-color: aliceblue;}
@@ -21,10 +29,7 @@ h1 {
 .info {
   display: flex;
   flex-direction: column;
-}
-
-.header {
-  display: flex;
+  background-color: aliceblue;
 }
 
 .info-name-birthday {
@@ -43,12 +48,17 @@ h1 {
 
 .button {
   display: flex;
+ 
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0px 2px 15px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 button {
-  margin-right: 20px;
   width: 100px;
   height: 50px;
+  margin-right: 50px;
 }
 
 input {
@@ -62,16 +72,30 @@ input {
   align-items: center;
 }
 
+.cover-header{
+  display: flex;
+  margin: 30px 0;
+}
+
+.title-head{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .avatar {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  border-radius: 10%;
 
   img {
-    max-width: 100%;
+   width: 100px;
+  height: 100px;
+  border-radius: 10%;
   }
 }
 
@@ -89,7 +113,16 @@ input {
   width: 100%;
 }
 
-form {
-  overflow: scroll;
-  height: 500px;
+.card-info{
+  margin-bottom: 40px;
+}
+
+.card-contact{
+  margin-bottom: 40px;
+}
+
+input {
+  caret-color: auto;
+  display: block;
+  margin-bottom: .5em;
 }

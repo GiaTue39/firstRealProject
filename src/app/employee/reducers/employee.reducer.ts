@@ -1,8 +1,9 @@
 import { createReducer, on } from "@ngrx/store";
 
-import { EmployeeActions } from "../actions";
+import { EmployeeActions, DeleteEmployeeActions } from "../actions";
 import { Employees, DetailEmployeeModel } from "../models";
 import { state } from "@angular/animations";
+import * as _ from 'lodash';
 
 export const collectionFeatureKey = "collection";
 
@@ -12,6 +13,7 @@ export interface State {
   employees: Array<Employees>;
   error: string;
   employeeID: DetailEmployeeModel;
+  deleted: boolean;
 }
 
 const initialState: State = {
@@ -20,6 +22,7 @@ const initialState: State = {
   employees: [],
   error: "",
   employeeID: undefined,
+  deleted: false,
 };
 
 export const reducer = createReducer(
@@ -70,6 +73,28 @@ export const reducer = createReducer(
     ...state,
     loaded: false,
     loading: false,
+    error,
+  })),
+
+  on(DeleteEmployeeActions.deleteEmployee, (state) => {
+    return { ...state };
+  }),
+
+  on(DeleteEmployeeActions.deleteEmployeeSuccess, (state, id) => {
+    let newEmployees = _.cloneDeep(state.employees);
+    newEmployees = newEmployees.filter((employee) => employee.id !== id.id);
+    return ({
+      ...state,
+      loading: false,
+      loaded: true,
+      employees: newEmployees
+    })
+  }),
+
+  on(DeleteEmployeeActions.deleteEmployeeFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    loaded: true,
     error,
   }))
 );
