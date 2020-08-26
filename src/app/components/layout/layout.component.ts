@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
+import { LANGUAGES } from '../constants/languages';
 
 @Component({
   selector: 'app-layout',
@@ -9,15 +10,19 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 export class LayoutComponent implements OnInit {
   hide: boolean = false;
+  allLanguages = LANGUAGES;
+  shortLanguage: string;
+  currenFlag: string;
+  selectedLanguage: { shortLanguage: string, flag: string };
 
   menu = [
     {
-      name: 'Companies',
+      name: 'companies',
       url: '/companies',
       icon: 'business',
     },
     {
-      name: 'Employees',
+      name: 'employee',
       url: '/employees',
       icon: 'person'
     }
@@ -43,15 +48,27 @@ export class LayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.shortLanguage = this.translocoService.getActiveLang();
+    // this.selectedLanguage = this.allLanguages.find(language => language.shortLanguage = this.shortLanguage);
+    // this.currenFlag = this.selectedLanguage.flag;
   }
 
-  dichNe() {
+  translateVA() {
     const activeLanguage = this.translocoService.getActiveLang();
-    
+    this.shortLanguage = 'vi';
+    const selectedLanguage = this.allLanguages.find(language => language.shortLanguage = this.shortLanguage);
     if (activeLanguage === 'en') {
       return this.translocoService.setActiveLang('vi');
     }
+    return this.translocoService.setActiveLang('vi');
+  }
 
+  translateAV() {
+    const activeLanguage = this.translocoService.getActiveLang();
+    this.shortLanguage = 'en';
+    if (activeLanguage === 'vi') {
+      return this.translocoService.setActiveLang('en');
+    }
     return this.translocoService.setActiveLang('en');
   }
 
@@ -78,29 +95,11 @@ export class LayoutComponent implements OnInit {
     this.isMenuOpen = false;
   }
 
-  // title = 'MultiLanguages';
-  // currentLanguage: string;
-  // languages = ['English', 'Vietnamese', 'Japanese'];
-  // languageControl = new FormControl();
-
-  // changeLanguage() {
-  //   const selectedLanguages = this.languageControl.value;
-  //   switch(selectedLanguages) {
-  //     case 'English': {
-  //       this.translocoService.setActiveLang('en');
-  //       break;
-  //     }
-
-  //     case 'Vietnamese': {
-  //       this.translocoService.setActiveLang('vi');
-  //       break;
-  //     }
-
-  //     case 'Japanese': {
-  //       this.translocoService.setActiveLang('ja');
-  //       break;
-  //     }
-  //   }
+  // changeLanguage(shortLanguage: string) {
+  //   this.selectedLanguage = this.allLanguages.find(language => language.shortLanguage = shortLanguage)
+  //   this.shortLanguage = shortLanguage;
+  //   this.currenFlag = this.selectedLanguage.flag;
+  //   return this.translocoService.setActiveLang(shortLanguage);
   // }
 
 }
