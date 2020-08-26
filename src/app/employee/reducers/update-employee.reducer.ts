@@ -1,41 +1,42 @@
 import { createReducer, on } from "@ngrx/store";
 
 import { UpdateEmployeeActions } from "../actions";
-import { Employees } from "../models";
+import { DetailEmployeeModel } from "../models";
 
 export const collectionFeatureKey = "collection";
 
 export interface State {
-  saved: boolean;
   error: string;
-  employee: Employees;
+  employee: DetailEmployeeModel;
+  updating: boolean;
 }
 
 const initialState: State = {
-  saved: false,
   error: "",
   employee: null,
+  updating: false,
 };
 
 export const reducer = createReducer(
   initialState,
 
   on(UpdateEmployeeActions.updateEmployee, (state) => {
-    return { ...state };
+    return { ...state, updating: true };
   }),
 
   on(UpdateEmployeeActions.updateEmployeeSuccess, (state, { employee }) => ({
     ...state,
-    saved: true,
+
     employee,
+    updating: false
   })),
 
   on(UpdateEmployeeActions.updateEmployeeFailure, (state, { error }) => ({
     ...state,
-    saved: false,
+
     error,
+    updating: false
   }))
 );
 
-export const isSaved = (state: State) => state.saved;
 export const getUpdate = (state: State) => state.employee;

@@ -11,7 +11,7 @@ export class UserRoleGuard implements CanActivate {
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot)
         : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-        // boolean
+        //---------boolean
         // const role = localStorage.getItem('role');
         // if (role === 'user' && state.url.includes('companies')) {
         //     this.router.navigate(['employees']);
@@ -20,7 +20,7 @@ export class UserRoleGuard implements CanActivate {
         // return true;
 
 
-        // Promise
+        // ------Promise
         // return this.getRole()
         //     .then((role) => {
         //         console.log(role);

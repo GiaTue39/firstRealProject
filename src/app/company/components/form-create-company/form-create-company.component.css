@@ -1,18 +1,29 @@
-
 mat-icon {
   margin-left: 0;
 }
 
-
-
 h1 {
   margin: 0;
+}
 
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.title-head{
+  display: flex;
+  align-items: center;
+}
+form{
+  width: 700px;
+  margin: 5rem auto;
 }
 
 .create {
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   justify-content: center;
 
@@ -22,10 +33,6 @@ h1 {
   font-family: Lato;
   text-align: left;
   width: 80%;
-  /* border: 1px solid black; */
-  /* width: 300px;
-    height: 350px; */
-  /* margin-left: 10%; */
   padding: 30px 30px;
   overflow-y: scroll;
 }
@@ -43,12 +50,13 @@ mat-slide-toggle {
 .URL {
   display: flex;
   flex-direction: row;
+  align-items: center;
+
 }
 
 img {
   border: 1px solid black;
-  /* padding: 30px 50px; */
-  margin: 30px 50px;
+  margin: 30px 40px;
 }
 
 mat-slide-toggle {
@@ -60,7 +68,6 @@ mat-slide-toggle {
   margin: 20px;
 
 }
-
 
 .name {
   margin-top: 40px;
@@ -89,5 +96,28 @@ mat-slide-toggle {
 }
 
 button {
-  margin-top: 10px;
+  width: 70px;
+    height: 30px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+.logo-img{
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+app-page{
+  background-color: aliceblue;
+}
+
+.logo{
+  margin-left: 50px;
+}
+
+input {
+  caret-color: auto;
+  display: block;
+  margin-bottom: .5em;
 }

@@ -2,10 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 
 import { CreateCompanyModel } from "../../models/createcompany";
-import { CompanyService } from '../../services/company.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
+import { CreateCompanyActions } from '../../actions';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { TranslocoService } from '@ngneat/transloco';
+import {
+  selectIsCreateCompany,
+  selectAllCompanies,
+  selectDangGuiYeuCauLenServerDeTaoCongTy
+} from "../../selectors/create-company.selector";
 @Component({
   selector: 'app-form-create-company',
   templateUrl: './form-create-company.component.html',
@@ -13,7 +19,7 @@ import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 })
 export class FormCreateCompanyComponent implements OnInit, CanDeactivateComponent {
   @ViewChild('form') form: NgForm;
-  createCompany: CreateCompanyModel = { 
+  createCompany: CreateCompanyModel = {
     logoURL: '',
     name: '',
     phone: '',
@@ -22,53 +28,38 @@ export class FormCreateCompanyComponent implements OnInit, CanDeactivateComponen
     address: '',
   };
 
+  companies$: Observable<any>;
+  isCreated$: Observable<boolean>;             
+  selectDangGuiYeuCauLenServerDeTaoCongTy$: Observable<boolean>;
+  isSubmitted  = false;     
+
   constructor(
-    private companyService: CompanyService,
-    private snackBar:MatSnackBar,
-    private router: Router
+    private store: Store<any>,
+    private translocoService: TranslocoService
   ) { }
 
   ngOnInit(): void {
+    this.companies$ = this.store.pipe(select(selectAllCompanies));
+    this.isCreated$ = this.store.pipe(select(selectIsCreateCompany));
+    this.selectDangGuiYeuCauLenServerDeTaoCongTy$ = this.store.pipe(select(selectDangGuiYeuCauLenServerDeTaoCongTy));
   }
 
   componentCanDeactivate(): boolean {
-    // console.log(this.form);
-    let notify: boolean;
-    if(this.form.dirty){
+    let notify = true;
+    if (this.form.dirty && !this.isSubmitted) {
       notify = confirm("Do u want to leave CREATE COMPANY page ?");
     }
     return notify;
   }
 
-  onSubmit(form: NgForm): void {
-    if (form.invalid) {
-      console.log('invalid');
-      return;
-    }
+  onSubmit(company: NgForm) {
+    console.log(company.value);
+    this.isSubmitted = true;
 
-    console.log(form.controls);
-    console.log(this.createCompany);
-
-    const company = {
-      logoURL: this.createCompany.logoURL,
-      name: this.createCompany.name,
-      phone:this.createCompany.phone,
-      email:this.createCompany.email,
-      website:this.createCompany.website,
-      address: this.createCompany.address
-    };
-
-    this.companyService.createCompany(company).subscribe(
-      (data) => {
-        console.log(data);
-        this.snackBar.open('Create successful!','Cancel',{
-          duration: 2000,
-        });
-        this.router.navigate(['/companies']);
-      },
-      (error) => console.log(error)
+    this.store.dispatch(
+      CreateCompanyActions.createCompany({ company: company.value })
     );
-    
+
   }
 
 }

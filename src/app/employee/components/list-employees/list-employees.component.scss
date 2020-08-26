@@ -4,7 +4,8 @@
 }
 
 h1 {
-  margin: 50px 0;
+  font-family: cursive;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -12,7 +13,8 @@ h1 {
   display: flex;
   height: auto;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-top: 40px;
 }
 
 .progress-bar {
@@ -45,11 +47,16 @@ td.mat-cell {
   width: 400px;
 }
 
+.add-employee{
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
 .create-btn {
-  margin-right: 20px;
   margin-bottom: 20px;
   width: 180px;
   height: 50px;
+  line-height: 50px;
 }
 
 .mat-paginator {
@@ -58,6 +65,10 @@ td.mat-cell {
 
 .mat-header-row {
   background-color: antiquewhite;
+}
+
+.mat-icon{
+  margin: 0 100px;
 }
 
 ::ng-deep .content-right {

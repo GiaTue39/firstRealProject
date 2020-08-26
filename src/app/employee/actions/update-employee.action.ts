@@ -1,14 +1,14 @@
 import { createAction, props } from "@ngrx/store";
-import { Employees } from "../models";
+import { DetailEmployeeModel } from "../models";
 
 export const updateEmployee = createAction(
   "[Employee Page] Update employee",
-  props<{ id: string; employee: Employees }>()
+  props<{ id: string; employee: DetailEmployeeModel }>()
 );
 
 export const updateEmployeeSuccess = createAction(
   "[Employee Page] Update employee success",
-  props<{ employee: Employees }>()
+  props<{ employee: DetailEmployeeModel }>()
 );
 
 export const updateEmployeeFailure = createAction(

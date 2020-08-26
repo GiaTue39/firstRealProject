@@ -1,85 +1,90 @@
 <div class="cover">
-  <h1>Create Employee</h1>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="info">
-    <div class="header">
-      <div class="avatar">
-        <img src="{{createEmployee.avatarURL || 'assets/images/logo.PNG'}}">
+    <div class="cover-header" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+        <a mat-icon-button routerLink="/employees" routerLinkActive="active">
+          <mat-icon>arrow_back</mat-icon>
+        </a>
+  
+        <div class="avatar">
+          <img src="{{createEmployee.avatarURL || 'assets/images/logo.PNG'}}">
+        </div>
+  
+        <div class="title-head">
+          <h1>{{'newEmployee' | transloco}}</h1>
+          <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
+            placeholder="{{'insertURL' | transloco}}">
+        </div>  
       </div>
-
-      <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
-        placeholder="Insert URL for Avatar">
-
-      <div class="status">
-        <mat-slide-toggle (change)="onChange($event)" name="status">Status</mat-slide-toggle>
-      </div>
-
+      <button mat-raised-button fxFlexAlign="right" color="accent" type="submit" [disabled]="(employees$ | async)">{{'add' | transloco}}</button>
     </div>
 
 
-    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-      <div class="info-name-birthday">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-          <input matInput tabindex="1" placeholder="Your name" name="contactName" [(ngModel)]="createEmployee.name"
-            required />
-        </mat-form-field>
+  
+      <mat-card class="card-info mat-elevation-z3">
+        <div class="info-name-birthday">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'Name' | transloco}}</mat-label>
+            <input matInput tabindex="1" placeholder="Your name" name="name" [(ngModel)]="createEmployee.name"
+              required />
+          </mat-form-field>
 
 
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Birthday</mat-label>
-          <input matInput [matDatepicker]="picker" name="dob" [(ngModel)]="createEmployee.birthday">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>{{'birthday' | transloco}}</mat-label>
+            <input matInput [matDatepicker]="picker" name="birthday" [(ngModel)]="createEmployee.birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+          </mat-form-field>
 
-      </div>
+        </div>
 
-      <div class="contact-info">
-        <h2>Contact info</h2>
+      </mat-card>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Phone</mat-label>
-          <input matInput tabindex="1" placeholder="Your phone number" name="contactPhone"
-            [(ngModel)]="createEmployee.phone" required pattern="^((\\+84-?)|0)?[0-9]{10}$" #phone="ngModel" />
+      <mat-card class="card-contact mat-elevation-z3">
+        <div class="contact-info">
+          <h2>{{'contactInfo' | transloco}}</h2>
 
-          <mat-error *ngIf="phone.errors">
-            <span *ngIf="phone.errors.required">
-              Phone is required !
-            </span>
+          <mat-form-field appearance="outline">
+            <mat-label>{{'phone' | transloco}}</mat-label>
+            <input matInput tabindex="1" placeholder="Your phone number" name="phone"
+              [(ngModel)]="createEmployee.phone" required pattern="^((\\+84-?)|0)?[0-9]{10}$" #phone="ngModel" />
 
-            <span *ngIf="phone.errors?.pattern">
-              Phone is not match with Phone pattern
-            </span>
+            <mat-error *ngIf="phone.errors">
+              <span *ngIf="phone.errors.required">
+                Phone is required !
+              </span>
 
-          </mat-error>
-        </mat-form-field>
+              <span *ngIf="phone.errors?.pattern">
+                Phone is not match with Phone pattern
+              </span>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput tabindex="1" placeholder="Your email" name="contactEmail" [(ngModel)]="createEmployee.email"
-            required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #mail="ngModel" />
-          <mat-error *ngIf="mail.errors ">
-            <span *ngIf="mail.errors.required">
-              Email is required !
-            </span>
-            <span *ngIf="mail.errors?.pattern">
-              Email is not match
-            </span>
-          </mat-error>
-        </mat-form-field>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <input class="address" matInput tabindex="1" placeholder="Your address" name="contactAddress"
-            [(ngModel)]="createEmployee.address" required />
-        </mat-form-field>
-      </div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{'email' | transloco}}</mat-label>
+            <input matInput tabindex="1" placeholder="Your email" name="email" [(ngModel)]="createEmployee.email"
+              required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #mail="ngModel" />
+            <mat-error *ngIf="mail.errors ">
+              <span *ngIf="mail.errors.required">
+                Email is required !
+              </span>
+              <span *ngIf="mail.errors?.pattern">
+                Email is not match
+              </span>
+            </mat-error>
+          </mat-form-field>
 
-      <div class="button">
-        <button mat-raised-button color="warn" [disabled]="(employees$ | async)">Create</button>
-        <button mat-raised-button color="accent">Cancel</button>
-      </div>
-    </form>
+          <mat-form-field appearance="outline">
+            <mat-label>{{'address' | transloco}}</mat-label>
+            <input class="address" matInput tabindex="1" placeholder="Your address" name="address"
+              [(ngModel)]="createEmployee.address" required />
+          </mat-form-field>
+        </div>
+      </mat-card>
   </div>
+    </form>
 </div>

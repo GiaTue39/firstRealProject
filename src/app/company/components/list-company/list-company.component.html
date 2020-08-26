@@ -1,20 +1,16 @@
 <div class="list-company">
   <div class="header">
-    <h1>Companies</h1>
+    <h1>{{ 'companies' | transloco }}</h1>
     <button mat-raised-button color="accent" type="submit" routerLink="/companies/create" routerLinkActive="active"
-      class="create">Create Companies
+      class="create">{{ 'create companies' | transloco }}
     </button>
   </div>
   <app-page-content>
     <div container>
 
-      <div *ngIf="dataSource.length==0 && isLoading==false">
-        <h2>Loading failed</h2>
-      </div>
-  
       <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
-  
-      <table mat-table *ngIf="dataSource.length > 0" [dataSource]="dataSource">
+
+      <table mat-table [dataSource]="companies$ | async" class="mat-elevation-z8">
         <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef>
@@ -22,49 +18,43 @@
               [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
             </mat-checkbox>
           </th>
-          <td mat-cell *matCellDef="let row"> 
+          <td mat-cell *matCellDef="let row">
             <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
               [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
             </mat-checkbox>
           </td>
         </ng-container>
-  
+
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
           <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
-  
+
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'name' | transloco }} </th>
           <td mat-cell *matCellDef="let element" [routerLink]="['/companies', element.id]">
             <div class="name">
-              <div> <img style="width: 42px; margin-right:20px" src="{{element.logoURL|| 'assets/images/logo.PNG'}}"> </div>
+              <div> <img style="width: 42px; margin-right:20px" src="{{element.logoURL || element.url || 'assets/images/logo.PNG'}}">
+              </div>
               <div>{{element.name}}</div>
             </div>
           </td>
         </ng-container>
-  
+
         <!-- employee Column -->
         <ng-container matColumnDef="employee">
-          <th mat-header-cell *matHeaderCellDef> EMPLOYEE </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'employee' | transloco }}  </th>
           <td mat-cell *matCellDef="let element" [routerLink]="['/companies', element.id]"> {{element.employee}} </td>
         </ng-container>
-  
+
         <!-- orders/invoices Column -->
         <ng-container matColumnDef="orders">
-          <th mat-header-cell *matHeaderCellDef> ORDERS/INVOICES </th>
+          <th mat-header-cell *matHeaderCellDef>{{ 'orders/invoices' | transloco }} </th>
           <td mat-cell *matCellDef="let element" [routerLink]="['/companies', element.id]"> {{element.orders}} </td>
         </ng-container>
-  
-        <!-- <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef> </th>
-          <td mat-cell *matCellDef="let element"> <button mat-raised-button color="accent" type="submit"
-              (click)="openDialog(element)">Delete</button>
-          </td>
-          (click)="onDelete(element)"
-        </ng-container> -->
+
         <ng-container matColumnDef="menu">
           <th mat-header-cell *matHeaderCellDef> </th>
           <td mat-cell *matCellDef="let element">
@@ -72,33 +62,23 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item type="submit" (click)="openDialog(element)">
+              <button mat-menu-item type="submit" (click)="openDialog(element)" [dataSource]="(isDeleted$ | async)">
                 <mat-icon>delete</mat-icon>
-                <span >Delete</span>
+                <span>{{ 'delete' | transloco }}</span>
               </button>
               <button mat-menu-item [routerLink]="['/companies',element.id]">
-                <mat-icon >restore</mat-icon>
-                <span >Update</span>
+                <mat-icon>restore</mat-icon>
+                <span>{{ 'update' | transloco }}</span>
               </button>
-              <!-- <button mat-menu-item disabled>
-                <mat-icon>voicemail</mat-icon>
-                <span>Check voice mail</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
-                <span>Disable alerts</span>
-              </button> -->
             </mat-menu>
           </td>
-  
         </ng-container>
-  
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"
           class="example-element-row"></tr>
       </table>
     </div>
   </app-page-content>
-  
 
 </div>

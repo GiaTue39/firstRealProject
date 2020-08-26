@@ -8,9 +8,9 @@ describe('FormCreateCompanyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormCreateCompanyComponent ]
+      declarations: [FormCreateCompanyComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

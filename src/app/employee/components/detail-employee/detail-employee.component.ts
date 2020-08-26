@@ -14,11 +14,13 @@ import { UpdateEmployeeActions, EmployeeActions } from "../../actions";
 import { Employees } from "../../models";
 
 import {
-  selectIsUpdatedEmployees,
-  selectGetUpdatedEmployees,
+  selectGetUpdatedEmployee,
+  selectUpdatingEmployee
+
 } from "../../selectors/update-employee.selector";
 
 import { selectEmployeesByID } from "../../selectors/employee.selector";
+import * as _ from "lodash";
 
 @Component({
   selector: "app-detail-employee",
@@ -40,10 +42,11 @@ export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent {
   };
 
   formBuilder: any;
-  isSaved$: Observable<boolean>;
   getUpdate$: Observable<Employees>;
 
   detailEmployee$: Observable<Employees>;
+
+  isUpdating$: Observable<boolean>;
 
   constructor(
     private employeeService: EmployeeService,
@@ -65,13 +68,17 @@ export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent {
     const id = this.route.snapshot.params.id;
     this.store.dispatch(EmployeeActions.getEmployeesById({ id }));
 
-    this.isSaved$ = this.store.pipe(select(selectIsUpdatedEmployees));
-    this.getUpdate$ = this.store.pipe(select(selectGetUpdatedEmployees));
+    this.getUpdate$ = this.store.pipe(select(selectGetUpdatedEmployee));
+    this.isUpdating$ = this.store.pipe(select(selectUpdatingEmployee));
+    
     this.detailEmployee$ = this.store.pipe(select(selectEmployeesByID(id)));
 
+
+
     this.detailEmployee$.subscribe((detailEmployee) => {
+      console.log(detailEmployee);
       if (detailEmployee) {
-        this.detailEmployee = detailEmployee;
+        this.detailEmployee = _.cloneDeep(detailEmployee);
       }
     });
   }

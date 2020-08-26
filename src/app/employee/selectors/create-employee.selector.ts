@@ -8,5 +8,5 @@ export const selectIsCreatedEmployees = createSelector(
 
 export const selectEmployees = createSelector(
   selectCreateEmployeeState,
-  (state) => state.employees
+  (state) => state.employee
 );

@@ -7,13 +7,13 @@ export const collectionFeatureKey = "collection";
 
 export interface State {
   created: boolean;
-  employees: Employees;
+  employee: Employees;
   error: string;
 }
 
 const initialState: State = {
   created: false,
-  employees: null,
+  employee: null,
   error: "",
 };
 
@@ -39,4 +39,4 @@ export const reducer = createReducer(
 
 export const isCreated = (state: State) => state.created;
 
-export const getEmployee = (state: State) => state.employees;
+export const getEmployee = (state: State) => state.employee;

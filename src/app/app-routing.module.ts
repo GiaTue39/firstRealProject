@@ -34,7 +34,6 @@ const routes: Routes = [
         ]
     },
 
-    // { path: '**', component: 404PageComponent }
 ]
 
 @NgModule({

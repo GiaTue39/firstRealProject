@@ -5,15 +5,15 @@
 .header {
   padding: 24px;
 }
-h1{
+
+h1 {
   float: left;
 }
-.create{
+
+.create {
   float: right;
 }
-/* .container {
-  padding: 0 24px;
-} */
+
 
 table {
   width: 100%;
@@ -35,7 +35,7 @@ img {
   background: #efefef;
 }
 
-.name{
+.name {
   display: flex;
   flex-direction: row;
   align-items: center;
