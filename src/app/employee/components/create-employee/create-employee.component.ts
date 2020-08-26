@@ -21,7 +21,7 @@ import {
   selectEmployees,
 } from "../../selectors/create-employee.selector";
 import { MatDialog } from '@angular/material/dialog';
-
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: "app-create-employee",
@@ -52,7 +52,8 @@ export class CreateEmployeeComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private store: Store
+    private store: Store,
+    private translocoService: TranslocoService
   ) {}
   // componentCanDeactivate(): boolean | Observable<boolean> {
   //   throw new Error("Method not implemented.");

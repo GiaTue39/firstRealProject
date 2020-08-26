@@ -6,7 +6,7 @@ import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
 import { CreateCompanyActions } from '../../actions';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
+import { TranslocoService } from '@ngneat/transloco';
 import {
   selectIsCreateCompany,
   selectAllCompanies,
@@ -34,7 +34,8 @@ export class FormCreateCompanyComponent implements OnInit, CanDeactivateComponen
   isSubmitted  = false;     
 
   constructor(
-    private store: Store<any>
+    private store: Store<any>,
+    private translocoService: TranslocoService
   ) { }
 
   ngOnInit(): void {

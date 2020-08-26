@@ -12,12 +12,12 @@
         </div>
   
         <div class="title-head">
-          <h1>New Employee</h1>
+          <h1>{{'newEmployee' | transloco}}</h1>
           <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
-            placeholder="Insert URL for Avatar">
+            placeholder="{{'insertURL' | transloco}}">
         </div>  
       </div>
-      <button mat-raised-button fxFlexAlign="right" color="accent" type="submit" [disabled]="(employees$ | async)">Add</button>
+      <button mat-raised-button fxFlexAlign="right" color="accent" type="submit" [disabled]="(employees$ | async)">{{'add' | transloco}}</button>
     </div>
 
 
@@ -26,14 +26,14 @@
       <mat-card class="card-info mat-elevation-z3">
         <div class="info-name-birthday">
           <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
+            <mat-label>{{'Name' | transloco}}</mat-label>
             <input matInput tabindex="1" placeholder="Your name" name="name" [(ngModel)]="createEmployee.name"
               required />
           </mat-form-field>
 
 
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Birthday</mat-label>
+            <mat-label>{{'birthday' | transloco}}</mat-label>
             <input matInput [matDatepicker]="picker" name="birthday" [(ngModel)]="createEmployee.birthday">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
@@ -45,10 +45,10 @@
 
       <mat-card class="card-contact mat-elevation-z3">
         <div class="contact-info">
-          <h2>Contact info</h2>
+          <h2>{{'contactInfo' | transloco}}</h2>
 
           <mat-form-field appearance="outline">
-            <mat-label>Phone</mat-label>
+            <mat-label>{{'phone' | transloco}}</mat-label>
             <input matInput tabindex="1" placeholder="Your phone number" name="phone"
               [(ngModel)]="createEmployee.phone" required pattern="^((\\+84-?)|0)?[0-9]{10}$" #phone="ngModel" />
 
@@ -65,7 +65,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
+            <mat-label>{{'email' | transloco}}</mat-label>
             <input matInput tabindex="1" placeholder="Your email" name="email" [(ngModel)]="createEmployee.email"
               required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #mail="ngModel" />
             <mat-error *ngIf="mail.errors ">
@@ -79,7 +79,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Address</mat-label>
+            <mat-label>{{'address' | transloco}}</mat-label>
             <input class="address" matInput tabindex="1" placeholder="Your address" name="address"
               [(ngModel)]="createEmployee.address" required />
           </mat-form-field>

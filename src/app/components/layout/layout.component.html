@@ -21,7 +21,7 @@
     </div>
 
 
-    <button (click)="dichNe()">dich ne</button>
+    <!-- <button (click)="dichNe()">Translate</button> -->
     
 
     <div class="right" id="fit-menu">
@@ -33,6 +33,24 @@
                 <span><img src="/assets/img/r2.png"></span>
                 <span class="title">Realtek</span>
                 <span class="example-spacer"></span>
+
+                <button class="menu-button" mat-button [matMenuTriggerFor]="languageMenu">
+                    <img class="language-flag" src="/assets/img/us.png">
+                    <!-- <span>{{ selectedLanguage$ | async | uppercase }}</span> -->
+                </button>
+            
+                  <mat-menu #languageMenu="matMenu" xPosition="before">
+                    <button mat-menu-item (click)="dichNe()">
+                      <img class="language-flag" src="/assets/img/us.png">
+                      <span>English (United States)</span>
+                    </button>
+            
+                    <button mat-menu-item (click)="dichNe()">
+                      <img class="language-flag" src="/assets/img/vn.png">
+                      <span>Tiếng Việt (Việt Nam)</span>
+                    </button>
+            
+                  </mat-menu>
                 <div class="img">
                     <div class="mr"></div>
                     <span>Max Plank</span>

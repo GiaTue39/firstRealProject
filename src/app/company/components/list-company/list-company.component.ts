@@ -3,8 +3,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
-
-
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 import { CompanyActions, DeleteCompanyActions } from "../../actions";
 import { Company } from '../../models/company';

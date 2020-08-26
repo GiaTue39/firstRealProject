@@ -12,7 +12,9 @@ import { selectCompanyById, selectAllRename } from '../../selectors/company.sele
 import { selectIsUpdateCompany, selectUpdating } from "../../selectors/update-company.selector";
 
 import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
+import { TranslocoService } from '@ngneat/transloco';
 import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-detail-company',
@@ -32,7 +34,8 @@ export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
 
   constructor(
     private store: Store,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translocoService: TranslocoService
   ) {
     const id = this.route.snapshot.params.id;
 

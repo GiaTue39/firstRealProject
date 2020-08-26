@@ -1,4 +1,26 @@
 {
-    "employee": "Nhân viên",
-    "companies": "Cong ty"
+  "employee": "NHÂN VIÊN",
+  "companies": "CÔNG TY",
+  "name": "TÊN CÔNG TY",
+  "Name":"Tên Nhân Viên",
+  "phone": "Sđt",
+  "email": "Email",
+  "birthday": "Ngày sinh",
+  "orders/invoices":"ĐƠN HÀNG/HÓA ĐƠN",
+  "create companies":"Thêm Công Ty",
+  "delete":"Xóa",
+  "update":"Cập nhập",
+  "filter":"Lọc",
+  "search":"Tìm Kiếm",
+  "newEmployee": "Thêm Nhân Viên",
+  "newCompany": "Thêm Công Ty",
+  "add": "Thêm",
+  "contactInfo": "Thông tin liên hệ",
+  "address":"Địa chỉ",
+  "save": "Lưu",
+  "detailEmployee": "Thông tin NV chi tiết",
+  "detailCompany": "Thông tin chi tiết",
+  "website":"Địa chỉ website",
+  "insertURL":"Thêm đường dẫn cho ảnh",
+  "logoURL": "Địa chỉ hình ảnh"
 }

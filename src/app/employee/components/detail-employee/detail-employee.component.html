@@ -3,7 +3,7 @@
     <a mat-icon-button routerLink="/employees" routerLinkActive="active">
       <mat-icon>arrow_back</mat-icon>
     </a>
-    <h1>DETAIL EMPLOYEE</h1>
+    <h1>{{'detailEmployee' | transloco}}</h1>
   </div>
 
   <div class="info" *ngIf="detailEmployee">
@@ -21,12 +21,12 @@
       <mat-card>
         <div class="info-name-birthday">
           <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
+            <mat-label>{{ 'Name' | transloco}}</mat-label>
             <input matInput tabindex="1" placeholder="Your name" name="name" [(ngModel)]="detailEmployee.name" />
           </mat-form-field>
 
           <mat-form-field class=" example-full-width" appearance="outline">
-            <mat-label>Birthday</mat-label>
+            <mat-label>{{'birthday' | transloco}}</mat-label>
             <input matInput name="birthday" value="{{detailEmployee.birthday| date:'medium'}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
@@ -34,21 +34,21 @@
         </div>
 
         <div class="contact-info">
-          <h2>Contact info</h2>
+          <h2>{{'contactInfo' | transloco}}</h2>
           <mat-form-field appearance="outline">
-            <mat-label>Phone</mat-label>
+            <mat-label>{{'phone' | transloco}}</mat-label>
             <input matInput tabindex="1" placeholder="Your phone number" name="phone"
               [(ngModel)]="detailEmployee.phone" />
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
+            <mat-label>{{'email'}}</mat-label>
             <input matInput tabindex="1" placeholder="Your email" name="email"
               [(ngModel)]="detailEmployee.email" />
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Address</mat-label>
+            <mat-label>{{'address' | transloco}}</mat-label>
             <input class="status" matInput tabindex="1" name="address" [(ngModel)]="detailEmployee.address" />
           </mat-form-field>
 
@@ -56,7 +56,7 @@
 
       </mat-card>
       <div class="button">
-        <button mat-raised-button color="accent" type="submit" [disabled]="(isUpdating$ | async)">Save</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="(isUpdating$ | async)">{{'save' | transloco}}</button>
       </div>
     </form>
 

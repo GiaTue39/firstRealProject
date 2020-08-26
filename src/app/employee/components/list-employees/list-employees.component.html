@@ -2,7 +2,7 @@
   <div class="filter">
     <h1>{{ 'employee' | transloco }}</h1>
     <mat-form-field appearance="outline" class="sort">
-      <mat-label>Filter</mat-label>
+      <mat-label>{{ 'filter' | transloco }}</mat-label>
       <mat-select>
         <mat-option *ngFor="let option of options" [value]="option"
           >{{ option }}
@@ -10,7 +10,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline" class="sort">
-      <mat-label>Search</mat-label>
+      <mat-label>{{ 'search' | transloco }}</mat-label>
       <input
         matInput
         (keyup)="applyFilter($event)"
@@ -59,24 +59,24 @@
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{ 'Name' | transloco }} </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.name || element.contactName }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="phone">
-      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> {{ 'phone' | transloco }} </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.phone || element.contactPhone}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> {{ 'email' | transloco }} </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <a href="#">{{ element.email || element.contactEmail}}</a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="birthday">
-      <mat-header-cell *matHeaderCellDef> Birthday </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> {{ 'birthday' | transloco }} </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.birthday || element.dob }} </mat-cell>
     </ng-container>
 
