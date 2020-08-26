@@ -4,7 +4,6 @@
   justify-content: center;
   height: 700px;
   background-color: aliceblue;
-
 }
 
 .back {
@@ -24,7 +23,7 @@ h1 {
 .info {
   display: flex;
   flex-direction: column;
-  margin: 30px 280px;
+  margin: 30px 245px;
 }
 
 .header {
@@ -78,7 +77,6 @@ input {
 
 .url {
   margin-right: 30px;
-
 }
 
 .insert-url {
@@ -97,8 +95,8 @@ input {
 
 .fix-img {
   width: 100px;
-    min-height: 100px;
-    border-radius: 10%;
+  min-height: 100px;
+  border-radius: 10%;
 }
 
 ::ng-deep .content-right {
@@ -108,5 +106,5 @@ input {
 input {
   caret-color: auto;
   display: block;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }

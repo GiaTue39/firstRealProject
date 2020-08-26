@@ -29,7 +29,7 @@
 .menu-left.is-open.menu-lg {
   width: 250px;
   min-width: 250px;
-  background-color: rgb(45,50,62);
+  background-color: rgb(45, 50, 62);
 }
 
 .menu-left.is-open.menu-sm {
@@ -97,7 +97,6 @@
   margin-right: 10px;
   font-size: 30px;
   cursor: pointer;
-
 }
 
 .icon {
@@ -132,23 +131,21 @@ img {
   height: calc(100% - 64px);
   overflow-y: auto;
   overflow-x: hidden;
-
 }
 
 mat-toolbar {
   position: relative;
   z-index: 4;
-
 }
 
 .menu-bar {
   height: 100%;
 }
 
-  .menu-button {
-    height: 100%;
-    border-radius: 0;
-  }
+.menu-button {
+  height: 100%;
+  border-radius: 0;
+}
 
 .spacer {
   flex: 1 1 auto;
@@ -160,7 +157,7 @@ mat-toolbar {
   margin: 0 8px 0 0;
 }
 
-.mat-menu-item{
+.mat-menu-item {
   display: flex;
   width: 100%;
   align-items: center;

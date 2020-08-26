@@ -1,84 +1,72 @@
 <div class="page-layout">
 
-    <div class="menu-left" [ngClass]="{
+  <div class="menu-left" [ngClass]="{
         'is-hidden': !isMenuOpen,  
         'is-open': isMenuOpen,  
         'menu-sm': menuSize === 'sm',
         'menu-lg': menuSize === 'lg' 
         }" id="close-menu-left">
 
-        <a *ngIf="!hide" class="closebtn" (click)="closeNav2()"> &times; </a>
-        <a *ngIf="hide" class="closebtn" íd="btnclose" (click)="closeNav()">&times;</a>
+    <a *ngIf="!hide" class="closebtn" (click)="closeNav2()"> &times; </a>
+    <a *ngIf="hide" class="closebtn" íd="btnclose" (click)="closeNav()">&times;</a>
 
-        <div class="icon" *ngFor="let item of menu">
-            <a [routerLink]="[item.url]">
-                <div class="menu">
-                    <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.icon}}</mat-icon>
-                    <div *ngIf="hide" class="name">{{item.name | transloco }}</div>
-                </div>
-            </a>
+    <div class="icon" *ngFor="let item of menu">
+      <a [routerLink]="[item.url]">
+        <div class="menu">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.icon}}</mat-icon>
+          <div *ngIf="hide" class="name">{{item.name | transloco }}</div>
         </div>
+      </a>
     </div>
+  </div>
 
+  <div class="right" id="fit-menu">
+    <div class="top-nav">
+      <mat-toolbar color="primary">
+        <button mat-icon-button *ngIf="!isMenuOpen" class="open-menu" (click)="openNav()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span><img src="/assets/img/r2.png"></span>
+        <span class="title">Realtek</span>
+        <span class="example-spacer"></span>
 
-    <!-- <button (click)="dichNe()">Translate</button> -->
+        <button class="menu-button" mat-button [matMenuTriggerFor]="languageMenu">
+          <img class="language-flag" *ngIf="shortLanguage === 'en'; else vi " src="/assets/img/us.png">
+          <ng-template #vi>
+            <img class="language-flag" src="/assets/img/vn.png">
+          </ng-template>
+          {{shortLanguage}}
+        </button>
 
+        <mat-menu #languageMenu="matMenu" xPosition="before">
 
-    <div class="right" id="fit-menu">
-        <div class="top-nav">
-            <mat-toolbar color="primary">
-                <button mat-icon-button *ngIf="!isMenuOpen" class="open-menu" (click)="openNav()">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <span><img src="/assets/img/r2.png"></span>
-                <span class="title">Realtek</span>
-                <span class="example-spacer"></span>
+          <button mat-menu-item (click)="translateAV()">
+            <img class="language-flag" src="/assets/img/us.png">
+            <span>English (United States)</span>
+          </button>
 
-                <button class="menu-button" mat-button [matMenuTriggerFor]="languageMenu">
-                    <img class="language-flag" *ngIf="shortLanguage === 'en'; else vi " src="/assets/img/us.png">
-                    <ng-template #vi>
-                        <img class="language-flag" src="/assets/img/vn.png">
-                    </ng-template>
-                    <!-- <img class="language-flag" src="/assets/img/vn.png"> -->
-                    {{shortLanguage}}
-                </button>
+          <button mat-menu-item (click)="translateVA()">
+            <img class="language-flag" src="/assets/img/vn.png">
+            <span>Tiếng Việt (Việt Nam)</span>
+          </button>
 
-                <mat-menu #languageMenu="matMenu" xPosition="before">
-
-                    <!-- <button mat-menu-item *ngFor="let language of allLanguages" (click)="changeLanguage(language.shortLanguage)">
-                        <img class="language-flag" src="/assets/img/{{language.flag}}.png">
-                        <span>{{language.description}}</span>
-                    </button> -->
-
-                    <button mat-menu-item (click)="translateAV()">
-                        <img class="language-flag" src="/assets/img/us.png">
-                        <span>English (United States)</span>
-                    </button>
-
-                    <button mat-menu-item (click)="translateVA()">
-                        <img class="language-flag" src="/assets/img/vn.png">
-                        <span>Tiếng Việt (Việt Nam)</span>
-                    </button>
-
-                </mat-menu>
-                <div class="img">
-                    <div class="mr"></div>
-                    <span>Max Plank</span>
-                    <img src="/assets/img/maxyoung.jpg" class="max">
-                    <div class="icon">
-                        <button mat-icon-button (click)="onLogoutBtnClicked()">
-                            <mat-icon>exit_to_app</mat-icon>
-                        </button>
-                    </div>
-
-                </div>
-
-            </mat-toolbar>
+        </mat-menu>
+        <div class="img">
+          <div class="mr"></div>
+          <span>Max Plank</span>
+          <img src="/assets/img/maxyoung.jpg" class="max">
+          <div class="icon">
+            <button mat-icon-button (click)="onLogoutBtnClicked()">
+              <mat-icon>exit_to_app</mat-icon>
+            </button>
+          </div>
         </div>
-        <div class="content-right">
-            <router-outlet></router-outlet>
-        </div>
+      </mat-toolbar>
     </div>
+    <div class="content-right">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 
 
 </div>

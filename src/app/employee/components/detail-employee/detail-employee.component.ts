@@ -1,44 +1,41 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatCalendarCellCssClasses } from "@angular/material/datepicker";
-import { NgForm } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { Router } from "@angular/router";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
-import { Store, select } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { EmployeeService } from "../../services";
-import { CanDeactivateComponent } from "src/app/can-deactivate.component";
-import { UpdateEmployeeActions, EmployeeActions } from "../../actions";
-import { Employees } from "../../models";
+import { EmployeeService } from '../../services';
+import { CanDeactivateComponent } from 'src/app/can-deactivate.component';
+import { UpdateEmployeeActions, EmployeeActions } from '../../actions';
+import { Employees } from '../../models';
 
 import {
   selectGetUpdatedEmployee,
-  selectUpdatingEmployee
+  selectUpdatingEmployee,
+} from '../../selectors/update-employee.selector';
 
-} from "../../selectors/update-employee.selector";
-
-import { selectEmployeesByID } from "../../selectors/employee.selector";
-import * as _ from "lodash";
+import { selectEmployeesByID } from '../../selectors/employee.selector';
+import * as _ from 'lodash';
 
 @Component({
-  selector: "app-detail-employee",
-  templateUrl: "./detail-employee.component.html",
-  styleUrls: ["./detail-employee.component.scss"],
+  selector: 'app-detail-employee',
+  templateUrl: './detail-employee.component.html',
+  styleUrls: ['./detail-employee.component.scss'],
 })
 export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent {
-  @ViewChild("form") form: NgForm;
+  @ViewChild('form') form: NgForm;
 
   detailEmployee: Employees = {
-    id: "",
-    name: "",
-    phone: "",
-    email: "",
-    birthday: "",
-    status: "",
-    avatarURL: "",
-    address: "",
+    id: '',
+    name: '',
+    phone: '',
+    email: '',
+    birthday: '',
+    status: '',
+    avatarURL: '',
+    address: '',
   };
 
   formBuilder: any;
@@ -48,18 +45,12 @@ export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent {
 
   isUpdating$: Observable<boolean>;
 
-  constructor(
-    private employeeService: EmployeeService,
-    private route: ActivatedRoute,
-    private snackBar: MatSnackBar,
-    private router: Router,
-    private store: Store
-  ) {}
+  constructor(private route: ActivatedRoute, private store: Store) {}
 
   componentCanDeactivate(): boolean {
     let notify: boolean;
     if (this.form.dirty) {
-      notify = confirm("Do u want to LEAVE Detail Page ?");
+      notify = confirm('Do u want to LEAVE Detail Page ?');
     }
     return notify;
   }
@@ -70,10 +61,8 @@ export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent {
 
     this.getUpdate$ = this.store.pipe(select(selectGetUpdatedEmployee));
     this.isUpdating$ = this.store.pipe(select(selectUpdatingEmployee));
-    
+
     this.detailEmployee$ = this.store.pipe(select(selectEmployeesByID(id)));
-
-
 
     this.detailEmployee$.subscribe((detailEmployee) => {
       console.log(detailEmployee);
@@ -85,7 +74,7 @@ export class DetailEmployeeComponent implements OnInit, CanDeactivateComponent {
 
   dateClass = (d: Date): MatCalendarCellCssClasses => {
     const date = d.getDate();
-    return date === 1 || date === 20 ? "example-custom-date-class" : "";
+    return date === 1 || date === 20 ? 'example-custom-date-class' : '';
   };
 
   onSubmit(form: NgForm): void {

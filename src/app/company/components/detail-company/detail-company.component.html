@@ -4,7 +4,7 @@
       <mat-icon>arrow_back</mat-icon>
     </a>
     <span page-title>{{'detailCompany' | transloco}}</span>
-    
+
   </app-page-header>
 
   <app-page-content *ngIf="detailCompany">
@@ -16,10 +16,10 @@
             <mat-label>{{'logoURL' | transloco}}</mat-label>
             <input class="logo" tabindex="1" matInput type="text" name="logoURL" required
               [(ngModel)]="detailCompany.logoURL || detailCompany.url">
-            
+
           </mat-form-field>
         </div>
-        
+
         <mat-form-field appearance="outline" class="name">
           <mat-label>{{'name' | transloco}}</mat-label>
           <input tabindex="2" matInput type="text" name="name" required #username="ngModel"
@@ -59,18 +59,9 @@
       </mat-card>
 
       <div class="example-button-row">
-        <button mat-raised-button color="accent" type="submit" [disabled]="( isUpdating$ | async)">{{'save' | transloco}}</button>
+        <button mat-raised-button color="accent" type="submit"
+          [disabled]="( isUpdating$ | async)">{{'save' | transloco}}</button>
       </div>
-
-      <!-- <p>
-        chu Truc o day: <span>{{ trucDay$ | async }}</span>
-      </p>
-
-      <div class="example-button-row">
-        <button mat-raised-button color="accent" type="button" (click)="doiTen()" [disabled]="( trucDay$ | async)">Doi
-          ten thanh Truc</button>
-      </div> -->
-
     </form>
   </app-page-content>
 </app-page>
