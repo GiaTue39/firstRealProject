@@ -1,7 +1,7 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { CompanyActions, DeleteCompanyActions } from "../actions";
-import { Company } from "../models/company";
+import { CompanyActions, DeleteCompanyActions } from '../actions';
+import { Company } from '../models/company';
 import { DetailCompanyModel } from '../models/detailcompany';
 
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
@@ -9,7 +9,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as _ from 'lodash';
 import { from } from 'rxjs';
 
-export const collectionFeatureKey = "collection";
+export const collectionFeatureKey = 'collection';
 
 export interface State extends EntityState<Company> {
   loaded: boolean;
@@ -24,10 +24,11 @@ export function selectCompanyId(a: Company): string {
   return a.id;
 }
 
-export const companyAdapter: EntityAdapter<Company> = createEntityAdapter<Company>({
+export const companyAdapter: EntityAdapter<Company> = createEntityAdapter<
+  Company
+>({
   selectId: selectCompanyId,
 });
-
 
 const initialState: State = companyAdapter.getInitialState({
   loaded: false,
@@ -46,7 +47,11 @@ export const reducer = createReducer(
   }),
 
   on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => {
-    return companyAdapter.addAll(companies, {...state, loading:false, loaded:true })
+    return companyAdapter.addAll(companies, {
+      ...state,
+      loading: false,
+      loaded: true,
+    });
   }),
 
   // on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => adapter.addAll({},{
@@ -70,7 +75,7 @@ export const reducer = createReducer(
     ...state,
     loaded: true,
     loading: false,
-    companyById: company
+    companyById: company,
   })),
 
   on(CompanyActions.loadCompaniesFailure, (state, { error }) => ({
@@ -90,7 +95,7 @@ export const reducer = createReducer(
     ...state,
     loaded: true,
     loading: false,
-    nameChanged: name
+    nameChanged: name,
   })),
 
   on(CompanyActions.DoiTenFailure, (state, { error }) => ({
@@ -99,20 +104,17 @@ export const reducer = createReducer(
     loading: false,
     error,
   })),
-  
+
   on(DeleteCompanyActions.deleteCompany, (state) => ({
-    ...state
+    ...state,
   })),
 
-  on(DeleteCompanyActions.deleteCompanySuccess, (state,  id ) => {
-    let newCompanies = _.cloneDeep(state.companies);
-    newCompanies = newCompanies.filter((company) => company.id !== id.id);
-    return ({
+  on(DeleteCompanyActions.deleteCompanySuccess, (state, { id }) => {
+    return companyAdapter.removeOne(id, {
       ...state,
       loading: false,
       loaded: true,
-      companies: newCompanies
-    })
+    });
   }),
 
   on(DeleteCompanyActions.deleteCompanyFailure, (state, { error }) => ({

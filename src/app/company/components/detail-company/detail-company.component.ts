@@ -78,8 +78,4 @@ export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
       })
     );
   }
-
-  doiTen() {
-    this.store.dispatch(CompanyActions.DoiTen());
-  }
 }

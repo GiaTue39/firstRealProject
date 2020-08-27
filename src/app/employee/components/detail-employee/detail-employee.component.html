@@ -1,4 +1,4 @@
-<div class="cover">
+<div class="cover" fxLayout="column" fxLayoutAlign="center center">
   <div class="back">
     <a mat-icon-button routerLink="/employees" routerLinkActive="active">
       <mat-icon>arrow_back</mat-icon>
@@ -43,8 +43,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label>{{'email'}}</mat-label>
-            <input matInput tabindex="1" placeholder="Your email" name="email"
-              [(ngModel)]="detailEmployee.email" />
+            <input matInput tabindex="1" placeholder="Your email" name="email" [(ngModel)]="detailEmployee.email" />
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -56,7 +55,8 @@
 
       </mat-card>
       <div class="button">
-        <button mat-raised-button color="accent" type="submit" [disabled]="(isUpdating$ | async)">{{'save' | transloco}}</button>
+        <button mat-raised-button color="accent" type="submit"
+          [disabled]="(isUpdating$ | async)">{{'save' | transloco}}</button>
       </div>
     </form>
 

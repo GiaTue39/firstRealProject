@@ -52,8 +52,6 @@ export class ListEmployeesComponent implements OnInit {
   ngOnInit() {
     this.employees$ = this.store.pipe(select(selectAllEmployees));
     this.isLoading$ = this.store.pipe(select(selectIsLoadingEmployees));
-    this.isDeleted$ = this.store.pipe(select(selectIsDeletedEmployees));
-
     this.store.dispatch(EmployeeActions.loadEmployees());
   }
 
