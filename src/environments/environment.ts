@@ -7,6 +7,7 @@ export const environment = {
   // baseAPIUrl:
   //   'http://intern-2020.southeastasia.cloudapp.azure.com:4001/api/v1/',
   baseAPIUrl: 'https://angular-starter-api.herokuapp.com/api/',
+  //   baseAPIUrl: 'https://localhost:3000/api/',
 };
 
 /*

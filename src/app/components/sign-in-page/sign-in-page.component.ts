@@ -14,8 +14,8 @@ import { environment } from 'src/environments/environment';
 export class SignInPageComponent implements OnInit {
   hide: boolean;
   credential: Credential = {
-    username: 'user@gmail.com',
-    password: 'user',
+    username: 'admin@demo.com',
+    password: 'demo!123',
   };
   message: string = '';
 
