@@ -15,7 +15,7 @@ export class SignInPageComponent implements OnInit {
   hide: boolean;
   credential: Credential = {
     username: 'admin@demo.com',
-    password: 'demo!123',
+    password: 'demo!23',
   };
   message: string = '';
 
@@ -25,7 +25,7 @@ export class SignInPageComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     this.http
-      .post(environment.baseAPIUrl + 'auth/authenticate', this.credential)
+      .post(environment.baseAPIUrl + 'auth/login', this.credential)
       .subscribe(
         (data: any) => {
           console.log(data);

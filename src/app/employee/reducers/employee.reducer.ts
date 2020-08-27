@@ -1,11 +1,10 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { EmployeeActions, DeleteEmployeeActions } from "../actions";
-import { Employees, DetailEmployeeModel } from "../models";
-import { state } from "@angular/animations";
+import { EmployeeActions, DeleteEmployeeActions } from '../actions';
+import { Employees, DetailEmployeeModel } from '../models';
 import * as _ from 'lodash';
 
-export const collectionFeatureKey = "collection";
+export const collectionFeatureKey = 'collection';
 
 export interface State {
   loaded: boolean;
@@ -20,7 +19,7 @@ const initialState: State = {
   loaded: false,
   loading: false,
   employees: [],
-  error: "",
+  error: '',
   employeeID: undefined,
   deleted: false,
 };
@@ -83,12 +82,12 @@ export const reducer = createReducer(
   on(DeleteEmployeeActions.deleteEmployeeSuccess, (state, id) => {
     let newEmployees = _.cloneDeep(state.employees);
     newEmployees = newEmployees.filter((employee) => employee.id !== id.id);
-    return ({
+    return {
       ...state,
       loading: false,
       loaded: true,
-      employees: newEmployees
-    })
+      employees: newEmployees,
+    };
   }),
 
   on(DeleteEmployeeActions.deleteEmployeeFailure, (state, { error }) => ({

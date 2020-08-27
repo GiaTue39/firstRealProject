@@ -1,10 +1,10 @@
 <app-page>
   <app-page-header>
-    
+
   </app-page-header>
 
   <app-page-content>
-    
+
     <form container name="createCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
       <mat-card class="card1">
         <div class="header">
@@ -12,12 +12,13 @@
             <a mat-icon-button routerLink="../" routerLinkActive="active">
               <mat-icon>arrow_back</mat-icon>
             </a>
-            <h1 page-title>{{'newCompany' | transloco}}</h1>    
+            <h1 page-title>{{'newCompany' | transloco}}</h1>
           </div>
-            
-            <button mat-raised-button color="accent" type="submit" [disabled]="( selectDangGuiYeuCauLenServerDeTaoCongTy$ | async)">{{'add' | transloco}}</button>
+
+          <button mat-raised-button color="accent" type="submit"
+            [disabled]="( selectDangGuiYeuCauLenServerDeTaoCongTy$ | async)">{{'add' | transloco}}</button>
         </div>
-        
+
         <div class="URL">
           <img class="logo-img" src="{{createCompany.logoURL|| 'assets/images/logo.PNG'}}">
           <mat-form-field appearance="outline" class="logoURL">
@@ -30,7 +31,7 @@
               </span>
             </mat-error>
           </mat-form-field>
-          
+
         </div>
 
       </mat-card>
@@ -80,14 +81,11 @@
           <mat-form-field appearance="outline" class="website">
             <mat-label>{{'website' | transloco}}</mat-label>
             <input tabindex="5" matInput type="text" name="website" required #username="ngModel"
-              [(ngModel)]="createCompany.website" placeholder="http://" >
+              [(ngModel)]="createCompany.website" placeholder="http://">
             <mat-error *ngIf="form.controls.website.errors">
               <span *ngIf="form.controls.website.errors.required">
                 You must enter a website!
               </span>
-              <!-- <span *ngIf="website.errors?.pattern">
-                Required: http/https:../
-              </span> -->
             </mat-error>
           </mat-form-field>
         </div>
@@ -104,11 +102,6 @@
           </mat-error>
         </mat-form-field>
       </mat-card>
-
-      <!-- <div class="example-button-row">
-        <button mat-raised-button color="accent" type="submit" [disabled]="( companies$ | async)">Create</button>
-      </div> -->
-
     </form>
   </app-page-content>
 </app-page>

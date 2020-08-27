@@ -47,9 +47,13 @@ td.mat-cell {
   width: 400px;
 }
 
-.add-employee{
+.add-employee {
   font-size: 40px;
   margin-bottom: 20px;
+}
+
+.add-employee:hover {
+  cursor: pointer;
 }
 
 .create-btn {
@@ -67,7 +71,7 @@ td.mat-cell {
   background-color: antiquewhite;
 }
 
-.mat-icon{
+.mat-icon {
   margin: 0 100px;
 }
 

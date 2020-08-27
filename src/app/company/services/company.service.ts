@@ -21,30 +21,33 @@ export class CompanyService {
   }
 
   deleteCompany(id: string) {
-    return this.http.delete(environment.baseAPIUrl + 'companies/' + id, {
+    return this.http.delete(environment.baseAPIUrl + 'api/companies/' + id, {
       headers: this.createHeader(),
     });
   }
 
   getCompanies(): Observable<Array<Company>> {
-    return this.http.get<Array<Company>>(environment.baseAPIUrl + 'companies', {
-      headers: this.createHeader(),
-    });
+    return this.http.get<Array<Company>>(
+      environment.baseAPIUrl + 'api/companies',
+      {
+        headers: this.createHeader(),
+      }
+    );
   }
 
   createCompany(company): Observable<any> {
-    return this.http.post(environment.baseAPIUrl + 'companies', company);
+    return this.http.post(environment.baseAPIUrl + 'api/companies', company);
   }
 
   getCompany(id: string): Observable<DetailCompanyModel> {
     return this.http.get<DetailCompanyModel>(
-      environment.baseAPIUrl + 'companies/' + id
+      environment.baseAPIUrl + 'api/companies/' + id
     );
   }
 
   update(id: string, model): Observable<any> {
     return this.http.put<DetailCompanyModel>(
-      environment.baseAPIUrl + 'companies/' + id,
+      environment.baseAPIUrl + 'api/companies/' + id,
       model
     );
   }

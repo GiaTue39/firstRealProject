@@ -11,16 +11,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input
-          class="form-control"
-          matInput
-          tabindex="1"
-          placeholder="Ex.pat@example.com"
-          #email="ngModel"
-          [(ngModel)]="user.email"
-          name="contactEmail"
-          required
-        />
+        <input class="form-control" matInput tabindex="1" placeholder="Ex.pat@example.com" #email="ngModel"
+          [(ngModel)]="user.email" name="contactEmail" required />
         <mat-error *ngIf="email.errors">
           <span *ngIf="email.errors.required">
             Email is required !
@@ -30,16 +22,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input
-          class="form-control"
-          matInput
-          placeholder="Name"
-          tabindex="2"
-          #name="ngModel"
-          [(ngModel)]="user.name"
-          name="contactName"
-          required
-        />
+        <input class="form-control" matInput placeholder="Name" tabindex="2" #name="ngModel" [(ngModel)]="user.name"
+          name="contactName" required />
         <mat-error *ngIf="name.errors">
           <span *ngIf="name.errors.required">
             Name is required !
@@ -49,16 +33,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Phone number</mat-label>
-        <input
-          class="form-control"
-          matInput
-          tabindex="3"
-          placeholder="+084"
-          #phone="ngModel"
-          [(ngModel)]="user.phone"
-          name="contactPhone"
-          required
-        />
+        <input class="form-control" matInput tabindex="3" placeholder="+084" #phone="ngModel" [(ngModel)]="user.phone"
+          name="contactPhone" required />
         <mat-error *ngIf="phone.errors">
           <span *ngIf="phone.errors.required">
             Phone is required !
@@ -68,17 +44,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input
-          class="form-control"
-          type="password"
-          matInput
-          tabindex="4"
-          placeholder="Password"
-          #pass="ngModel"
-          [(ngModel)]="user.password"
-          name="contactPass"
-          required
-        />
+        <input class="form-control" type="password" matInput tabindex="4" placeholder="Password" #pass="ngModel"
+          [(ngModel)]="user.password" name="contactPass" required />
         <mat-error *ngIf="pass.errors">
           <span *ngIf="pass.errors.required">
             Password is required !
@@ -88,17 +55,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm Your Password</mat-label>
-        <input
-          class="form-control"
-          type="password"
-          matInput
-          tabindex="5"
-          placeholder="Please enter your password again"
-          #confirmPass="ngModel"
-          [(ngModel)]="user.confirmPass"
-          name="confirmPass"
-          required
-        />
+        <input class="form-control" type="password" matInput tabindex="5" placeholder="Please enter your password again"
+          #confirmPass="ngModel" [(ngModel)]="user.confirmPass" name="confirmPass" required />
         <mat-error *ngIf="confirmPass.errors">
           <span *ngIf="confirmPass.errors.required">
             Confirm password is required !
@@ -106,11 +64,7 @@
         </mat-error>
       </mat-form-field>
 
-      <div
-        class="alert-danger"
-        role="alert"
-        *ngIf="confirmPass?.valid && confirmPass.value != pass.value"
-      >
+      <div class="alert-danger" role="alert" *ngIf="confirmPass?.valid && confirmPass.value != pass.value">
         Confirm your password is incorrect!
       </div>
 
@@ -118,10 +72,10 @@
         By clicking here, you agree to our <a href="#">Customer Agreement</a>
       </p>
 
-      <button mat-button color="primary" type="submit">Sign Up</button>
+      <button mat-button color="accent" type="submit">Sign Up</button>
     </form>
     <div class="footer">
       <p>Already have account ? <a href="#" routerLink="/signin">Sign in</a></p>
-    </div> 
+    </div>
   </div>
 </div>

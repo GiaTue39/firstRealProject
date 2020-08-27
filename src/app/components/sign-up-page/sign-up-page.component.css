@@ -1,8 +1,12 @@
+::ng-deep body.welcome {
+  overflow: scroll;
+}
+
 .container {
   width: 400px;
-  height: auto;
+  height: 900px;
   text-align: center;
-  margin: 100px 550px;
+  margin: auto;
 }
 
 .header {
@@ -41,7 +45,7 @@ a {
   margin-top: 20px;
 }
 
-.example-container .mat-form-field+.mat-form-field {
+.example-container .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
 
@@ -72,7 +76,7 @@ a {
 }
 
 img::before {
-  content: "";
+  content: '';
 }
 
 .item-header {
