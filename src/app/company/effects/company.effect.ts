@@ -1,23 +1,29 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Actions, ofType, createEffect } from "@ngrx/effects";
-import { of } from "rxjs";
-import { switchMap, map, catchError, exhaustMap, tap } from "rxjs/operators";
+import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { switchMap, map, catchError, exhaustMap, tap } from 'rxjs/operators';
 
-import { CompanyActions, CreateCompanyActions, DeleteCompanyActions, UpdateCompanyActions } from "../actions";
-import { CompanyService } from "../services/company.service";
+import {
+  CompanyActions,
+  CreateCompanyActions,
+  DeleteCompanyActions,
+  UpdateCompanyActions,
+} from '../actions';
+import { CompanyService } from '../services/company.service';
 @Injectable()
 export class CompanyEffect {
-
   loadCompanies$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(CompanyActions.loadCompanies),
       switchMap(() =>
         this.companyService.getCompanies().pipe(
-          map((data) =>
-            CompanyActions.loadCompaniesSuccess({ companies: data })
+          map((data: any) =>
+            CompanyActions.loadCompaniesSuccess({
+              companies: data.companies || data,
+            })
           ),
           catchError((error) => {
             return of(
@@ -65,20 +71,6 @@ export class CompanyEffect {
     );
   });
 
-  changedName$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(CompanyActions.DoiTen),
-      exhaustMap((action) => {
-        return this.companyService.layTruc().pipe(
-          map((res: any) => {
-            return CompanyActions.DoiTenSuccess({ name: res });
-          }),
-          catchError((error) => of(CompanyActions.DoiTenFailure({ error })))
-        );
-      })
-    );
-  });
-
   createCompany$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(CreateCompanyActions.createCompany),
@@ -88,7 +80,7 @@ export class CompanyEffect {
           map(
             (res) =>
               CreateCompanyActions.createCompanySuccess({ company: res }),
-            this.router.navigate(["/companies"])
+            this.router.navigate(['/companies'])
           ),
           catchError((error) =>
             of(
@@ -139,8 +131,7 @@ export class CompanyEffect {
       this.actions$.pipe(
         ofType(UpdateCompanyActions.updateCompanySuccess),
         tap(() => {
-
-          this.snackBar.open("Updated successfully ! :D", "Cancel", {
+          this.snackBar.open('Updated successfully ! :D', 'Cancel', {
             duration: 2000,
           });
 
@@ -155,5 +146,5 @@ export class CompanyEffect {
     private companyService: CompanyService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 }

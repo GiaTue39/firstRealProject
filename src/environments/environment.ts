@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // baseAPIUrl:
+  //   'http://intern-2020.southeastasia.cloudapp.azure.com:4001/api/v1/',
+  baseAPIUrl: 'https://angular-starter-api.herokuapp.com/api/',
 };
 
 /*
