@@ -1,28 +1,29 @@
 <div class="cover">
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-  <div class="info">
-    <div class="cover-header" fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-        <a mat-icon-button routerLink="/employees" routerLinkActive="active">
-          <mat-icon>arrow_back</mat-icon>
-        </a>
-  
-        <div class="avatar">
-          <img src="{{createEmployee.avatarURL || 'assets/images/logo.PNG'}}">
+    <div class="info">
+      <div class="cover-header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <a mat-icon-button routerLink="/employees" routerLinkActive="active">
+            <mat-icon>arrow_back</mat-icon>
+          </a>
+
+          <div class="avatar">
+            <img src="{{createEmployee.avatarURL || 'assets/images/logo.PNG'}}">
+          </div>
+
+          <div class="title-head">
+            <h1>{{'newEmployee' | transloco}}</h1>
+            <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
+              placeholder="{{'insertURL' | transloco}}">
+          </div>
         </div>
-  
-        <div class="title-head">
-          <h1>{{'newEmployee' | transloco}}</h1>
-          <input class="insert-url" name="url" [(ngModel)]="createEmployee.avatarURL" type="text"
-            placeholder="{{'insertURL' | transloco}}">
-        </div>  
+        <button mat-raised-button fxFlexAlign="right" color="accent" type="submit"
+          [disabled]="(isCreating$ | async)">{{'add' | transloco}}</button>
       </div>
-      <button mat-raised-button fxFlexAlign="right" color="accent" type="submit" [disabled]="(employees$ | async)">{{'add' | transloco}}</button>
-    </div>
 
 
 
-  
+
       <mat-card class="card-info mat-elevation-z3">
         <div class="info-name-birthday">
           <mat-form-field appearance="outline">
@@ -49,8 +50,8 @@
 
           <mat-form-field appearance="outline">
             <mat-label>{{'phone' | transloco}}</mat-label>
-            <input matInput tabindex="1" placeholder="Your phone number" name="phone"
-              [(ngModel)]="createEmployee.phone" required pattern="^((\\+84-?)|0)?[0-9]{10}$" #phone="ngModel" />
+            <input matInput tabindex="1" placeholder="Your phone number" name="phone" [(ngModel)]="createEmployee.phone"
+              required pattern="^((\\+84-?)|0)?[0-9]{10}$" #phone="ngModel" />
 
             <mat-error *ngIf="phone.errors">
               <span *ngIf="phone.errors.required">
@@ -85,6 +86,6 @@
           </mat-form-field>
         </div>
       </mat-card>
-  </div>
-    </form>
+    </div>
+  </form>
 </div>

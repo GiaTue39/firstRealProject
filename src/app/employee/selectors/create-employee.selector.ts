@@ -1,5 +1,5 @@
-import { createSelector } from "@ngrx/store";
-import { selectCreateEmployeeState } from "../reducers";
+import { createSelector } from '@ngrx/store';
+import { selectCreateEmployeeState } from '../reducers';
 
 export const selectIsCreatedEmployees = createSelector(
   selectCreateEmployeeState,
@@ -9,4 +9,9 @@ export const selectIsCreatedEmployees = createSelector(
 export const selectEmployees = createSelector(
   selectCreateEmployeeState,
   (state) => state.employee
+);
+
+export const selectCreatingEmployee = createSelector(
+  selectCreateEmployeeState,
+  (state) => state.creating
 );

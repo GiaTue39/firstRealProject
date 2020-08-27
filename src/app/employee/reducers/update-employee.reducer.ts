@@ -1,9 +1,9 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { UpdateEmployeeActions } from "../actions";
-import { DetailEmployeeModel } from "../models";
+import { UpdateEmployeeActions } from '../actions';
+import { DetailEmployeeModel } from '../models';
 
-export const collectionFeatureKey = "collection";
+export const collectionFeatureKey = 'collection';
 
 export interface State {
   error: string;
@@ -12,7 +12,7 @@ export interface State {
 }
 
 const initialState: State = {
-  error: "",
+  error: '',
   employee: null,
   updating: false,
 };
@@ -26,16 +26,14 @@ export const reducer = createReducer(
 
   on(UpdateEmployeeActions.updateEmployeeSuccess, (state, { employee }) => ({
     ...state,
-
     employee,
-    updating: false
+    updating: false,
   })),
 
   on(UpdateEmployeeActions.updateEmployeeFailure, (state, { error }) => ({
     ...state,
-
     error,
-    updating: false
+    updating: false,
   }))
 );
 

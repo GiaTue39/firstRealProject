@@ -54,12 +54,6 @@ export const reducer = createReducer(
     });
   }),
 
-  // on(CompanyActions.loadCompaniesSuccess, (state, { companies }) => adapter.addAll({},{
-  //   ...state,
-  //   loaded: true,
-  //   loading: false,
-  // })),
-
   on(CompanyActions.loadCompaniesFailure, (state, { error }) => ({
     ...state,
     loaded: false,
@@ -79,26 +73,6 @@ export const reducer = createReducer(
   })),
 
   on(CompanyActions.loadCompaniesFailure, (state, { error }) => ({
-    ...state,
-    loaded: false,
-    loading: false,
-    error,
-  })),
-
-  /////
-
-  on(CompanyActions.DoiTen, (state) => {
-    return { ...state, loading: true };
-  }),
-
-  on(CompanyActions.DoiTenSuccess, (state, { name }) => ({
-    ...state,
-    loaded: true,
-    loading: false,
-    nameChanged: name,
-  })),
-
-  on(CompanyActions.DoiTenFailure, (state, { error }) => ({
     ...state,
     loaded: false,
     loading: false,
