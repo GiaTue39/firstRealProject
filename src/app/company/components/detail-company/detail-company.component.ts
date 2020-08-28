@@ -53,6 +53,7 @@ export class DetailCompanyComponent implements OnInit, CanDeactivateComponent {
     this.trucDay$.subscribe((x) => console.log(x));
 
     this.detailCompany$.subscribe((detailCompany) => {
+      console.log(detailCompany);
       if (detailCompany) {
         this.detailCompany = _.cloneDeep(detailCompany);
       }
