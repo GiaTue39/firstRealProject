@@ -27,7 +27,7 @@
           <mat-icon>menu</mat-icon>
         </button>
         <span><img src="/assets/img/r2.png"></span>
-        <span class="title">Realtek</span>
+        <span class="title" fxHide fxShow.gt-md>Realtek</span>
         <span class="example-spacer"></span>
 
         <button class="menu-button" mat-button [matMenuTriggerFor]="languageMenu">
@@ -35,7 +35,7 @@
           <ng-template #vi>
             <img class="language-flag" src="/assets/img/vn.png">
           </ng-template>
-          {{shortLanguage}}
+          <span fxHide fxShow.gt-md>{{shortLanguage}}</span>
         </button>
 
         <mat-menu #languageMenu="matMenu" xPosition="before">
@@ -53,7 +53,7 @@
         </mat-menu>
         <div class="img">
           <div class="mr"></div>
-          <span>Max Plank</span>
+          <span fxHide fxShow.gt-md>Max Plank</span>
           <img src="/assets/img/maxyoung.jpg" class="max">
           <div class="icon">
             <button mat-icon-button (click)="onLogoutBtnClicked()">

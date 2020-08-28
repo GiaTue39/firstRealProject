@@ -6,18 +6,17 @@ h1 {
   margin: 0;
 }
 
-.header{
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
-.title-head{
+.title-head {
   display: flex;
   align-items: center;
 }
-form{
+form {
   width: 700px;
   margin: 5rem auto;
 }
@@ -26,7 +25,6 @@ form{
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .container {
@@ -51,12 +49,10 @@ mat-slide-toggle {
   display: flex;
   flex-direction: row;
   align-items: center;
-
 }
 
 img {
   border: 1px solid black;
-  margin: 30px 40px;
 }
 
 mat-slide-toggle {
@@ -64,9 +60,7 @@ mat-slide-toggle {
 }
 
 .logoURL {
-  padding: 30px;
   margin: 20px;
-
 }
 
 .name {
@@ -85,39 +79,25 @@ mat-slide-toggle {
   flex-direction: row;
 }
 
-.email {
-  margin-right: 20px;
-  width: 50%;
-}
-
-.website {
-  margin-left: 20px;
-  width: 50%;
-}
-
 button {
   width: 70px;
-    height: 30px;
-    margin-bottom: 20px;
-    justify-content: space-around;
+  height: 30px;
+  margin-bottom: 20px;
+  justify-content: space-around;
 }
 
-.logo-img{
+.logo-img {
   width: 100px;
   height: 100px;
   box-sizing: border-box;
 }
 
-app-page{
+app-page {
   background-color: aliceblue;
-}
-
-.logo{
-  margin-left: 50px;
 }
 
 input {
   caret-color: auto;
   display: block;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }

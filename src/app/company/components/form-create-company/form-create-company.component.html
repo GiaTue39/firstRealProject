@@ -5,26 +5,28 @@
 
   <app-page-content>
 
-    <form container name="createCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
+    <form container name="createCompanyForm" #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)"
+      fxFlex.lt-md="300px">
       <mat-card class="card1">
         <div class="header">
           <div class="title-head">
             <a mat-icon-button routerLink="../" routerLinkActive="active">
               <mat-icon>arrow_back</mat-icon>
             </a>
-            <h1 page-title>{{'newCompany' | transloco}}</h1>
+            <h1 page-title ngClass.lt-md="fs-h1">{{'newCompany' | transloco}}</h1>
           </div>
 
           <button mat-raised-button color="accent" type="submit"
             [disabled]="( selectDangGuiYeuCauLenServerDeTaoCongTy$ | async)">{{'add' | transloco}}</button>
         </div>
 
-        <div class="URL">
+        <div class="URL" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0" fxFlex="100%"
+          fxLayout.lt-md="column" fxLayoutAlign.lt-md="start center">
           <img class="logo-img" src="{{createCompany.logoURL|| 'assets/images/logo.PNG'}}">
-          <mat-form-field appearance="outline" class="logoURL">
+          <mat-form-field appearance="outline" class="logoURL" fxFlex="calc(100% - 200px)" ngClass.lt-md="w-100-p">
             <mat-label>{{'logoURL' | transloco}}</mat-label>
             <input class="logo" tabindex="1" matInput type="text" name="url" required #username="ngModel"
-              [(ngModel)]="createCompany.logoURL">
+              [(ngModel)]="createCompany.logoURL" fxflex fxFlex.lt-md="100%">
             <mat-error *ngIf="form?.controls?.url?.errors">
               <span *ngIf="form?.controls?.url?.errors?.required">
                 You must enter a url!
@@ -62,8 +64,10 @@
           </mat-error>
         </mat-form-field>
 
-        <div class="content">
-          <mat-form-field appearance="outline" class="email">
+        <div class="content" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="40px"
+          fxLayout.lt-md="column" fxLayoutAlign.lt-md="start start" fxLayoutGap.lt-md="0">
+          <mat-form-field appearance="outline" class="email" fxFlex="calc(50% - 20px)" fxFlex.lt-md="100%"
+            ngClass.lt-md="w-100-p">
             <mat-label>{{'email' | transloco}}</mat-label>
             <input tabindex="4" matInput type="email" name="email" required #name="ngModel"
               [(ngModel)]="createCompany.email" placeholder="your@example.com"
@@ -78,7 +82,8 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="website">
+          <mat-form-field appearance="outline" class="website" fxFlex="calc(50% - 20px)" fxFlex.lt-md="100%"
+            ngClass.lt-md="w-100-p">
             <mat-label>{{'website' | transloco}}</mat-label>
             <input tabindex="5" matInput type="text" name="website" required #username="ngModel"
               [(ngModel)]="createCompany.website" placeholder="http://">

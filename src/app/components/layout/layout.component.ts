@@ -6,14 +6,14 @@ import { LANGUAGES } from '../constants/languages';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent implements OnInit {
   hide: boolean = false;
   allLanguages = LANGUAGES;
   shortLanguage: string;
   currenFlag: string;
-  selectedLanguage: { shortLanguage: string, flag: string };
+  selectedLanguage: { shortLanguage: string; flag: string };
 
   menu = [
     {
@@ -24,12 +24,11 @@ export class LayoutComponent implements OnInit {
     {
       name: 'employee',
       url: '/employees',
-      icon: 'person'
-    }
-  ]
+      icon: 'person',
+    },
+  ];
 
   images = [
-
     'img/2.png',
     'img/3.png',
     'img/4.png',
@@ -44,8 +43,8 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private translocoService: TranslocoService,
-  ) { }
+    private translocoService: TranslocoService
+  ) {}
 
   ngOnInit(): void {
     this.shortLanguage = this.translocoService.getActiveLang();
@@ -56,7 +55,9 @@ export class LayoutComponent implements OnInit {
   translateVA() {
     const activeLanguage = this.translocoService.getActiveLang();
     this.shortLanguage = 'vi';
-    const selectedLanguage = this.allLanguages.find(language => language.shortLanguage = this.shortLanguage);
+    const selectedLanguage = this.allLanguages.find(
+      (language) => (language.shortLanguage = this.shortLanguage)
+    );
     if (activeLanguage === 'en') {
       return this.translocoService.setActiveLang('vi');
     }
@@ -71,7 +72,6 @@ export class LayoutComponent implements OnInit {
     }
     return this.translocoService.setActiveLang('en');
   }
-
 
   onLogoutBtnClicked(): void {
     localStorage.removeItem('token');
@@ -101,5 +101,4 @@ export class LayoutComponent implements OnInit {
   //   this.currenFlag = this.selectedLanguage.flag;
   //   return this.translocoService.setActiveLang(shortLanguage);
   // }
-
 }

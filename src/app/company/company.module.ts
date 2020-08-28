@@ -16,6 +16,7 @@ import { LeavePageGuard } from '../leave-page.guard';
 import { ROOT_REDUCERS } from './reducers';
 import { CompanyEffect } from './effects';
 import { TranslocoRootModule } from '../transloco/transloco-root.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { TranslocoRootModule } from '../transloco/transloco-root.module';
     AppMaterialModule,
     TranslocoRootModule,
     MatSnackBarModule,
+    FlexLayoutModule,
     RouterModule.forChild([
       {
         path: '',
@@ -33,12 +35,12 @@ import { TranslocoRootModule } from '../transloco/transloco-root.module';
       {
         path: 'create',
         component: FormCreateCompanyComponent,
-        canDeactivate: [LeavePageGuard]
+        canDeactivate: [LeavePageGuard],
       },
       {
         path: ':id',
         component: DetailCompanyComponent,
-        canDeactivate: [LeavePageGuard]
+        canDeactivate: [LeavePageGuard],
       },
     ]),
     StoreModule.forFeature('company', ROOT_REDUCERS),
@@ -47,10 +49,8 @@ import { TranslocoRootModule } from '../transloco/transloco-root.module';
   declarations: [
     ListCompanyComponent,
     FormCreateCompanyComponent,
-    DetailCompanyComponent
+    DetailCompanyComponent,
   ],
-  providers: [
-    LeavePageGuard,
-  ]
+  providers: [LeavePageGuard],
 })
-export class CompanyModule { }
+export class CompanyModule {}

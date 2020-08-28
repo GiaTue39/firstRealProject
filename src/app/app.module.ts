@@ -18,6 +18,7 @@ import { AppMaterialModule } from './material.module';
 import { LeavePageGuard } from './leave-page.guard';
 import { environment } from 'src/environments/environment';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // console.log all actions
 export function logger(reducer) {
@@ -43,31 +44,34 @@ const metaReducers = !environment.production ? [logger] : [];
     FormsModule,
     CommonModule,
     AppMaterialModule,
-    StoreModule.forRoot({}, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateSerializability: true,
-        strictActionSerializability: true,
-        strictActionWithinNgZone: true,
-        strictActionTypeUniqueness: true,
-      },
-    }),
+    StoreModule.forRoot(
+      {},
+      {
+        metaReducers,
+        runtimeChecks: {
+          strictStateSerializability: true,
+          strictActionSerializability: true,
+          strictActionWithinNgZone: true,
+          strictActionTypeUniqueness: true,
+        },
+      }
+    ),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
-      name: "NgRx Book Store App",
+      name: 'NgRx Book Store App',
     }),
     AppRoutingModule,
     AuthModule,
-    TranslocoRootModule
+    TranslocoRootModule,
+    FlexLayoutModule,
   ],
   providers: [
     LeavePageGuard,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: "outline" },
+      useValue: { appearance: 'outline' },
     },
   ],
   bootstrap: [AppComponent],
-
 })
-export class AppModule { }
+export class AppModule {}
